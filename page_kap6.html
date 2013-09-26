@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kompetens och kunskap</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="themes/faktavgr.min.css" />
+    <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/brainworks.js"></script> 
+    <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
+    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
+    <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
+        <script>
+      var port_table = '<img class="startmenu" src="images/menu/kap6_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenu">' +
+              '<area areaname="area_1" full="area_1" shape="rect" coords="40,181,252,217" href="#kap6_1"/>' +
+'<area areaname="area_2" full="area_2" shape="rect" coords="40,227,337,268" href="#kap6_2"/>' +
+'<area areaname="area_3" full="area_3" shape="rect" coords="39,279,180,315" href="#kap6_3"/>' +
+'<area areaname="area_4" full="area_4" shape="rect" coords="38,330,182,367" href="#kap6_4"/>' +
+'<area areaname="area_5" full="area_5" shape="rect" coords="39,381,233,418" href="#kap6_5"/>' +
+'<area areaname="area_6" full="area_6" shape="rect" coords="40,430,269,469" href="#kap6_6"/>' +
+
+              '</map>';
+
+      var land_table = '<img class="startmenu" src="images/menu/kap6_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenu">' +
+              '<area areaname="area_1" full="area_1" shape="rect" coords="33,99,195,127" href="#kap6_1"/>' +
+'<area areaname="area_2" full="area_2" shape="rect" coords="34,135,258,165" href="#kap6_2"/>' +
+'<area areaname="area_3" full="area_3" shape="rect" coords="34,174,142,201" href="#kap6_3"/>' +
+'<area areaname="area_4" full="area_4" shape="rect" coords="33,211,140,239" href="#kap6_4"/>' +
+'<area areaname="area_5" full="area_5" shape="rect" coords="34,248,180,278" href="#kap6_5"/>' +
+'<area areaname="area_6" full="area_6" shape="rect" coords="34,286,206,316" href="#kap6_6"/>' +
+
+              '</map>';
+      var startorientation;
+      
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        startorientation = 'portrait';
+      }
+      else {
+        startorientation = 'landscape';
+      }
+
+      $(document).ready(function() {
+        
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+        }
+        $('.startmenu').rwdImageMaps();
+        
+        $(window).on("orientationchange", function(event) {
+//          alert('orientationchange');
+          if (event.orientation == 'landscape') {
+            $("#myimagemenu").html(land_table);
+            $('.startmenu').rwdImageMaps();
+          }
+          else {
+            $("#myimagemenu").html(port_table);
+            $('.startmenu').rwdImageMaps();
+          }
+        });
+        
+        // You can also manually force this event to fire.
+        //$(window).orientationchange();
+//        $(window).bind('resize', onWindowResize);
+        $.mobile.fixedToolbars.setTouchToggleEnabled(false);
+        $.mobile.ajaxEnabled = false;
+      });
+
+    </script>
+
+    <style>
+      .ui-content {
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        background:white;
+        font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+      }      
+      .ui-bar-a {
+        background:#4a136f;
+        color : black;
+      }
+      .braincontent {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-role="page" class="ui-responsive-panel" id="panel-fixed-page1">
+      <!-- header -->
+      <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
+        <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
+          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+        </div>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
+          <a href="search.html" data-role="button" data-icon="search">Sök</a>
+          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+        </div>
+      </div>      <!-- /header -->
+      
+          <div data-role="content">
+          <div id="myimagemenu"></div>
+          <div data-demo-html="#panel-fixed-page1"></div>
+          <div class="braincontent">
+          <a id="kap6_1" name="kap6_1" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Utbildningsnivå: Allt fler högutbildade</h2> <p>Befolkningens formella utbildningsniv&aring; forts&auml;tter att stiga. &Aring;r 2012 hade 25 procent av V&auml;stra G&ouml;talands befolkning i &aring;ldrarna 25&ndash;64 minst tre&aring;rig eftergymnasial utbildning. Niv&aring;n &auml;r densamma som i riket. F&ouml;r bara ett decennium sedan var motsvarande siffra 17 procent.</p>
+<a id="kap6_1_graf1" name="kap6_1_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_1_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_1b" name="kap6_1b" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Stora skillnader inom Västra Götaland</h2> <p>Skillnaderna inom V&auml;stra G&ouml;taland &auml;r stora och speglar de senaste decenniernas utveckling med en &ouml;kad inflytt&shy;ning av h&ouml;gutbildade till storst&auml;derna. Den h&ouml;gsta andelen med minst tre&aring;rig eftergym&shy;&shy;nasial utbildning finns i G&ouml;teborgs kommun (50 procent) och den l&auml;gsta andelen i Svenljunga kommun (19 procent).</p>
+
+<p>Kvinnor har generellt sett en h&ouml;gre utbildnings&shy;niv&aring; &auml;n m&auml;n. Andelen kvinnor med minst tre&aring;rig eftergymnasial utbildning har i V&auml;stra G&ouml;taland &ouml;kat fr&aring;n 19 procent &aring;r 2002 till 29 procent &aring;r 2012. Motsvarande andel f&ouml;r m&auml;n har &ouml;kat fr&aring;n 16 procent &aring;r 2002 till 21 procent &aring;r 2012.</p>
+<a id="kap6_1b_graf1" name="kap6_1b_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_2_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_1b_karta1" name="kap6_1b_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_2_karta1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_1c" name="kap6_1c" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Utbildningsnivån ökar </h2> <p>Utbildningsniv&aring;n har &ouml;kat dels p&aring; grund av att fler yngre har l&auml;ngre utbildning, dels eftersom andelen som skaffat sig eftergymnasial utbildning &ouml;kat. Andelen studenter i V&auml;stra G&ouml;taland som p&aring;b&ouml;rjar h&ouml;gskolestudier inom tre &aring;r efter att har tagit studenten har &ouml;kat fr&aring;n 35 procent l&auml;s&aring;r 2004/2005 till 39 procent 2010/2011.</p>
+
+<p>I ett europeiskt perspektiv &auml;r andelen inv&aring;nare med eftergymnasial utbildning h&ouml;g i V&auml;stsverige (35 procent) och ligger betydligt h&ouml;gre &auml;n genom&shy;snittet i europeiska regioner (26 procent).</p>
+
+<p>Dock finns det ett 60-tal regioner i EU d&auml;r &auml;nnu h&ouml;gre andel av befolkningen har efter&shy;gym&shy;nasial utbildning, m&aring;nga av dem &auml;r huvudstadsregioner.</p>
+<a id="kap6_1c_karta1" name="kap6_1c_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_2_karta2.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_1c_karta2" name="kap6_1c_karta2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_2_karta3.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_2" name="kap6_2" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Övergång till högskola: Behörighet till högskola och universitet</h2> <p>Andelen elever med slutbetyg fr&aring;n gymnasieskolan, som ger grundl&auml;ggande beh&ouml;righet till h&ouml;gskolestudier varierar mellan kommunerna i V&auml;stra G&ouml;taland. I de kommuner d&auml;r beh&ouml;righeten till h&ouml;gskolan &auml;r l&auml;gst har endast cirka 63 procent av eleverna uppn&aring;tt grundl&auml;ggande beh&ouml;righet inom tre &aring;r.</p>
+
+<p>I de mest framg&aring;ngsrika kommunerna uppn&aring;r mellan 77&ndash;84 procent av eleverna beh&ouml;righet. Dessa siffror avser grundl&auml;ggande beh&ouml;righet, men de flesta h&ouml;gskoleutbildningar kr&auml;ver s&auml;rskild beh&ouml;righet. Vilken s&auml;rskild beh&ouml;righet som kr&auml;vs varierar beroende p&aring; h&ouml;gskoleutbildning.</p>
+
+<p>Ett av de m&aring;l som EU vill uppn&aring; genom strategin Europa 2020 &auml;r att andelen elever som hoppar av skolan i f&ouml;rtid ska vara l&auml;gre &auml;n tio procent. Problemet med avbruten skolg&aring;ng &auml;r med andra ord inte unikt f&ouml;r Sverige eller V&auml;stra G&ouml;taland utan ber&ouml;r hela Europa. Att minska antalet avhopp fr&aring;n gymnasiet, antalet s&aring; kallade drop outs, &auml;r d&auml;rf&ouml;r en fr&aring;ga med h&ouml;g prioritet.</p>
+
+<p>Andelen gymnasieelever i kommunerna som full&shy;f&ouml;ljer sin utbildning inom fyra &aring;r varierar inom V&auml;stra G&ouml;taland. I de kommuner d&auml;r eleverna i h&ouml;gst utstr&auml;ckning fullf&ouml;ljer sin utbildning ligger niv&aring;n p&aring; cirka 85&ndash;90 procent av gymnasieeleverna. I de kommuner d&auml;r flest studieavbrott sker &auml;r det endast cirka 73 procent av eleverna som fullf&ouml;ljer sin utbildning inom fyra &aring;r.</p>
+<a id="kap6_2_karta1" name="kap6_2_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_6_karta1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_2_karta2" name="kap6_2_karta2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_6_karta2.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_3" name="kap6_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Lärosäten: Populära lärosäten i Västra Götaland</h2> <p>&Aring;r 2012 l&auml;ste drygt 50 500 hel&aring;rsstudenter vid de fem universitet/h&ouml;gskolor som finns i V&auml;stra G&ouml;taland. Detta &auml;r en &ouml;kning med drygt 4500 studenter fr&aring;n &aring;r 2007. M&auml;tt i antalet registrerade studenter i grundutbildningen h&ouml;stterminen 2012 &auml;r G&ouml;teborgs universitet landets tredje st&ouml;rsta, efter Stockholms och Lunds universitet.</p>
+
+<p>Av alla inv&aring;nare i V&auml;stra G&ouml;taland som b&ouml;rjade studera vid universitet/h&ouml;gskola h&ouml;stterminen 2012 valde 63 procent n&aring;got av V&auml;stra G&ouml;talands l&auml;ros&auml;ten. Det var endast Chalmers och h&ouml;gskolan i Sk&ouml;vde som rekryterade mer &auml;n h&auml;lften av sina nyb&ouml;rjare utanf&ouml;r V&auml;stra G&ouml;taland.</p>
+
+<p>Chalmers &auml;r ett popul&auml;rt l&auml;ros&auml;te &auml;ven bland utl&auml;ndska studerande och andelen utl&auml;ndska studenter &auml;r h&ouml;g. Den relativa &ouml;kningen av antalet utl&auml;ndska studenter under perioden 2001&ndash;2012 har dock varit st&ouml;rst vid de &ouml;vriga tre h&ouml;gskolorna i V&auml;stra G&ouml;taland.</p>
+<a id="kap6_3_tabell1" name="kap6_3_tabell1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_3_tabell1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_3_graf1" name="kap6_3_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_3_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_4" name="kap6_4" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Forskning: Många forskarstuderande</h2> <p>Ut&ouml;ver cirka 50 500 hel&aring;rsstudenter i grundutbildningen finns &auml;ven cirka 2 900 aktiva forskarstuderande i V&auml;stra G&ouml;taland. Det &auml;r 15 procent av alla aktiva forskarstuderande i landet. Antalet avlagda forskarexamina har n&auml;stan f&ouml;rdubblats den senaste 20-&aring;rs&shy;perioden. N&auml;stan h&auml;lften av alla forskarexamina avl&auml;ggs inom teknikvetenskap och en tredjedel inom medicin.</p>
+
+<p>I V&auml;stra G&ouml;taland finns dessutom 25 folkh&ouml;gskolor och V&auml;stra G&ouml;talandsregionen driver sju av dessa. S&aring; gott som varje kommun har ett eget l&auml;rcentra med utrustning f&ouml;r distansundervisning d&auml;r man bland annat kan genomf&ouml;ra h&ouml;gskoleutbildning p&aring; distans.</p>
+<a id="kap6_4_graf1" name="kap6_4_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_4_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_5" name="kap6_5" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Folkhögskolor: Omtyckta utbildningar vid folkhögskolor</h2> <p>I V&auml;stra G&ouml;taland finns 20 folkh&ouml;gskolor och fem folkh&ouml;gskolefilialer. V&auml;stra G&ouml;talandsregionen st&ouml;djer de 20 folkh&ouml;gskolorna med stor geografisk spridning inom l&auml;net. Dessa folkh&ouml;gskolor pr&auml;glas ocks&aring; av stor bredd n&auml;r det g&auml;ller volym, profilering och inriktning. &Aring;r 2012 deltog 6 661 personer i l&aring;nga kurser, vilket &auml;r of&ouml;r&auml;ndrat j&auml;mf&ouml;rt med 2011, b&aring;de i V&auml;stra G&ouml;taland och i Sverige som helhet. Det &auml;r &ouml;verv&auml;gande kvinnor som deltar i de l&aring;nga kurserna, ungef&auml;r 62 procent kvinnor och 38 procent m&auml;n.</p>
+<a id="kap6_5_tabell1" name="kap6_5_tabell1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_5_tabell1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_6" name="kap6_6" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Livslångt lärande</h2> <p>De tio studief&ouml;rbunden st&aring;r f&ouml;r m&aring;nga m&ouml;jligheter till ett livsl&aring;ngt l&auml;rande i hela V&auml;stra G&ouml;taland och arrangerar bland annat studiecirklar och annan folkbildningsverksamhet liksom mer publika arrangemang s&aring;som kulturprogram. Det &auml;r n&aring;got fler kvinnor &auml;n m&auml;n som tar del av studief&ouml;rbundens verksamhet.</p>
+
+<p>Studiecirkelverksamheten har sakta men s&auml;kert minskat i omfattning de senaste &aring;ren, s&aring;v&auml;l nationellt som regionalt.</p>
+
+<p>De senaste &aring;ren har studief&ouml;rbunden anordnat fler kulturprogram och antalet bes&ouml;kare har &ouml;kat med 10 procent i V&auml;stra G&ouml;taland mellan 2009 och 2012, att j&auml;mf&ouml;ra med 5 procent nationellt.</p>
+<a id="kap6_6_graf1" name="kap6_6_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap6_7_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap6_6_graf2" name="kap6_6_graf2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap8_3_graf1.jpg" style="max-width:100%;width:100%;"></p>
+
+           </div><!-- /braincontent -->
+           </div><!-- /content -->
+           
+      <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
+      <ul data-role="listview" data-theme="a" class="nav-search">
+            <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
+        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="#kap6_1"><img src="images/ikon.png" alt="" class="ui-li-icon">Utbildningsnivå: Allt fler högutbildade</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="#kap6_1b"><img src="images/ikon.png" alt="" class="ui-li-icon">Stora skillnader inom Väst</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="#kap6_1c"><img src="images/ikon.png" alt="" class="ui-li-icon">Utbildningsnivån ökar</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="#kap6_2"><img src="images/ikon.png" alt="" class="ui-li-icon">Övergång till högskola: Behörighet till högskola o</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="#kap6_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Lärosäten: Populära lärosäten i Västra Götaland</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="#kap6_4"><img src="images/ikon.png" alt="" class="ui-li-icon">Forskning: Många forskarstuderande</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="#kap6_5"><img src="images/ikon.png" alt="" class="ui-li-icon">Folkhögskolor: Omtyckta utbildningar vid folkhögsk</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="#kap6_6"><img src="images/ikon.png" alt="" class="ui-li-icon">Livslångt lärande</a></li>
+<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
+<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+</ul>
+      </div><!-- /panel -->
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
+
+        <form class="userform">
+
+          <h2>Create new user</h2>
+
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
+
+          <label for="email">Email</label>
+          <input type="email" name="email" id="status" value="" data-clear-btn="true" data-mini="true">
+
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+
+          <div class="switch">
+            <label for="status">Status</label>
+            <select name="status" id="slider" data-role="slider" data-mini="true">
+              <option value="off">Inactive</option>
+              <option value="on">Active</option>
+            </select>
+          </div>
+
+          <div class="ui-grid-a">
+            <div class="ui-block-a"><a href="#" data-rel="close" data-role="button" data-theme="c" data-mini="true">Cancel</a></div>
+            <div class="ui-block-b"><a href="#" data-rel="close" data-role="button" data-theme="b" data-mini="true">Save</a></div>
+          </div>
+        </form>
+
+      </div><!-- /panel -->
+
+    </div><!-- /page -->
+
+    <div data-role="page" id="panel-fixed-page2">
+
+      <div data-role="header" data-theme="f">
+        <h1>Landing page</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+
+        <p>This is just a landing page.</p>
+
+        <a href="#panel-fixed-page1" data-role="button" data-inline="true" data-mini="true" data-icon="back" data-iconpos="left">Back</a>
+
+      </div><!-- /content -->
+
+    </div><!-- /page -->
+  </body>
+</html>

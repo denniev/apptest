@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Den sociala dimensionen</title>
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="themes/faktavgr.min.css" />
+    <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/brainworks.js"></script> 
+    <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
+    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
+    <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
+        <script>
+      var port_table = '<img class="startmenu" src="images/menu/kap3_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenu">' +
+              '<area areaname="area_1" full="area_1" shape="rect" coords="40,180,239,217" href="#kap3_1"/>' +
+'<area areaname="area_2" full="area_2" shape="rect" coords="39,233,221,265" href="#kap3_2"/>' +
+'<area areaname="area_3" full="area_3" shape="rect" coords="38,280,220,318" href="#kap3_3"/>' +
+'<area areaname="area_4" full="area_4" shape="rect" coords="37,330,202,369" href="#kap3_4"/>' +
+'<area areaname="area_5" full="area_5" shape="rect" coords="38,381,248,418" href="#kap3_5"/>' +
+'<area areaname="area_6" full="area_6" shape="rect" coords="39,429,182,469" href="#kap3_6"/>' +
+'<area areaname="area_7" full="area_7" shape="rect" coords="37,481,174,520" href="#kap3_7"/>' +
+'<area areaname="area_8" full="area_8" shape="rect" coords="37,529,242,570" href="#kap3_8"/>' +
+'<area areaname="area_9" full="area_9" shape="rect" coords="37,581,211,619" href="#kap3_9"/>' +
+
+              '</map>';
+
+      var land_table = '<img class="startmenu" src="images/menu/kap3_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenu">' +
+              '<area areaname="area_1" full="area_1" shape="rect" coords="34,98,185,128" href="#kap3_1"/>' +
+'<area areaname="area_2" full="area_2" shape="rect" coords="35,136,172,165" href="#kap3_2"/>' +
+'<area areaname="area_3" full="area_3" shape="rect" coords="33,175,171,201" href="#kap3_3"/>' +
+'<area areaname="area_4" full="area_4" shape="rect" coords="34,211,156,242" href="#kap3_4"/>' +
+'<area areaname="area_5" full="area_5" shape="rect" coords="34,249,191,279" href="#kap3_5"/>' +
+'<area areaname="area_6" full="area_6" shape="rect" coords="35,286,141,314" href="#kap3_6"/>' +
+'<area areaname="area_7" full="area_7" shape="rect" coords="33,324,136,354" href="#kap3_7"/>' +
+'<area areaname="area_8" full="area_8" shape="rect" coords="33,361,187,391" href="#kap3_8"/>' +
+'<area areaname="area_9" full="area_9" shape="rect" coords="34,399,162,428" href="#kap3_9"/>' +
+
+              '</map>';
+      var startorientation;
+      
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        startorientation = 'portrait';
+      }
+      else {
+        startorientation = 'landscape';
+      }
+
+      $(document).ready(function() {
+        
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+        }
+        $('.startmenu').rwdImageMaps();
+        
+        $(window).on("orientationchange", function(event) {
+//          alert('orientationchange');
+          if (event.orientation == 'landscape') {
+            $("#myimagemenu").html(land_table);
+            $('.startmenu').rwdImageMaps();
+          }
+          else {
+            $("#myimagemenu").html(port_table);
+            $('.startmenu').rwdImageMaps();
+          }
+        });
+        
+        // You can also manually force this event to fire.
+        //$(window).orientationchange();
+//        $(window).bind('resize', onWindowResize);
+        $.mobile.fixedToolbars.setTouchToggleEnabled(false);
+        $.mobile.ajaxEnabled = false;
+      });
+
+    </script>
+
+    <style>
+      .ui-content {
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        background:white;
+        font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+      }      
+      .ui-bar-a {
+        background:#810031;
+        color : black;
+      }
+      .braincontent {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-role="page" class="ui-responsive-panel" id="panel-fixed-page1">
+      <!-- header -->
+      <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
+        <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
+          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+        </div>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
+          <a href="search.html" data-role="button" data-icon="search">Sök</a>
+          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+        </div>
+      </div>      <!-- /header -->
+      
+          <div data-role="content">
+          <div id="myimagemenu"></div>
+          <div data-demo-html="#panel-fixed-page1"></div>
+          <div class="braincontent">
+          <a id="kap3_1" name="kap3_1" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Sysselsättning: Vi mår bra av delaktighet</h2> <p>Trygghet, gemenskap och delaktighet i det sociala livet &auml;r grundl&auml;ggande f&ouml;ruts&auml;ttningar f&ouml;r m&auml;nniskans v&auml;lbefinnande. Enligt den senaste folkh&auml;lsoenk&auml;ten 2011 uppgav &aring;tta av tio av de inv&aring;nare i V&auml;stra G&ouml;taland som svarat, att de var delaktiga i samh&auml;llslivet. L&auml;gst delaktighet har m&auml;n med kort utbildning och h&ouml;g &aring;lder medan yngre kvinnor med l&aring;ng utbildning har h&ouml;gre delaktighet.</p>
+<a id="kap3_1_graf1" name="kap3_1_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_1_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_2" name="kap3_2" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Arbetslöshet: Arbete ger gemenskap</h2> <p>Att delta i arbetslivet &auml;r viktigt f&ouml;r att skapa sociala kontaktn&auml;t, gemenskap och relationer. Under det f&ouml;rsta kvartalet &aring;r 2013 var 778 900 personer sysselsatta i arbetslivet. Antalet minskade med 1 300 personer j&auml;mf&ouml;rt med f&ouml;rsta kvartalet &aring;ret innan.</p>
+
+<p>Syssels&auml;ttningsgraden (Sysselsatta som andel av befolkningen 20&ndash;64 &aring;r) i V&auml;stra G&ouml;taland l&aring;g p&aring; 80 procent &aring;r 2012 men varierade kraftigt mellan olika befolkningsgrupper.</p>
+
+<p>Den totala syssels&auml;ttningsgraden i Sverige (20&ndash;64 &aring;r) &auml;r 79 procent f&ouml;r m&auml;n och 75 procent f&ouml;r kvinnor. Bland personer f&ouml;dda i Sverige &auml;r syssels&auml;ttningsgraden 82 procent<sup>1</sup>. F&ouml;r personer som &auml;r f&ouml;dda utanf&ouml;r Sverige i Norden &auml;r siffran 65 procent. Syssels&auml;tt&shy;ningsgraden varierar beroende p&aring; f&ouml;delseregion.</p>
+
+<p><sup>1</sup> <em>Observera att det finns tv&aring; olika k&auml;llor till syssels&auml;ttningsgrad. Eftersom RAMS och AKU anv&auml;nder olika metoder f&ouml;r insamling av data finns det &auml;ven skillnader i redovisningen.</em></p>
+<a id="kap3_2_graf1" name="kap3_2_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_2_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_3" name="kap3_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Jämställdhet: Skillnader i mäns och kvinnors  arbetsmarknad</h2> <p>J&auml;mst&auml;lldhet mellan kvinnor och m&auml;n &auml;r en viktig v&auml;lf&auml;rdsfr&aring;ga. Ett omr&aring;de d&auml;r det fortfarande finns stora skillnader mellan m&auml;n och kvinnor &auml;r arbetsmarknaden &ndash; b&aring;de n&auml;r det g&auml;ller syssels&auml;ttningsgrad, l&ouml;ner och yrkesval. Bland de tio mest vanliga yrkena finns n&aring;gorlunda j&auml;mn k&ouml;nsf&ouml;rdelning endast bland f&ouml;rs&auml;ljare inom fackhandel. Syssels&auml;ttningsgraden f&ouml;r kvinnor ligger fortfarande l&auml;gre &auml;n f&ouml;r m&auml;n, men har &ouml;kat mycket de senaste decennierna. &Auml;ven i ett europeiskt perspektiv ligger kvinnornas syssels&auml;ttningsgrad i V&auml;stsverige h&ouml;gt, med 75 procent. Den genomsnittliga syssels&auml;ttningsgraden f&ouml;r kvinnor i Europa &auml;r 63 procent.</p>
+<a id="kap3_3_graf1" name="kap3_3_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_3_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_3_karta1" name="kap3_3_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_3_karta1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_4" name="kap3_4" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Integration: Stora geografiska skillnader</h2> <p>Det finns stora geografiska skillnader p&aring; arbetsmarknaden inom V&auml;stra G&ouml;taland. Skillnaderna &ouml;kade &auml;nnu mer under l&aring;gkonjunkturen d&aring; arbetsl&ouml;sheten slog s&auml;rskilt h&aring;rt mot Fyrbodal och Skaraborg. Nedl&auml;gg&shy;&shy;ningen av Saab i Trollh&auml;ttan 2012 har p&aring;verkat arbets&shy;marknadssituationen i Trollh&auml;ttan med omnejd kraftigt. I Trollh&auml;ttan var 15 procent av den registrerade arbetskraften (16&ndash;64 &aring;r) eller 4 300 personer &ouml;ppet arbetsl&ouml;sa eller arbetss&ouml;kande i program i maj 2013. eller 4 300 personer &ouml;ppet arbetsl&ouml;sa eller arbetss&ouml;kande i program i maj 2013. H&ouml;gst var siffran i januari 2012 d&aring; 5 600 personer var &ouml;ppet arbetsl&ouml;sa eller i program.</p>
+
+<p>I maj 2013 var arbetsl&ouml;sheten 7,8 procent av den registrerade arbetskraften (16&ndash;64 &aring;r). Totalt handlade det om 31 000 &ouml;ppet arbetsl&ouml;sa och ytterligare 31 000 personer i program i maj 2013.</p>
+
+<p>Ungdomsarbetsl&ouml;sheten &auml;r h&ouml;g. 13 400 personer i &aring;ldrarna 18&ndash;24 &aring;r var arbetsl&ouml;sa (motsvarande 14,4 procent av den registrerade arbetskraften 18&ndash;24 &aring;r) i maj 2013.</p>
+<a id="kap3_4_graf1" name="kap3_4_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_2_graf2.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_4_karta1" name="kap3_4_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_2_karta1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_4b" name="kap3_4b" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Stor segregation </h2> <p>Det finns &auml;ven stora skillnader p&aring; arbetsmarknaden mellan svenskf&ouml;dda och utrikesf&ouml;dda personer. Skillnader i syssels&auml;ttningsgraden och yrkesval g&ouml;r att &auml;ven inkomstspridningen blir oj&auml;mn mellan dessa grupper. Skillnaderna &auml;r extra tydliga mellan olika stadsdelar i G&ouml;teborg d&auml;r stadsdelar med h&ouml;g andel utrikesf&ouml;dda &auml;ven har en relativt sett stor andel med l&aring;ga &aring;rsinkomster.</p>
+
+<p>Segregationen mellan olika befolkningsgrupper &auml;r &auml;ven tydlig p&aring; bostadsmarknaden. Bland personer som inte &auml;r f&ouml;dda i EU-/EFTA-l&auml;nder &auml;r det dubbelt s&aring; vanligt att bo i hyreshus &auml;n j&auml;mf&ouml;rt med den svenskf&ouml;dda befolkningen. Skillnaderna &auml;r dessutom n&aring;got h&ouml;gre i V&auml;stra G&ouml;taland &auml;n i de &ouml;vriga storstadsl&auml;nen.</p>
+<a id="kap3_4b_graf1" name="kap3_4b_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_3_graf2.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_4b_graf2" name="kap3_4b_graf2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_4_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_5" name="kap3_5" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Biståndstagare: Så många får bistånd</h2> <p>&Aring;r 2011 fanns det 74 000 personer i V&auml;stra G&ouml;taland, motsvarande fem procent av befolkningen, som n&aring;gon g&aring;ng under &aring;ret fick ekonomiskt bist&aring;nd. Det &auml;r samma antal som tv&aring; &aring;r tidigare men l&auml;gre &auml;n &aring;ret innan. Antalet bist&aring;ndstagare i V&auml;stra G&ouml;taland minskade med sex procent mellan &aring;r 2010 och 2011, vilket &auml;r n&aring;got st&ouml;rre minskning &auml;n genomsnittet i riket. St&ouml;rst andel bist&aring;ndstagare finns i G&ouml;teborgs och Trollh&auml;ttans kommun.</p>
+<a id="kap3_5_karta1" name="kap3_5_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_5_karta1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_6" name="kap3_6" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Ohälsotal: Ohälsotalet åt rätt håll</h2> <p>Oh&auml;lsan i arbetslivet i form av sjukskrivningar &ouml;kade kraftigt under slutet av 1990-talet och b&ouml;rjan av 2000-talet. &Auml;ven om det har skett en viss nedg&aring;ng i oh&auml;lsotalet sedan 2003 &auml;r det m&aring;nga som &auml;r fr&aring;nvarande fr&aring;n sina jobb p&aring; grund av sjukdom. V&auml;stra G&ouml;taland ligger n&aring;got h&ouml;gre &auml;n genomsnittet i riket. Kvinnors oh&auml;lsotal (36) ligger betydligt h&ouml;gre &auml;n m&auml;nnens (25). Det finns dessutom stora skillnader inom V&auml;stra G&ouml;taland.</p>
+<a id="kap3_6_graf1" name="kap3_6_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_6_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_6_karta1" name="kap3_6_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_6_karta1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_7" name="kap3_7" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Trygghet: Vi behöver trygghet</h2> <p>Trygghet &auml;r en viktig f&ouml;ruts&auml;ttning f&ouml;r att trivas och m&aring; bra. Antalet anm&auml;lda brott per inv&aring;nare ligger l&auml;gre i V&auml;stra G&ouml;taland &auml;n i riket och de tv&aring; &ouml;vriga storstadsl&auml;nen. Det totala antalet anm&auml;lda brott per inv&aring;nare har &ouml;kat under andra halvan av 2000-talet.</p>
+<a id="kap3_7_graf1" name="kap3_7_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_7_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_8" name="kap3_8" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Valdeltagande: Göra sin röst hörd</h2> <p>Den kanske mest grundl&auml;ggande m&ouml;jligheten att delta och p&aring;verka samh&auml;llsutvecklingen &auml;r att utnyttja sin r&ouml;str&auml;tt. Trenden fr&aring;n mitten av 1980-talet till och med 2002 var ett minskat valdeltagande i kommunal-, landstings- och riksdagsval. I de allm&auml;nna valen 2006 och 2010 har dock valdeltagandet &aring;ter b&ouml;rjat &ouml;ka. Valdeltagandet varierar kraftigt mellan olika socio&shy;ekonomiska grupper.</p>
+<a id="kap3_8_graf1" name="kap3_8_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_8_graf1.jpg" style="max-width:100%;width:100%;"></p>
+<a id="kap3_9" name="kap3_9" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Livskvalitet: Många är nöjda med livet</h2> <p>&Auml;ven om det finns stora inomregionala skillnader n&auml;r det g&auml;ller arbetsl&ouml;shet, oh&auml;lsa i arbetslivet samt ekonomisk trygghet visar SOM-unders&ouml;kningen<sup>2</sup> att en stor del av befolkningen i V&auml;stra G&ouml;taland k&auml;nner sig mycket eller ganska n&ouml;jda med sina liv oavsett var de bor.</p>
+
+<p><sup>2</sup> <em>SOM-unders&ouml;kningen g&ouml;rs av SOM-institutet som &auml;r en opartisk unders&ouml;kningsorganisation vid G&ouml;teborgs universitet. Fokus i unders&ouml;kningarna &auml;r p&aring; Samh&auml;lle, Opinion och Media</em></p>
+<a id="kap3_9_graf1" name="kap3_9_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap3_9_graf1.jpg" style="max-width:100%;width:100%;"></p>
+
+           </div><!-- /braincontent -->
+           </div><!-- /content -->
+           
+      <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
+      <ul data-role="listview" data-theme="a" class="nav-search">
+            <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
+        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_1"><img src="images/ikon.png" alt="" class="ui-li-icon">Sysselsättning: Vi mår bra av delaktighet</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_2"><img src="images/ikon.png" alt="" class="ui-li-icon">Arbetslöshet: Arbete ger gemenskap</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Jämställdhet: Skillnader i mäns och kvinnors  arbe</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_4"><img src="images/ikon.png" alt="" class="ui-li-icon">Integration: Stora geografiska skillnader</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_4b"><img src="images/ikon.png" alt="" class="ui-li-icon">Stor segregation</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_5"><img src="images/ikon.png" alt="" class="ui-li-icon">Biståndstagare: Så många får bistånd</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_6"><img src="images/ikon.png" alt="" class="ui-li-icon">Ohälsotal: Ohälsotalet åt rätt håll</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_7"><img src="images/ikon.png" alt="" class="ui-li-icon">Trygghet: Vi behöver trygghet</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_8"><img src="images/ikon.png" alt="" class="ui-li-icon">Valdeltagande: Göra sin röst hörd</a></li>
+<li style="background: #810031;"><a data-ajax="false" href="#kap3_9"><img src="images/ikon.png" alt="" class="ui-li-icon">Livskvalitet: Många är nöjda med livet</a></li>
+<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
+<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+</ul>
+      </div><!-- /panel -->
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
+
+        <form class="userform">
+
+          <h2>Create new user</h2>
+
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
+
+          <label for="email">Email</label>
+          <input type="email" name="email" id="status" value="" data-clear-btn="true" data-mini="true">
+
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+
+          <div class="switch">
+            <label for="status">Status</label>
+            <select name="status" id="slider" data-role="slider" data-mini="true">
+              <option value="off">Inactive</option>
+              <option value="on">Active</option>
+            </select>
+          </div>
+
+          <div class="ui-grid-a">
+            <div class="ui-block-a"><a href="#" data-rel="close" data-role="button" data-theme="c" data-mini="true">Cancel</a></div>
+            <div class="ui-block-b"><a href="#" data-rel="close" data-role="button" data-theme="b" data-mini="true">Save</a></div>
+          </div>
+        </form>
+
+      </div><!-- /panel -->
+
+    </div><!-- /page -->
+
+    <div data-role="page" id="panel-fixed-page2">
+
+      <div data-role="header" data-theme="f">
+        <h1>Landing page</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+
+        <p>This is just a landing page.</p>
+
+        <a href="#panel-fixed-page1" data-role="button" data-inline="true" data-mini="true" data-icon="back" data-iconpos="left">Back</a>
+
+      </div><!-- /content -->
+
+    </div><!-- /page -->
+  </body>
+</html>

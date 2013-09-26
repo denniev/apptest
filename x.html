@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Geografi och befolkning</title>
+    <link rel="stylesheet" href="themes/faktavgr_start.min.css" />
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/brainworks.js"></script> 
+    <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
+    <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
+    <script>
+      var port_table = '<img class="startmenu" src="images/menu/kap1_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenu">' +
+              '<area areaname="area_1" full="area_1" shape="rect" coords="42,182,168,215" href="#kap1_1"/>' +
+              '<area areaname="area_2" full="area_2" shape="rect" coords="42,232,197,265" href="#kap1_2"/>' +
+              '<area areaname="area_3" full="area_3" shape="rect" coords="42,282,336,317" href="#kap1_3"/>' +
+              '<area areaname="area_4" full="area_4" shape="rect" coords="40,332,200,368" href="#kap1_4"/>' +
+              '<area areaname="area_5" full="area_5" shape="rect" coords="42,381,181,417" href="#kap1_5"/>' +
+              '<area areaname="area_6" full="area_6" shape="rect" coords="42,430,307,468" href="#kap1_6"/>' +
+              '<area areaname="area_7" full="area_7" shape="rect" coords="40,482,284,517" href="#kap1_7"/>' +
+              '</map>';
+
+      var land_table = '<img class="startmenu" src="images/menu/kap1_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenu">' +
+              '<area areaname="area_1" full="area_1" shape="rect" coords="32,96,136,129" href="#kap1_1"/>' +
+              '<area areaname="area_2" full="area_2" shape="rect" coords="35,136,157,166" href="#kap1_2"/>' +
+              '<area areaname="area_3" full="area_3" shape="rect" coords="33,173,260,202" href="#kap1_3"/>' +
+              '<area areaname="area_4" full="area_4" shape="rect" coords="35,211,156,240" href="#kap1_4"/>' +
+              '<area areaname="area_5" full="area_5" shape="rect" coords="33,249,145,278" href="#kap1_5"/>' +
+              '<area areaname="area_6" full="area_6" shape="rect" coords="34,286,237,316" href="#kap1_6"/>' +
+              '<area areaname="area_7" full="area_7" shape="rect" coords="35,324,218,355" href="#kap1_7"/>' +
+              '</map>';
+      var startorientation;
+
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        startorientation = 'portrait';
+      }
+      else {
+        startorientation = 'landscape';
+      }
+
+      $(document).ready(function() {
+
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+        }
+        $('.startmenu').rwdImageMaps();
+
+        $(window).on("orientationchange", function(event) {
+//          alert('orientationchange');
+          if (event.orientation == 'landscape') {
+            $("#myimagemenu").html(land_table);
+            $('.startmenu').rwdImageMaps();
+          }
+          else {
+            $("#myimagemenu").html(port_table);
+            $('.startmenu').rwdImageMaps();
+          }
+        });
+
+        // You can also manually force this event to fire.
+        //$(window).orientationchange();
+//        $(window).bind('resize', onWindowResize);
+        $.mobile.fixedToolbars.setTouchToggleEnabled(false);
+        $.mobile.ajaxEnabled = false;
+      });
+
+    </script>
+
+    <style>
+      .ui-content {
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+      }      
+      .ui-bar-a {
+        background:#e5ba1f;
+        color : black;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-role="page" class="ui-responsive-panel" id="panel-fixed-page1">
+      <!-- header -->
+      <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
+        <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
+          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+        </div>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
+          <a href="search.html" data-role="button" data-icon="search">Sök</a>
+          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+        </div>
+      </div>      <!-- /header -->
+
+      <div data-role="content">
+        <a id="kap1_1" name="kap1_1" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Geografi: Som ett Sverige i miniatyr</h2> <p>V&auml;stra G&ouml;taland &auml;r som ett Sverige i miniatyr &ndash; storstad och landsbygd, sm&aring;samh&auml;llen och mellanstora st&auml;der. Naturen v&auml;xlar fr&aring;n kustlandskap till storskog med sl&auml;ttland och hagmarker d&auml;remellan.</p>
+
+        <p>Geografiskt &auml;r V&auml;stra G&ouml;taland ett av de st&ouml;rsta l&auml;nen i Sverige med en landareal p&aring; 23 797 kvadrat&shy;kilometer, vilket utg&ouml;r sex procent av Sveriges landyta. Det &auml;r cirka 24 mil s&aring;v&auml;l i nordsydlig som i v&auml;st&ouml;stlig riktning. Det finns 29 611 &ouml;ar i V&auml;stra G&ouml;taland varav 150 &auml;r bebodda. L&auml;net best&aring;r av 49 kommuner. Den till ytan st&ouml;rsta kommunen &auml;r Ulricehamn p&aring; 1046 kvadratkilometer och den minsta &auml;r &Ouml;cker&ouml; kommun p&aring; 26 kvadratkilometer.</p>
+
+        <p>&Aring;r 2001 bildades fyra delregionala kommunal&shy;&shy;&shy;f&ouml;r&shy;bund i V&auml;stra G&ouml;taland: G&ouml;teborgsregionen, Fyrbodal, Skaraborg och Sjuh&auml;rad. Syftet var att &shy;skapa bra och effektiva samarbetsorganisationer f&ouml;r en sammanh&aring;llen, enkel och mer rationell hantering av de mellankommunala fr&aring;gorna. En del av stati&shy;stiken i denna app &auml;r uppdelad efter de fyra delregionerna. I G&ouml;teborgs&shy;regionen ing&aring;r &auml;ven Kungsbacka som inte ing&aring;r i V&auml;stra G&ouml;talands l&auml;n.</p>
+        <a id="kap1_1_karta1" name="kap1_1_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_1_karta1.jpg" style="max-width:100%;width:100%;"><br />
+          &nbsp;</p>
+        <a id="kap1_2" name="kap1_2" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Folkmängd: 1,6 miljoner invånare</h2> <p>Befolkningsm&auml;ssigt &auml;r V&auml;stra G&ouml;taland Sveriges n&auml;st st&ouml;rsta l&auml;n med mer &auml;n 1,6 miljoner inv&aring;nare. Flest m&auml;nniskor bor i storstadskommunen G&ouml;teborg med med 526 000 inv&aring;nare. Dals-Ed &auml;r den minsta kommunen befolkningsm&auml;ssigt med 4700 inv&aring;nare.</p>
+
+        <p>Befolkningen &auml;r oj&auml;mnt f&ouml;rdelad &ouml;ver V&auml;stra G&ouml;ta&shy;lands yta. F&ouml;rutom till G&ouml;teborgsregionen &auml;r befolkningen i huvudsak koncentrerad till omr&aring;dena kring Bor&aring;s, Sk&ouml;vde och Trestad (Trollh&auml;ttan, V&auml;nersborg och Uddevalla). Befolkningst&auml;theten i V&auml;stra G&ouml;taland &auml;r 67 inv&aring;nare per kvadratkilo&shy;meter. Bland kommunerna ligger G&ouml;teborg h&ouml;gst med drygt 1000 inv&aring;nare per kvadratkilometer och Dals-Ed l&auml;gst med drygt sex inv&aring;nare per kvadrat&shy;kilometer. Den genomsnittliga befolknings&shy;t&auml;theten i Sverige &auml;r 23 inv&aring;nare per kvadrat&shy;kilo&shy;&shy;meter, i Stockholms l&auml;n bor 326 inv&aring;nare per kvadratkilo&shy;meter och i Sk&aring;ne 115 per kvadratkilometer.</p>
+        <a id="kap1_2_karta1" name="kap1_2_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_2_karta1.jpg" style="max-width:100%;width:100%;"></p>
+        <a id="kap1_2_tabell1" name="kap1_2_tabell1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_2_tabell1.jpg" style="max-width:100%;width:100%;"></p>
+        <a id="kap1_3" name="kap1_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Befolkningsutveckling: Folkmängden ökar</h2> <p>Vid &aring;rsskiftet 2012/2013 uppgick folkm&auml;ngden i V&auml;stra G&ouml;taland till 1600 447 personer, vilket motsvarar 17 procent av Sveriges befolkning. Under 2012 &ouml;kade befolkningen med n&auml;stan 10 000 inv&aring;nare vilket ligger i niv&aring; med de senaste &aring;rens befolknings&shy;&ouml;kning. Liksom tidigare &aring;r var det G&ouml;teborgsregionen som &ouml;kade mest. N&auml;stan 90 procent av V&auml;stra G&ouml;ta&shy;lands befolkningstillv&auml;xt skedde i G&ouml;teborgs&shy;regionen, som hyser drygt h&auml;lften av befolkningen.</p>
+        <a id="kap1_3_graf1" name="kap1_3_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_3_graf1.jpg" style="max-width:100%;width:100%;"></p>
+        <a id="kap1_3_tabell1" name="kap1_3_tabell1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_3_tabell1.jpg" style="max-width:100%;width:100%;"></p>
+        <a id="kap1_3" name="kap1_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Befolkningsförändring i kommunerna</h2> <p>Befolkningsutvecklingen i Sverige har sedan mitten av 90-talet i stora drag karakt&auml;riserats av att storstads&shy;regionerna och regioncentra &ouml;kar i befolkning, medan m&aring;nga kommuner utanf&ouml;r dessa omr&aring;den minskar. Inom V&auml;stra G&ouml;taland &auml;r det framf&ouml;rallt G&ouml;teborg med angr&auml;nsande kommuner samt Str&ouml;mstad i l&auml;nets nordv&auml;stra h&ouml;rn, som upplevt den kraftigaste tillv&auml;xten. St&ouml;rst befolkningsminskning har samtidigt skett i nord&ouml;stra Skaraborg samt i norra Fyrbodal.</p>
+
+        <p>Medan befolkningstillv&auml;xten i G&ouml;teborgsregionen beror p&aring; b&aring;de det &ouml;kade antalet inflyttade och det fortsatt stora f&ouml;delse&ouml;verskottet, har folk&ouml;kningen i andra delar av V&auml;stra G&ouml;taland skett endast till f&ouml;ljd av det positiva flyttnettot.</p>
+        <a id="kap1_4_graf1" name="kap1_4_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_4_graf1.jpg" style="max-width:100%;width:100%;"></p>
+        <a id="kap1_4_karta1" name="kap1_4_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_4_karta1.jpg" style="max-width:100%;width:100%;"></p>
+        <a id="kap1_4" name="kap1_4" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Flyttningar: Ökade flyttströmmar till och från utlandet</h2> <p>Totalt flyttade n&auml;stan 41 000 personer till V&auml;stra G&ouml;taland &aring;r 2012. Av dem kom 15 000 fr&aring;n utlandet, varav den st&ouml;rsta gruppen var hemv&auml;ndande svenska medborgare. Den andra stora invandrargruppen var fr&aring;n Somalia. I gr&auml;nskommunerna Str&ouml;mstad och &Aring;m&aring;l &auml;r det invandringen fr&aring;n Norge som dominerar. Bland inrikes flyttare kom de st&ouml;rsta str&ouml;mmarna fr&aring;n Stockholms, Sk&aring;ne och Hallands l&auml;n.</p>
+
+        <p>G&ouml;teborgsregionen har stark dragningskraft p&aring; inv&aring;nare fr&aring;n andra delar av Sverige och omv&auml;rlden. &Auml;ven inom l&auml;net g&aring;r flyttstr&ouml;mmarna i stor utstr&auml;ckning till G&ouml;teborgsregionen.</p>
+        <a id="kap1_5_graf1" name="kap1_5_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_5_graf1.jpg" style="max-width:100%;width:100%;"></p>
+        <a id="kap1_5" name="kap1_5" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Mångfald: Det mångkulturella Västra Götaland</h2> <p>&Aring;r 2012 hade V&auml;stra G&ouml;taland 245 000 inv&aring;nare som var f&ouml;dda utomlands och ytterligare 79 000 som var f&ouml;dda i Sverige men hade utl&auml;ndsk bakgrund<sup>1</sup>. Andelen utrikes f&ouml;dda inv&aring;nare varierar mycket mellan V&auml;stra G&ouml;talands delregioner och kommuner. Tv&aring; tredjedelar av de utrikes f&ouml;dda bor i G&ouml;teborgs&shy;regionen. Den kommun i V&auml;stra G&ouml;taland med l&auml;gst andel utrikes f&ouml;dda &auml;r &Ouml;cker&ouml; kommun med fyra procent, h&ouml;gst andel har G&ouml;teborgs kommun med 23 procent. Ungef&auml;r 130 nationaliteter finns representerade i V&auml;stra G&ouml;taland.</p>
+
+        <p><em><sup>1 </sup>Personer med utl&auml;ndsk bakgrund definieras som personer som &auml;r utrikes f&ouml;dda, eller inrikes f&ouml;dda med tv&aring; utrikes f&ouml;dda f&ouml;r&auml;ldrar.</em></p>
+        <a id="kap1_6_graf1" name="kap1_6_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_6_graf1.jpg" style="max-width:100%;width:100%;"></p>
+        <a id="kap1_6" name="kap1_6" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Befolkningsstruktur: En allt äldre befolkning</h2> <p>V&auml;stra G&ouml;taland har, i likhet med m&aring;nga andra regioner och l&auml;nder i Europa, en utveckling d&auml;r befolkningen blir allt &auml;ldre. &Auml;ven om f&ouml;delsetalet efter sekelskiftet 2000 har stigit och kommer att &ouml;ka det n&auml;rmaste decenniet, har l&aring;ga f&ouml;delsetal kring sekelskiftet 2000 och en stadigt &ouml;kad livsl&auml;ngd bidragit till att genomsnitts&aring;ldern stigit. Befolknings&shy;prog&shy;nosen visar att andelen &auml;ldre kommer att &ouml;ka avsev&auml;rt under det n&auml;rmaste decenniet. Detta resulterar i att allt f&auml;rre m&aring;ste f&ouml;rs&ouml;rja allt fler. Ett s&auml;tt att sammanfatta vad befolkningens &aring;ldersstruktur kan betyda f&ouml;r de mate&shy;riella livsvillkoren &auml;r att relatera summan av antalet &auml;ldre (65+ &aring;r) till antalet i yrkesaktiv &aring;lder (16&ndash;64 &aring;r), s&aring; kallad &auml;ldrekvot. &Auml;ldrekvoten f&ouml;r V&auml;stra G&ouml;taland ligger p&aring; 29, vilket betyder att 100 personer i yrkes&shy;aktiv &aring;lder m&aring;ste f&ouml;rs&ouml;rja 29 personer i &aring;ldersgruppen 65 &aring;r och &auml;ldre. Kvoten varierar kraftigt mellan kommunerna i V&auml;stra G&ouml;taland. Den l&auml;gsta &auml;ldrekvoten har G&ouml;teborgs kommun (22) f&ouml;ljt av de kringliggande kommunerna. Den h&ouml;gsta &auml;ldrekvoten har Soten&auml;s (49) och Gullsp&aring;ng (48).</p>
+        <a id="kap1_7_karta1" name="kap1_7_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_7_karta1.jpg" style="max-width:100%;width:100%;"></p>
+        <a id="kap1_7" name="kap1_7" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Befolkningstäthet: Stora skillnader i befolkningstäthet</h2> <p>Inom Sverige, men ocks&aring; i ett europeiskt perspektiv, varierar befolkningst&auml;theten kraftigt mellan olika regioner. I Sverige &auml;r befolkningst&auml;theten i s&auml;rklass h&ouml;gst i Stockholm med strax &ouml;ver 300 inv&aring;nare per kvadratkilometer &aring;r 2011. D&auml;refter f&ouml;ljer de tv&aring; &ouml;vriga storstadsregionerna Sydsverige (Sk&aring;ne och Blekinge l&auml;n) med cirka 100 inv&aring;nare per kvadratkilometer samt V&auml;stsverige (V&auml;stra G&ouml;taland och Hallands l&auml;n) med 64 inv&aring;nare per kvadratkilometer.</p>
+
+        <p>Detta kan j&auml;mf&ouml;ras med de tv&aring; mest glest befolkade regionerna i Sverige, Mellersta Norrland och &Ouml;vre Norrland med 5, respektive 3 inv&aring;nare per kvadratkilometer. Sverige &auml;r i ett europeiskt perspektiv ett glesbefolkat land. I kartan h&auml;r intill j&auml;mf&ouml;rs befolkningst&auml;theten mellan olika europeiska regioner. H&auml;r framg&aring;r att stora delar av de nordiska l&auml;nderna i en europeiskt j&auml;mf&ouml;relse &auml;r glest befolkade.</p>
+        <a id="kap1_8_karta1" name="kap1_8_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap1_8_karta1.jpg" style="max-width:100%;width:100%;"></p>
+
+      </div><!-- /content -->
+
+      <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
+        <ul data-role="listview" data-theme="a" class="nav-search">
+          <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
+          <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
+          <li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+          <li style="background: #e5ba1f;"><a data-ajax="false" href="#kap1_1"><img src="images/ikon.png" alt="" class="ui-li-icon">Geografi: Som ett Sverige i miniatyr</a></li>
+          <li style="background: #e5ba1f;"><a data-ajax="false" href="#kap1_2"><img src="images/ikon.png" alt="" class="ui-li-icon">Folkmängd: 1,6 miljoner invånare</a></li>
+          <li style="background: #e5ba1f;"><a data-ajax="false" href="#kap1_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Befolkningsutveckling: Folkmängden ökar</a></li>
+          <li style="background: #e5ba1f;"><a data-ajax="false" href="#kap1_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Befolkningsförändring i kom</a></li>
+          <li style="background: #e5ba1f;"><a data-ajax="false" href="#kap1_4"><img src="images/ikon.png" alt="" class="ui-li-icon">Flyttningar: Ökade flyttströmmar till och från utl</a></li>
+          <li style="background: #e5ba1f;"><a data-ajax="false" href="#kap1_5"><img src="images/ikon.png" alt="" class="ui-li-icon">Mångfald: Det mångkulturella Västra Götaland</a></li>
+          <li style="background: #e5ba1f;"><a data-ajax="false" href="#kap1_6"><img src="images/ikon.png" alt="" class="ui-li-icon">Befolkningsstruktur: En allt äldre befolkning</a></li>
+          <li style="background: #e5ba1f;"><a data-ajax="false" href="#kap1_7"><img src="images/ikon.png" alt="" class="ui-li-icon">Befolkningstäthet: Stora skillnader i befolkningst</a></li>
+          <li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+          <li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+          <li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+          <li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+          <li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+          <li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+          <li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
+          <li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+          <li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
+        </ul>
+      </div><!-- /panel -->
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
+
+        <form class="userform">
+
+          <h2>Create new user</h2>
+
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" value="" data-clear-btn="true" data-mini="true">
+
+          <label for="email">Email</label>
+          <input type="email" name="email" id="status" value="" data-clear-btn="true" data-mini="true">
+
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" value="" data-clear-btn="true" autocomplete="off" data-mini="true">
+
+          <div class="switch">
+            <label for="status">Status</label>
+            <select name="status" id="slider" data-role="slider" data-mini="true">
+              <option value="off">Inactive</option>
+              <option value="on">Active</option>
+            </select>
+          </div>
+
+          <div class="ui-grid-a">
+            <div class="ui-block-a"><a href="#" data-rel="close" data-role="button" data-theme="c" data-mini="true">Cancel</a></div>
+            <div class="ui-block-b"><a href="#" data-rel="close" data-role="button" data-theme="b" data-mini="true">Save</a></div>
+          </div>
+        </form>
+
+      </div><!-- /panel -->
+
+    </div><!-- /page -->
+
+    <div data-role="page" id="panel-fixed-page2">
+
+      <div data-role="header" data-theme="f">
+        <h1>Landing page</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+
+        <p>This is just a landing page.</p>
+
+        <a href="#panel-fixed-page1" data-role="button" data-inline="true" data-mini="true" data-icon="back" data-iconpos="left">Back</a>
+
+      </div><!-- /content -->
+
+    </div><!-- /page -->
+  </body>
+</html>
