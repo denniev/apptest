@@ -8,26 +8,26 @@
     <link rel="stylesheet" href="themes/faktavgr.min.css" />
     <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/slow_scroll.js"></script> 
     <script type="text/javascript" src="js/brainworks.js"></script> 
     <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
-    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
     <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
         <script>
-      var port_table = '<img class="startmenu" src="images/menu/kap2_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="40,183,334,216" href="#kap2_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="39,231,362,267" href="#kap2_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="40,284,209,316" href="#kap2_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="41,332,306,366" href="#kap2_4"/>' +
+      var port_table = '<img class="startmenup" src="images/menu/kap2_portrait.jpg" usemap="#startmenup" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenup">' +
+              '<area class="myanchor" shape="rect" coords="40,183,334,216" href="#kap2_1"/>' +
+'<area class="myanchor" shape="rect" coords="39,231,362,267" href="#kap2_2"/>' +
+'<area class="myanchor" shape="rect" coords="40,284,209,316" href="#kap2_3"/>' +
+'<area class="myanchor" shape="rect" coords="41,332,306,366" href="#kap2_4"/>' +
 
               '</map>';
 
-      var land_table = '<img class="startmenu" src="images/menu/kap2_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="34,137,258,166" href="#kap2_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="33,176,281,202" href="#kap2_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="33,214,166,239" href="#kap2_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="35,251,237,277" href="#kap2_4"/>' +
+      var land_table = '<img class="startmenul" src="images/menu/kap2_landscape.jpg" usemap="#startmenul" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenul">' +
+              '<area class="myanchor" shape="rect" coords="34,137,258,166" href="#kap2_1"/>' +
+'<area class="myanchor" shape="rect" coords="33,176,281,202" href="#kap2_2"/>' +
+'<area class="myanchor" shape="rect" coords="33,214,166,239" href="#kap2_3"/>' +
+'<area class="myanchor" shape="rect" coords="35,251,237,277" href="#kap2_4"/>' +
 
               '</map>';
       var startorientation;
@@ -40,34 +40,48 @@
       }
 
       $(document).ready(function() {
-        
-        if (startorientation == 'portrait') {
-          $("#myimagemenu").html(port_table);
-        }
-        else {
-          $("#myimagemenu").html(land_table);
-        }
-        $('.startmenu').rwdImageMaps();
-        
         $(window).on("orientationchange", function(event) {
-//          alert('orientationchange');
+          //alert('orientationchange');
           if (event.orientation == 'landscape') {
             $("#myimagemenu").html(land_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenul').rwdImageMaps();
           }
           else {
             $("#myimagemenu").html(port_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenup').rwdImageMaps();
           }
         });
-        
+       
         // You can also manually force this event to fire.
-        //$(window).orientationchange();
+        $(window).orientationchange();
 //        $(window).bind('resize', onWindowResize);
         $.mobile.fixedToolbars.setTouchToggleEnabled(false);
         $.mobile.ajaxEnabled = false;
       });
 
+    $(document).load(function() {
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+          $('.startmenup').rwdImageMaps();
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+          $('.startmenul').rwdImageMaps();
+        }
+   
+      });
+      
+   $(document).bind('pageinit', function() {
+         var urlHash = window.location.href.split("#")[1];
+           if (urlHash) {
+            setTimeout(function()
+            { 
+            window.location.assign('#' + urlHash);
+            }, 2000);
+          }
+        }
+     );
+     
     </script>
 
     <style>
@@ -81,12 +95,22 @@
       }      
       .ui-bar-a {
         background:#2b5484;
-        color : black;
+        color : #ffffff;
       }
       .braincontent {
         padding-right: 20px;
         padding-left: 20px;
       }
+      p {
+        margin-top:0px;
+        margin-bottom:10px;
+      }
+      h2 {
+        color:black;
+        padding-top:5px;
+        margin-bottom:6px;
+      }
+      
     </style>
   </head>
   <body>
@@ -94,14 +118,14 @@
       <!-- header -->
       <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
         <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
-          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
-          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
-          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+          <a href="#nav-panel" class="custom-button" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" class="custom-button" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" class="custom-button" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
         </div>
-        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Den ekomoniska dimensionen</h1>
         <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
-          <a href="search.html" data-role="button" data-icon="search">Sök</a>
-          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+          <a href="search.html" class="custom-button" data-role="button" data-icon="search">Sök</a>
+<!--          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a> -->
         </div>
       </div>      <!-- /header -->
       
@@ -109,18 +133,18 @@
           <div id="myimagemenu"></div>
           <div data-demo-html="#panel-fixed-page1"></div>
           <div class="braincontent">
-          <a id="kap2_1" name="kap2_1" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Bruttoregionalprodukt: Konjunkturkänslig ekonomi</h2> <p>Den ekonomiska utvecklingen i en region kan m&auml;tas med bruttoregionprodukten (BRP) &ndash; det samlade v&auml;rdet av alla varor och tj&auml;nster som produceras under ett &aring;r. BRP i f&ouml;rh&aring;llande till befolkningen i en region &auml;r ett m&aring;tt p&aring; den ekonomiska v&auml;lf&auml;rden. Vid en j&auml;mf&ouml;relse mellan l&auml;nen hamnar Stockholms l&auml;n i en klass f&ouml;r sig med en BRP per inv&aring;nare p&aring; 486 000 kronor. &Aring;r 2010 hamnade V&auml;stra G&ouml;talands l&auml;n p&aring; femte plats bland alla Sveriges regioner med en BRP per inv&aring;nare p&aring; 340 000 kronor.</p>
+          <a id="kap2_1" name="kap2_1" style="visibility:hidden;">&nbsp;</a> <h2>Bruttoregionalprodukt: Konjunkturkänslig ekonomi</h2> <p>Den ekonomiska utvecklingen i en region kan m&auml;tas med bruttoregionprodukten (BRP) &ndash; det samlade v&auml;rdet av alla varor och tj&auml;nster som produceras under ett &aring;r. BRP i f&ouml;rh&aring;llande till befolkningen i en region &auml;r ett m&aring;tt p&aring; den ekonomiska v&auml;lf&auml;rden. Vid en j&auml;mf&ouml;relse mellan l&auml;nen hamnar Stockholms l&auml;n i en klass f&ouml;r sig med en BRP per inv&aring;nare p&aring; 486 000 kronor. &Aring;r 2010 hamnade V&auml;stra G&ouml;talands l&auml;n p&aring; femte plats bland alla Sveriges regioner med en BRP per inv&aring;nare p&aring; 340 000 kronor.</p>
 
 <p>Ur ett historiskt perspektiv har V&auml;stra G&ouml;taland, i likhet med de flesta &ouml;vriga regioner i Sverige, haft en h&ouml;g ekonomisk tillv&auml;xt under det senaste decenniet. Men de allra senaste &aring;rens ekonomiska utveckling har p&aring;verkats starkt av konjunkturnedg&aring;ngen. V&auml;stra G&ouml;talands beroende av den krisdrabbade fordons&shy;industrin medf&ouml;rde ett h&aring;rdare slag mot n&auml;ringslivet i V&auml;stra G&ouml;taland &auml;n i riket. &Aring; andra sidan har &aring;terh&auml;mtningen blivit snabbare i V&auml;stra G&ouml;taland. Detta framf&ouml;rallt tack vare den starka uppg&aring;ngen i tillverkningsindustrin.</p>
 <a id="kap2_1_graf1" name="kap2_1_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap2_1_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap2_2" name="kap2_2" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Näringslivets omsättning: Konjunkturutveckling</h2> <p>Eftersom statistik om BRP publiceras med tv&aring; &aring;rs eftersl&auml;pning redovisar vi h&auml;r ist&auml;llet oms&auml;ttningen i n&auml;ringslivet, vilket ger en bra bild av konjunktur&shy;utvecklingen i ekonomin. Under de senaste &aring;ren har n&auml;ringslivets oms&auml;ttning i V&auml;stra G&ouml;taland &ouml;verstigit niv&aring;n f&ouml;re konjunkturnedg&aring;ngen 2008.</p>
+<a id="kap2_2" name="kap2_2" style="visibility:hidden;">&nbsp;</a> <h2>Näringslivets omsättning: Konjunkturutveckling</h2> <p>Eftersom statistik om BRP publiceras med tv&aring; &aring;rs eftersl&auml;pning redovisar vi h&auml;r ist&auml;llet oms&auml;ttningen i n&auml;ringslivet, vilket ger en bra bild av konjunktur&shy;utvecklingen i ekonomin. Under de senaste &aring;ren har n&auml;ringslivets oms&auml;ttning i V&auml;stra G&ouml;taland &ouml;verstigit niv&aring;n f&ouml;re konjunkturnedg&aring;ngen 2008.</p>
 <a id="kap2_2_graf1" name="kap2_2_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap2_1_graf2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap2_3" name="kap2_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Lönesumma: Hög tillväxt i Göteborgsregionen</h2> <p>F&ouml;r att f&aring; en bild av skillnader i ekonomisk utveckling inom V&auml;stra G&ouml;taland &auml;r l&ouml;nesumma ett l&auml;mpligare m&aring;tt &auml;n BRP. I G&ouml;teborgsregionen &auml;r l&ouml;nesumma per inv&aring;nare n&auml;stan 165 000 kronor. Detta &auml;r betydligt h&ouml;gre &auml;n i de tre &ouml;vriga delregionerna, d&auml;r l&ouml;nesumman varierar mellan cirka 118 000 och 129 000 kronor per inv&aring;nare. D&auml;remot har l&ouml;nesummetillv&auml;xten de senaste fem &aring;ren legat p&aring; ungef&auml;r samma niv&aring;, n&aring;got l&auml;gre i Fyrbodal.</p>
+<a id="kap2_3" name="kap2_3" style="visibility:hidden;">&nbsp;</a> <h2>Lönesumma: Hög tillväxt i Göteborgsregionen</h2> <p>F&ouml;r att f&aring; en bild av skillnader i ekonomisk utveckling inom V&auml;stra G&ouml;taland &auml;r l&ouml;nesumma ett l&auml;mpligare m&aring;tt &auml;n BRP. I G&ouml;teborgsregionen &auml;r l&ouml;nesumma per inv&aring;nare n&auml;stan 165 000 kronor. Detta &auml;r betydligt h&ouml;gre &auml;n i de tre &ouml;vriga delregionerna, d&auml;r l&ouml;nesumman varierar mellan cirka 118 000 och 129 000 kronor per inv&aring;nare. D&auml;remot har l&ouml;nesummetillv&auml;xten de senaste fem &aring;ren legat p&aring; ungef&auml;r samma niv&aring;, n&aring;got l&auml;gre i Fyrbodal.</p>
 
 <p>I ett l&auml;ngre tidsperspektiv har G&ouml;teborgsregionen haft betydligt h&ouml;gre l&ouml;nesummetillv&auml;xt &auml;n de tre &ouml;vriga delregionerna. Under de tv&aring; senaste decennierna har tillv&auml;xten i l&ouml;nesumman varit svagast i Skaraborg och Fyrbodal.</p>
 <a id="kap2_3_graf1" name="kap2_3_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap2_2_graf1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap2_3_graf2" name="kap2_3_graf2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap2_2_graf2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap2_4" name="kap2_4" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">En europeisk utblick</h2> <p>I j&auml;mf&ouml;relse med andra europeiska regioner har V&auml;stsverige (V&auml;stra G&ouml;taland och Halland) en stark ekonomi och h&ouml;g levnadsstandard. Av kartan till h&ouml;ger framg&aring;r att V&auml;stsverige har betydligt h&ouml;gre BRP per inv&aring;nare &auml;n genomsnittet f&ouml;r EU-regioner. Bland de n&auml;rmare 300 regionerna hamnar V&auml;stsverige p&aring; 55:e plats.</p>
+<a id="kap2_4" name="kap2_4" style="visibility:hidden;">&nbsp;</a> <h2>En europeisk utblick</h2> <p>I j&auml;mf&ouml;relse med andra europeiska regioner har V&auml;stsverige (V&auml;stra G&ouml;taland och Halland) en stark ekonomi och h&ouml;g levnadsstandard. Av kartan till h&ouml;ger framg&aring;r att V&auml;stsverige har betydligt h&ouml;gre BRP per inv&aring;nare &auml;n genomsnittet f&ouml;r EU-regioner. Bland de n&auml;rmare 300 regionerna hamnar V&auml;stsverige p&aring; 55:e plats.</p>
 <a id="kap2_4_karta1" name="kap2_4_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap2_2_karta1.jpg" style="max-width:100%;width:100%;"></p>
 
            </div><!-- /braincontent -->
@@ -129,22 +153,18 @@
       <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
       <ul data-role="listview" data-theme="a" class="nav-search">
             <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
-        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
-<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="#kap2_1"><img src="images/ikon.png" alt="" class="ui-li-icon">Bruttoregionalprodukt: Konjunkturkänslig ekonomi</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="#kap2_2"><img src="images/ikon.png" alt="" class="ui-li-icon">Näringslivets omsättning: Konjunkturutveckling</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="#kap2_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Lönesumma: Hög tillväxt i Göteborgsregionen</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="#kap2_4"><img src="images/ikon.png" alt="" class="ui-li-icon">En europeisk utblick</a></li>
-<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
-<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+        <li style="background: #ececec; color:red;"><a style="color:#333333;" data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #58723a; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #a4b836; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_tables.html">Tabeller och Diagram</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_maps.html">Kartor</a></li>
 </ul>
       </div><!-- /panel -->
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
@@ -195,5 +215,12 @@
       </div><!-- /content -->
 
     </div><!-- /page -->
+    <script>
+              if ($(window).width() < 550) {
+          $('.custom-button').attr('data-iconpos', 'notext');
+        }
+
+
+    </script>
   </body>
 </html>

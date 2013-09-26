@@ -8,30 +8,30 @@
     <link rel="stylesheet" href="themes/faktavgr.min.css" />
     <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/slow_scroll.js"></script> 
     <script type="text/javascript" src="js/brainworks.js"></script> 
     <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
-    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
     <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
         <script>
-      var port_table = '<img class="startmenu" src="images/menu/kap8_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="39,131,261,168" href="#kap8_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="39,181,207,217" href="#kap8_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="39,231,415,267" href="#kap8_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="39,280,284,316" href="#kap8_4"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="39,331,279,368" href="#kap8_5"/>' +
-'<area areaname="area_6" full="area_6" shape="rect" coords="39,381,370,421" href="#kap8_6"/>' +
+      var port_table = '<img class="startmenup" src="images/menu/kap8_portrait.jpg" usemap="#startmenup" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenup">' +
+              '<area class="myanchor" shape="rect" coords="39,131,261,168" href="#kap8_1"/>' +
+'<area class="myanchor" shape="rect" coords="39,181,207,217" href="#kap8_2"/>' +
+'<area class="myanchor" shape="rect" coords="39,231,415,267" href="#kap8_3"/>' +
+'<area class="myanchor" shape="rect" coords="39,280,284,316" href="#kap8_4"/>' +
+'<area class="myanchor" shape="rect" coords="39,331,279,368" href="#kap8_5"/>' +
+'<area class="myanchor" shape="rect" coords="39,381,370,421" href="#kap8_6"/>' +
 
               '</map>';
 
-      var land_table = '<img class="startmenu" src="images/menu/kap8_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="35,100,202,126" href="#kap8_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="34,137,161,163" href="#kap8_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="33,172,315,202" href="#kap8_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="34,212,219,238" href="#kap8_4"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="35,250,213,278" href="#kap8_5"/>' +
-'<area areaname="area_6" full="area_6" shape="rect" coords="34,287,283,316" href="#kap8_6"/>' +
+      var land_table = '<img class="startmenul" src="images/menu/kap8_landscape.jpg" usemap="#startmenul" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenul">' +
+              '<area class="myanchor" shape="rect" coords="35,100,202,126" href="#kap8_1"/>' +
+'<area class="myanchor" shape="rect" coords="34,137,161,163" href="#kap8_2"/>' +
+'<area class="myanchor" shape="rect" coords="33,172,315,202" href="#kap8_3"/>' +
+'<area class="myanchor" shape="rect" coords="34,212,219,238" href="#kap8_4"/>' +
+'<area class="myanchor" shape="rect" coords="35,250,213,278" href="#kap8_5"/>' +
+'<area class="myanchor" shape="rect" coords="34,287,283,316" href="#kap8_6"/>' +
 
               '</map>';
       var startorientation;
@@ -44,34 +44,48 @@
       }
 
       $(document).ready(function() {
-        
-        if (startorientation == 'portrait') {
-          $("#myimagemenu").html(port_table);
-        }
-        else {
-          $("#myimagemenu").html(land_table);
-        }
-        $('.startmenu').rwdImageMaps();
-        
         $(window).on("orientationchange", function(event) {
-//          alert('orientationchange');
+          //alert('orientationchange');
           if (event.orientation == 'landscape') {
             $("#myimagemenu").html(land_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenul').rwdImageMaps();
           }
           else {
             $("#myimagemenu").html(port_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenup').rwdImageMaps();
           }
         });
-        
+       
         // You can also manually force this event to fire.
-        //$(window).orientationchange();
+        $(window).orientationchange();
 //        $(window).bind('resize', onWindowResize);
         $.mobile.fixedToolbars.setTouchToggleEnabled(false);
         $.mobile.ajaxEnabled = false;
       });
 
+    $(document).load(function() {
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+          $('.startmenup').rwdImageMaps();
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+          $('.startmenul').rwdImageMaps();
+        }
+   
+      });
+      
+   $(document).bind('pageinit', function() {
+         var urlHash = window.location.href.split("#")[1];
+           if (urlHash) {
+            setTimeout(function()
+            { 
+            window.location.assign('#' + urlHash);
+            }, 2000);
+          }
+        }
+     );
+     
     </script>
 
     <style>
@@ -85,12 +99,22 @@
       }      
       .ui-bar-a {
         background:#cd6c26;
-        color : black;
+        color : #ffffff;
       }
       .braincontent {
         padding-right: 20px;
         padding-left: 20px;
       }
+      p {
+        margin-top:0px;
+        margin-bottom:10px;
+      }
+      h2 {
+        color:black;
+        padding-top:5px;
+        margin-bottom:6px;
+      }
+      
     </style>
   </head>
   <body>
@@ -98,14 +122,14 @@
       <!-- header -->
       <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
         <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
-          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
-          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
-          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+          <a href="#nav-panel" class="custom-button" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" class="custom-button" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" class="custom-button" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
         </div>
-        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Kultur</h1>
         <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
-          <a href="search.html" data-role="button" data-icon="search">Sök</a>
-          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+          <a href="search.html" class="custom-button" data-role="button" data-icon="search">Sök</a>
+<!--          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a> -->
         </div>
       </div>      <!-- /header -->
       
@@ -113,7 +137,7 @@
           <div id="myimagemenu"></div>
           <div data-demo-html="#panel-fixed-page1"></div>
           <div class="braincontent">
-          <a id="kap8_1" name="kap8_1" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Kultursatsningar</h2> <h3>En ledande kulturregion</h3>
+          <a id="kap8_1" name="kap8_1" style="visibility:hidden;">&nbsp;</a> <h2>Kultursatsningar</h2> <h3>En ledande kulturregion</h3>
 
 <p>V&auml;stra G&ouml;talandsregionen ligger h&ouml;gst i landet n&auml;r det g&auml;ller regionala kultursatsningar, b&aring;de i f&ouml;rh&aring;llande till befolkningen och i kronor och &ouml;ren. En j&auml;mf&ouml;relse mellan de tre st&ouml;rsta regionerna i landet och riket i genomsnitt, visar att V&auml;stra G&ouml;taland har en ledande st&auml;llning.</p>
 
@@ -122,19 +146,19 @@
 <p>2011 satsade kommunerna i V&auml;stra G&ouml;taland i genom&shy;snitt 2,1 procent av de totala verksamhetskostnaderna p&aring; kultur, vilket &auml;r n&aring;got mindre &auml;n riksgenomsnittet som &auml;r 2,3 procent. Vara kommun ligger n&auml;st h&ouml;gst i landet med en kultursatsning p&aring; 3,7 procent av de totala verksamhetskostnaderna.</p>
 <a id="kap8_1_graf1" name="kap8_1_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap8_1_graf1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap8_1_karta1" name="kap8_1_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap8_1_karta1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap8_2" name="kap8_2" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Kulturvanor</h2> <h3>Popul&auml;ra kulturaktiviteter</h3>
+<a id="kap8_2" name="kap8_2" style="visibility:hidden;">&nbsp;</a> <h2>Kulturvanor</h2> <h3>Popul&auml;ra kulturaktiviteter</h3>
 
 <p>Allm&auml;nhetens intresse f&ouml;r olika kulturella verksam&shy;heter f&ouml;r&auml;ndras l&aring;ngsamt &ouml;ver tid. De i s&auml;rklass mest popul&auml;ra kulturaktiviteterna &auml;r att l&auml;sa b&ouml;cker och att g&aring; p&aring; bio. Generellt &auml;r det n&aring;got fler kvinnor &auml;n m&auml;n som &auml;gnar sig &aring;t olika kulturaktiviteter, b&aring;de vad g&auml;ller bes&ouml;k p&aring; kulturinstitutioner och att sj&auml;lv ut&ouml;va kultur i olika former.</p>
 
 <p>Att l&auml;sa b&ouml;cker &auml;r popul&auml;rt. 83 procent av inv&aring;narna i V&auml;stra G&ouml;taland har l&auml;st n&aring;gon bok under 2012. Inv&aring;narna l&aring;nade i genomsnitt 7,6 b&ouml;cker p&aring; biblioteken 2012, vilket &auml;r n&aring;got fler &auml;n genomsnittssvensken som l&aring;nade 7,1 b&ouml;cker. Anv&auml;ndandet av e-medier forts&auml;tter att &ouml;ka p&aring; bekostnad av de tryckta medierna. I V&auml;stra G&ouml;taland fanns det 182 bibliotek 2012, men antalet bibliotek minskar b&aring;de regionalt och nationellt.</p>
 <a id="kap8_2_tabell1" name="kap8_2_tabell1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap8_2_tabell1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap8_2_karta1" name="kap8_2_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap8_2_karta1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap8_3" name="kap8_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Biobesök och filmproduktion: Flitiga biobesökare  i Sveriges främsta filmregion</h2> <p>&Aring;r 2012 slog antalet biobes&ouml;k i V&auml;stra G&ouml;taland nytt rekord f&ouml;r 2000-talet och uppgick till totalt 3 174 115. Inv&aring;narna i V&auml;stra G&ouml;taland gjorde i genomsnitt 1,98 biobes&ouml;k 2012, vilket kan j&auml;mf&ouml;ras med 1,9 som var genomsnittet f&ouml;r hela Sverige. I G&ouml;teborg och Sk&ouml;vde var biobes&ouml;ken mest frekventa, med 4,3 respektive 3,7 bes&ouml;k per inv&aring;nare 2012.</p>
+<a id="kap8_3" name="kap8_3" style="visibility:hidden;">&nbsp;</a> <h2>Biobesök och filmproduktion: Flitiga biobesökare  i Sveriges främsta filmregion</h2> <p>&Aring;r 2012 slog antalet biobes&ouml;k i V&auml;stra G&ouml;taland nytt rekord f&ouml;r 2000-talet och uppgick till totalt 3 174 115. Inv&aring;narna i V&auml;stra G&ouml;taland gjorde i genomsnitt 1,98 biobes&ouml;k 2012, vilket kan j&auml;mf&ouml;ras med 1,9 som var genomsnittet f&ouml;r hela Sverige. I G&ouml;teborg och Sk&ouml;vde var biobes&ouml;ken mest frekventa, med 4,3 respektive 3,7 bes&ouml;k per inv&aring;nare 2012.</p>
 
 <p>V&auml;stra G&ouml;taland &auml;r en framg&aring;ngsrik filmregion. Film i V&auml;st &auml;r ett bolag som skapar f&ouml;ruts&auml;ttningar f&ouml;r filmproduktion i V&auml;stra G&ouml;taland genom att bidra till finansieringen av filmprojekt. Film i V&auml;sts samproduktioner kammade 2012 hem 12 guldbaggar av 18 m&ouml;jliga. Dessutom var tv&aring; av Film i V&auml;sts<br />
 sam&shy;produktioner Oscarsnominerade 2013. G&ouml;teborg International Film Festival &auml;r en av norra Europas mest publika filmfestivaler, under 10 dagar 2012 visades 434 filmer fr&aring;n 76 l&auml;nder och 128 000 biljetter s&aring;ldes. V&auml;stra G&ouml;talandsregionens satsning p&aring; digitalisering av biografer har &ouml;kat tillg&auml;ngligheten till s&aring;v&auml;l film som andra former av kultur, inte minst opera.</p>
 <a id="kap8_3_graf1" name="kap8_3_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap8_2_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap8_4" name="kap8_4" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Kulturinstitutioner: Kulturliv med bredd och spets</h2> <p>Kulturinstitutionerna i V&auml;stra G&ouml;taland har stark lyskraft, b&aring;de nationellt och internationellt. Det finns ett stort utbud av f&ouml;rest&auml;llningar, konserter, utst&auml;llningar och pedagogiska aktiviteter.</p>
+<a id="kap8_4" name="kap8_4" style="visibility:hidden;">&nbsp;</a> <h2>Kulturinstitutioner: Kulturliv med bredd och spets</h2> <p>Kulturinstitutionerna i V&auml;stra G&ouml;taland har stark lyskraft, b&aring;de nationellt och internationellt. Det finns ett stort utbud av f&ouml;rest&auml;llningar, konserter, utst&auml;llningar och pedagogiska aktiviteter.</p>
 
 <p>De st&ouml;rsta scenkonstinstitutionerna, G&ouml;teborgs-Operan och G&ouml;teborgs Symfoniker, finns nu tillg&auml;ngliga &auml;ven genom scener i Sk&ouml;vde och i Vara samt &ouml;vrig turn&eacute;&shy;verksamhet. El Sistema &auml;r ett exempel p&aring; ett fruktbar m&ouml;te mellan bredd och spets, som fr&aring;n f&ouml;rsta orkesterskolan i Hammarkullen 2010 har vuxit och spridits till n&auml;ra samtliga G&ouml;teborgs stadsdelar och &auml;ven natio&shy;nellt. En stor inspirat&ouml;r till El Sistema &auml;r Gustavo Dudamel, tidigare chefsdirigent f&ouml;r G&ouml;teborgs Symfoniker &ndash; Sveriges Nationalorkester.</p>
 
@@ -145,10 +169,10 @@ sam&shy;produktioner Oscarsnominerade 2013. G&ouml;teborg International Film Fes
 <p>V&auml;starvet &auml;r Sveriges st&ouml;rsta organisation f&ouml;r natur- och kulturarv. V&auml;starvet driver Bohusl&auml;ns museum, G&ouml;teborgs Naturhistoriska Museum, L&ouml;d&ouml;se museum, Forsviks Bruk, Sl&ouml;jd &amp; Byggnadsv&aring;rd, Utst&auml;llningen kommer, Vitlycke museum och V&auml;sterg&ouml;tlands museum. Genom f&ouml;rebyggande och konsultativa insatser med fokus p&aring; kulturmilj&ouml; bevarar V&auml;starvet natur- och kulturarvet, men bedriver ocks&aring; framtids&shy;inriktat utvecklingsarbete i hela V&auml;stra G&ouml;taland.</p>
 <a id="kap8_4_tabell1" name="kap8_4_tabell1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap8_3_tabell1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap8_4_tabell2" name="kap8_4_tabell2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap8_3_tabell2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap8_5" name="kap8_5" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Kulturevenemang: Kulturevenemang i hela Västra Götaland</h2> <p>Ocks&aring; utanf&ouml;r de stora kulturinstitutionerna finns ett starkt kulturliv med bredd och spets. I V&auml;stra G&ouml;taland arrangeras varje &aring;r ett stort antal kultur&shy;festivaler. De har stor geografisk spridning och om&shy;&shy;fattar olika kulturyttringar och genrer. Exempelvis &auml;r filmen i fokus f&ouml;r Sk&ouml;vde filmfestival och i &Aring;m&aring;l arrangeras Bokdagar p&aring; Dal. Flera musikfestivaler arrangeras ocks&aring; runt om i V&auml;stra G&ouml;taland, bland annat Marstrands barockfestival, Sj&ouml;torps visfestival och Stenungsunds kammarfestival. Dessutom arran&shy;geras Bottna kulturfestival i Tanums kommun, Kalvfestivalen i Svenljunga och Valle Baroque i Skara.</p>
+<a id="kap8_5" name="kap8_5" style="visibility:hidden;">&nbsp;</a> <h2>Kulturevenemang: Kulturevenemang i hela Västra Götaland</h2> <p>Ocks&aring; utanf&ouml;r de stora kulturinstitutionerna finns ett starkt kulturliv med bredd och spets. I V&auml;stra G&ouml;taland arrangeras varje &aring;r ett stort antal kultur&shy;festivaler. De har stor geografisk spridning och om&shy;&shy;fattar olika kulturyttringar och genrer. Exempelvis &auml;r filmen i fokus f&ouml;r Sk&ouml;vde filmfestival och i &Aring;m&aring;l arrangeras Bokdagar p&aring; Dal. Flera musikfestivaler arrangeras ocks&aring; runt om i V&auml;stra G&ouml;taland, bland annat Marstrands barockfestival, Sj&ouml;torps visfestival och Stenungsunds kammarfestival. Dessutom arran&shy;geras Bottna kulturfestival i Tanums kommun, Kalvfestivalen i Svenljunga och Valle Baroque i Skara.</p>
 
 <p>G&ouml;teborgs st&auml;llning som evenemangsstad &auml;r stark med arrangemang som Clandenstino Festival, Dans- och teaterfestivalen, Hammarkullekarnevalen, Kultur&shy;kalaset, G&ouml;teborgs Internationella Filmfestival, Way out West och West Pride. Dessutom har Liseberg ungef&auml;r 3,4 miljoner bes&ouml;kare &aring;rligen och de stora idrottsarenorna i G&ouml;teborg, Ullevi, Gamla Ullevi och Scandinavium, samlar tillsammans drygt 1,5 miljoner m&auml;nniskor varje &aring;r.&nbsp;</p>
-<a id="kap8_6" name="kap8_6" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Konstnärliga utbildningar: Framstående konstnärliga utbildningar</h2> <p>I V&auml;stra G&ouml;taland finns flera framst&aring;ende eftergym&shy;nasiala utbildningar som f&ouml;rser Norden och Europa med yrkesskickliga konstn&auml;rer, designers, dansare, s&aring;ngare och sk&aring;despelare. Konstn&auml;rliga fakulteten vid G&ouml;teborgs universitet &auml;r unik internationellt. H&auml;r finns utbildningar inom design, fotografi, filmregi, fri konst, konsthantverk, litter&auml;r gestaltning, musik, musikal, opera och teater. En av de tre institutionerna vid fakulteten &auml;r H&ouml;gskolan f&ouml;r scen och musik.</p>
+<a id="kap8_6" name="kap8_6" style="visibility:hidden;">&nbsp;</a> <h2>Konstnärliga utbildningar: Framstående konstnärliga utbildningar</h2> <p>I V&auml;stra G&ouml;taland finns flera framst&aring;ende eftergym&shy;nasiala utbildningar som f&ouml;rser Norden och Europa med yrkesskickliga konstn&auml;rer, designers, dansare, s&aring;ngare och sk&aring;despelare. Konstn&auml;rliga fakulteten vid G&ouml;teborgs universitet &auml;r unik internationellt. H&auml;r finns utbildningar inom design, fotografi, filmregi, fri konst, konsthantverk, litter&auml;r gestaltning, musik, musikal, opera och teater. En av de tre institutionerna vid fakulteten &auml;r H&ouml;gskolan f&ouml;r scen och musik.</p>
 
 <p>H&auml;r &auml;r n&auml;rmare 700 studenter och 200 l&auml;rare verksamma och vid Artisten mitt i G&ouml;teborg kan inv&aring;narna ta del av mer &auml;n 200 konserter och f&ouml;rest&auml;llningar per &aring;r. &Auml;ven Balettakademien och Skara Skolscen har framst&aring;ende scenutbildningar med h&ouml;gt s&ouml;kandetryck. Dansforum vidgar deltagandet genom kurser som v&auml;nder sig till vuxna, ungdomar och barn. Balettaka&shy;demien hade 184 inskrivna elever 2012 och &rdquo;Perfoming Arts School&rdquo; inom Dansforum hade 80 elever.&nbsp;</p>
 
@@ -158,24 +182,18 @@ sam&shy;produktioner Oscarsnominerade 2013. G&ouml;teborg International Film Fes
       <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
       <ul data-role="listview" data-theme="a" class="nav-search">
             <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
-        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
-<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
-<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
-<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="#kap8_1"><img src="images/ikon.png" alt="" class="ui-li-icon">Kultursatsningar</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="#kap8_2"><img src="images/ikon.png" alt="" class="ui-li-icon">Kulturvanor</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="#kap8_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Biobesök och filmproduktion: Flitiga biobesökare  </a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="#kap8_4"><img src="images/ikon.png" alt="" class="ui-li-icon">Kulturinstitutioner: Kulturliv med bredd och spets</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="#kap8_5"><img src="images/ikon.png" alt="" class="ui-li-icon">Kulturevenemang: Kulturevenemang i hela Västra Göt</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="#kap8_6"><img src="images/ikon.png" alt="" class="ui-li-icon">Konstnärliga utbildningar: Framstående konstnärlig</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+        <li style="background: #ececec; color:red;"><a style="color:#333333;" data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #58723a; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #a4b836; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_tables.html">Tabeller och Diagram</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_maps.html">Kartor</a></li>
 </ul>
       </div><!-- /panel -->
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
@@ -226,5 +244,12 @@ sam&shy;produktioner Oscarsnominerade 2013. G&ouml;teborg International Film Fes
       </div><!-- /content -->
 
     </div><!-- /page -->
+    <script>
+              if ($(window).width() < 550) {
+          $('.custom-button').attr('data-iconpos', 'notext');
+        }
+
+
+    </script>
   </body>
 </html>

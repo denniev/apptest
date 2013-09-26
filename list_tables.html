@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tabeller</title>
+    <title>Tabeller och Diagram</title>
     <link rel="shortcut icon" href="images/favicon.ico">
     <link rel="stylesheet" href="themes/faktavgr.min.css" />
     <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/slow_scroll.js"></script> 
     <script type="text/javascript" src="js/brainworks.js"></script> 
     <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
-    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
     <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
     
     <style>
@@ -23,13 +23,23 @@
         font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
       }      
       .ui-bar-a {
-        background:#;
-        color : black;
+        background:#666666;
+        color : #ffffff;
       }
       .braincontent {
         padding-right: 20px;
         padding-left: 20px;
       }
+      p {
+        margin-top:0px;
+        margin-bottom:10px;
+      }
+      h2 {
+        color:black;
+        padding-top:5px;
+        margin-bottom:6px;
+      }
+      
     </style>
   </head>
   <body>
@@ -37,122 +47,206 @@
       <!-- header -->
       <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
         <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
-          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
-          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
-          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+          <a href="#nav-panel" class="custom-button" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" class="custom-button" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" class="custom-button" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
         </div>
-        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Tabeller och Diagram</h1>
         <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
-          <a href="search.html" data-role="button" data-icon="search">Sök</a>
-          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+          <a href="search.html" class="custom-button" data-role="button" data-icon="search">Sök</a>
+<!--          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a> -->
         </div>
       </div>      <!-- /header -->
       
           <div data-role="content" class="jqm-content">
           <div class="braincontent">
-        <ul data-role="listview" data-theme="c" data-filter="true" data-filter-placeholder="Skriv in sökord..." data-inset="true"><li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012"><a href="page_kap1.html#kap1_2_tabell1">Geografi och befolkning - Folkmängd i Västra Götalands kommuner 31 december 2012</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner"><a href="page_kap1.html#kap1_3_tabell1">Geografi och befolkning - Folkmängd i Västra Götaland och delregioner</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd"><a href="page_kap4.html#kap4_4_graf1">Miljödimensionen - Andel jordbruksmark med miljöstöd</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland"><a href="page_kap5.html#kap5_1_tabell1">Näringsliv - De största privata företagen i Västra Götaland</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland sysselsatta uppdelat på branscher 
-  näringsliv - sysselsatta uppdelat på branscher"><a href="page_kap5.html#kap5_1_tabell2">Näringsliv - Sysselsatta uppdelat på branscher</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland sysselsatta uppdelat på branscher 
-  näringsliv - sysselsatta uppdelat på branscher gästnätter 
-  näringsliv - gästnätter"><a href="page_kap5.html#kap5_6_tabell1">Näringsliv - Gästnätter</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland sysselsatta uppdelat på branscher 
-  näringsliv - sysselsatta uppdelat på branscher gästnätter 
-  näringsliv - gästnätter antal studenter på grund- avancerad nivå 
-  kompetens kunskap - antal studenter på grund- avancerad nivå"><a href="page_kap6.html#kap6_3_tabell1">Kompetens och kunskap - Antal studenter på grund- och avancerad nivå</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland sysselsatta uppdelat på branscher 
-  näringsliv - sysselsatta uppdelat på branscher gästnätter 
-  näringsliv - gästnätter antal studenter på grund- avancerad nivå 
-  kompetens kunskap - antal studenter på grund- avancerad nivå deltagare i långa folkskolekurser 
-  kompetens kunskap - deltagare i långa folkskolekurser"><a href="page_kap6.html#kap6_5_tabell1">Kompetens och kunskap - Deltagare i långa folkskolekurser</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland sysselsatta uppdelat på branscher 
-  näringsliv - sysselsatta uppdelat på branscher gästnätter 
-  näringsliv - gästnätter antal studenter på grund- avancerad nivå 
-  kompetens kunskap - antal studenter på grund- avancerad nivå deltagare i långa folkskolekurser 
-  kompetens kunskap - deltagare i långa folkskolekurser bredbandsutbyggnad 
-  infrastruktur kommunikationer - bredbandsutbyggnad"><a href="page_kap7.html#kap7_6_tabell1">Infrastruktur och kommunikationer - Bredbandsutbyggnad</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland sysselsatta uppdelat på branscher 
-  näringsliv - sysselsatta uppdelat på branscher gästnätter 
-  näringsliv - gästnätter antal studenter på grund- avancerad nivå 
-  kompetens kunskap - antal studenter på grund- avancerad nivå deltagare i långa folkskolekurser 
-  kompetens kunskap - deltagare i långa folkskolekurser bredbandsutbyggnad 
-  infrastruktur kommunikationer - bredbandsutbyggnad kulturaktiviteter 
-  kultur - kulturaktiviteter"><a href="page_kap8.html#kap8_2_tabell1">Kultur - Kulturaktiviteter</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland sysselsatta uppdelat på branscher 
-  näringsliv - sysselsatta uppdelat på branscher gästnätter 
-  näringsliv - gästnätter antal studenter på grund- avancerad nivå 
-  kompetens kunskap - antal studenter på grund- avancerad nivå deltagare i långa folkskolekurser 
-  kompetens kunskap - deltagare i långa folkskolekurser bredbandsutbyggnad 
-  infrastruktur kommunikationer - bredbandsutbyggnad kulturaktiviteter 
-  kultur - kulturaktiviteter publik till föreställningar 
-  kultur - publik till föreställningar"><a href="page_kap8.html#kap8_4_tabell1">Kultur - Publik till föreställningar</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland sysselsatta uppdelat på branscher 
-  näringsliv - sysselsatta uppdelat på branscher gästnätter 
-  näringsliv - gästnätter antal studenter på grund- avancerad nivå 
-  kompetens kunskap - antal studenter på grund- avancerad nivå deltagare i långa folkskolekurser 
-  kompetens kunskap - deltagare i långa folkskolekurser bredbandsutbyggnad 
-  infrastruktur kommunikationer - bredbandsutbyggnad kulturaktiviteter 
-  kultur - kulturaktiviteter publik till föreställningar 
-  kultur - publik till föreställningar besökare till museer 
-  kultur - besökare till museer"><a href="page_kap8.html#kap8_4_tabell2">Kultur - Besökare till museer</a></li>
-<li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 
-  geografi befolkning - folkmängd i västra götalands kommuner 31 december 2012 folkmängd i västra götaland delregioner 
-  geografi befolkning - folkmängd i västra götaland delregioner andel jordbruksmark med miljöstöd 
-  miljödimensionen - andel jordbruksmark med miljöstöd största privata företagen i västra götaland 
-  näringsliv - största privata företagen i västra götaland sysselsatta uppdelat på branscher 
-  näringsliv - sysselsatta uppdelat på branscher gästnätter 
-  näringsliv - gästnätter antal studenter på grund- avancerad nivå 
-  kompetens kunskap - antal studenter på grund- avancerad nivå deltagare i långa folkskolekurser 
-  kompetens kunskap - deltagare i långa folkskolekurser bredbandsutbyggnad 
-  infrastruktur kommunikationer - bredbandsutbyggnad kulturaktiviteter 
-  kultur - kulturaktiviteter publik till föreställningar 
-  kultur - publik till föreställningar besökare till museer 
-  kultur - besökare till museer tabeller    - tabeller"><a href="#tables"> - Tabeller</a></li>
+        <h3>&nbsp;</h3>
+      <ul data-role="listview" data-theme="c" data-filter="true" data-filter-placeholder="Skriv in sökord..." data-inset="true"><li data-filtertext="folkmängd i västra götalands kommuner 31 december 2012 Ale Alingsås Bengtsfors Bollebygd Borås Dals-Ed Essunga Falköping Färgelanda Grästorp Gullspång Göteborg Götene Herrljunga Hjo Härryda Karlsborg Kungälv Lerum Lidköping Lilla Edet Lysekil Mariestad Mark Mellerud Munkedal Mölndal Orust Partille Skara Skövde Sotenäs Stenungsund Strömstad Svenljunga Tanum Tibro Tidaholm Tjörn Tranemo Trollhättan Töreboda Uddevalla Ulricehamn Vara Vårgårda Vänersborg Åmål Öckerö geografi befolkning"><a href="page_kap1.html#kap1_2_tabell1"><img src="images/kap_icons/kap1_2_tabell1.jpg" />
+ 						<h2>Geografi och befolkning</h2>
+						<p>Folkmängd i Västra Götalands kommuner 31 december 2012</p></a></li>
+<li data-filtertext="befolkningsutveckling 1970 2012 Stockholms län Skåne län Västra Götalands län Riket geografi befolkning"><a href="page_kap1.html#kap1_3_graf1"><img src="images/kap_icons/kap1_3_graf1.jpg" />
+ 						<h2>Geografi och befolkning</h2>
+						<p>Befolkningsutveckling 1970–2012</p></a></li>
+<li data-filtertext="folkmängd i västra götaland delregioner Västra Götaland Göteborgsregionen Fyrbodal Skaraborg Sjuhärad geografi befolkning"><a href="page_kap1.html#kap1_3_tabell1"><img src="images/kap_icons/kap1_3_tabell1.jpg" />
+ 						<h2>Geografi och befolkning</h2>
+						<p>Folkmängd i Västra Götaland och delregioner</p></a></li>
+<li data-filtertext="befolkningsförändring i delregionerna år 2000 2012 Västra Götaland Göteborgsregionen Fyrbodal Skaraborg Sjuhärad flyttnetto födelsenetto geografi befolkning"><a href="page_kap1.html#kap1_3b_graf1"><img src="images/kap_icons/kap1_4_graf1.jpg" />
+ 						<h2>Geografi och befolkning</h2>
+						<p>Befolkningsförändring i delregionerna år 2000–2012</p></a></li>
+<li data-filtertext="flyttningar till från västra götaland invandrare utvandrare inrikes inflyttade inrikes utflyttade geografi befolkning"><a href="page_kap1.html#kap1_4_graf1"><img src="images/kap_icons/kap1_5_graf1.jpg" />
+ 						<h2>Geografi och befolkning</h2>
+						<p>Flyttningar till och från Västra Götaland</p></a></li>
+<li data-filtertext="utrikesfödda andel av befolkningen Västra Götaland Göteborgsregionen Fyrbodal Skaraborg Sjuhärad riket geografi befolkning"><a href="page_kap1.html#kap1_5_graf1"><img src="images/kap_icons/kap1_6_graf1.jpg" />
+ 						<h2>Geografi och befolkning</h2>
+						<p>Utrikesfödda som andel av befolkningen</p></a></li>
+<li data-filtertext="bruttoregionprodukt (brp) per invånare år 2010 Stockholms län Norrbottens län Riket Jämtlands län Västernorrlands län Västra Götalands län Kronobergs län Västerbottens län Dalarnas län Hallands län Örebro län Skåne län Västmanlands län Gävleborgs län Jönköpings län Uppsala län Kalmar län Östergötlands län Blekinge län Värmlands län Södermanlands län Gotlands län den ekomoniska dimensionen"><a href="page_kap2.html#kap2_1_graf1"><img src="images/kap_icons/kap2_1_graf1.jpg" />
+ 						<h2>Den ekomoniska dimensionen</h2>
+						<p>Bruttoregionprodukt (BRP) per invånare år 2010</p></a></li>
+<li data-filtertext="näringslivets omsättning i storstadsregionerna, första kvartalet 2003 första kvartalet 2013. Stockholms län Skåne län Västra Götalands län Riket övriga riket den ekomoniska dimensionen"><a href="page_kap2.html#kap2_2_graf1"><img src="images/kap_icons/kap2_1_graf2.jpg" />
+ 						<h2>Den ekomoniska dimensionen</h2>
+						<p>Näringslivets omsättning i storstadsregionerna, första kvartalet 2003–första kvartalet 2013.</p></a></li>
+<li data-filtertext="lönesumma per capita år 2012 lönesummatillväxt under perioden 2004 2012 Västra Götaland Göteborgsregionen Fyrbodal Skaraborg Sjuhärad lönesumma capita procentuell tillväxt den ekomoniska dimensionen"><a href="page_kap2.html#kap2_3_graf1"><img src="images/kap_icons/kap2_2_graf1.jpg" />
+ 						<h2>Den ekomoniska dimensionen</h2>
+						<p>Lönesumma per capita år 2012 och lönesummatillväxt under perioden 2004–2012</p></a></li>
+<li data-filtertext="lönesumma fasta priser göteborgsregionen fyrbodal sjuhärad skaraborg riket den ekomoniska dimensionen"><a href="page_kap2.html#kap2_3_graf2"><img src="images/kap_icons/kap2_2_graf2.jpg" />
+ 						<h2>Den ekomoniska dimensionen</h2>
+						<p>Lönesumma fasta priser</p></a></li>
+<li data-filtertext="sysselsättningsgrad (andel sysselsatt befolkning 20 64 år) år 2012 Stockholms län Norrbottens län Riket Jämtlands län Västernorrlands län Västra Götalands län Kronobergs län Västerbottens län Dalarnas län Hallands län Örebro län Skåne län Västmanlands län Gävleborgs län Jönköpings län Uppsala län Kalmar län Östergötlands län Blekinge län Värmlands län Södermanlands län Gotlands län den sociala dimensionen"><a href="page_kap3.html#kap3_1_graf1"><img src="images/kap_icons/kap3_1_graf1.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Sysselsättningsgrad (andel sysselsatt befolkning 20–64 år) år 2012</p></a></li>
+<li data-filtertext="sysselsättningsgrad 2011 (20 64 år) efter födelseregion sverige norden utom sverige sydamerika europa utom norden nordamerika asien afrika män kvinnor den sociala dimensionen"><a href="page_kap3.html#kap3_2_graf1"><img src="images/kap_icons/kap3_2_graf1.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Sysselsättningsgrad 2011 (20–64 år) efter födelseregion</p></a></li>
+<li data-filtertext="andel kvinnor män i tio vanligaste yrkena grundskollärare förskollärare fritidspedagoger företagssäljare lagerassistenter övrig kontorspersonal barnskötare undersköterskor, sjukvårdsbiträden vårdbiträden, personliga assistenter försäljare, fackhandel hotell kontorsstädare den sociala dimensionen"><a href="page_kap3.html#kap3_3_graf1"><img src="images/kap_icons/kap3_3_graf1.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Andel kvinnor och män i tio vanligaste yrkena</p></a></li>
+<li data-filtertext="Ãppet arbetslösa i västra götaland (16 64 år) årsmedeltal Ãppet arbetslösa sökande i program med aktivitetsstöd den sociala dimensionen"><a href="page_kap3.html#kap3_4_graf1"><img src="images/kap_icons/kap3_2_graf2.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Öppet arbetslösa i Västra Götaland (16–64 år) årsmedeltal</p></a></li>
+<li data-filtertext="inkomstspridning bland befolkningen i göteborgs stad dess stadsdelar Angered Östra Göteborg Göteborg Centrum Västra Hisingen Lundby Majorna-Linné Askim-Frölunda-Högsbo Örgryte-Härlanda Norra Hisingen Västra Göteborg den sociala dimensionen"><a href="page_kap3.html#kap3_4b_graf1"><img src="images/kap_icons/kap3_3_graf2.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Inkomstspridning bland befolkningen i Göteborgs stad och dess stadsdelar</p></a></li>
+<li data-filtertext="andel bor i hyreshus efter födelseregion samtliga sverige norden exkl sverige världen exkl eu/efta eu/efta exkl norden den sociala dimensionen"><a href="page_kap3.html#kap3_4b_graf2"><img src="images/kap_icons/kap3_4_graf1.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Andel som bor i hyreshus efter födelseregion</p></a></li>
+<li data-filtertext="ohälsotal, antal outbetalda dagar från socialförsäkringen Stockholms län Skåne län Västra Götalands län Riket den sociala dimensionen"><a href="page_kap3.html#kap3_6_graf1"><img src="images/kap_icons/kap3_6_graf1.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Ohälsotal, antal outbetalda dagar från Socialförsäkringen</p></a></li>
+<li data-filtertext="antal anmälda brott per 1000 invånare Stockholms län Skåne län Västra Götalands län Riket den sociala dimensionen"><a href="page_kap3.html#kap3_7_graf1"><img src="images/kap_icons/kap3_7_graf1.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Antal anmälda brott per 1000 invånare</p></a></li>
+<li data-filtertext="valdeltagande vid kommunalval västra götalands län riket den sociala dimensionen"><a href="page_kap3.html#kap3_8_graf1"><img src="images/kap_icons/kap3_8_graf1.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Valdeltagande vid kommunalval</p></a></li>
+<li data-filtertext="nöjd med livet mycket nöjd ganska inte ingen åsikt den sociala dimensionen"><a href="page_kap3.html#kap3_9_graf1"><img src="images/kap_icons/kap3_9_graf1.jpg" />
+ 						<h2>Den sociala dimensionen</h2>
+						<p>Nöjd med livet</p></a></li>
+<li data-filtertext="klimatpåverkande utsläpp energiförsörjning industriprocesser lösningsmedelsanvändning transporter arbetsmaskiner jordbruk avfall avlopp miljödimensionen"><a href="page_kap4.html#kap4_1_graf1"><img src="images/kap_icons/kap4_1_graf1.jpg" />
+ 						<h2>Miljödimensionen</h2>
+						<p>Klimatpåverkande utsläpp</p></a></li>
+<li data-filtertext="energianvändning i västra götaland offentlig verksamhet övriga tjänster transporter jordbruk skogsbruk fiske industri hushåll miljödimensionen"><a href="page_kap4.html#kap4_2_graf1"><img src="images/kap_icons/kap4_1_graf2.jpg" />
+ 						<h2>Miljödimensionen</h2>
+						<p>Energianvändning i Västra Götaland</p></a></li>
+<li data-filtertext="vindkraftproduktion Stockholms län Norrbottens län Riket Jämtlands län Västernorrlands län Västra Götalands län Kronobergs län Västerbottens län Dalarnas län Hallands län Örebro län Skåne län Västmanlands län Gävleborgs län Jönköpings län Uppsala län Kalmar län Östergötlands län Blekinge län Värmlands län Södermanlands län Gotlands län miljödimensionen"><a href="page_kap4.html#kap4_3_graf1"><img src="images/kap_icons/kap4_2_graf1.jpg" />
+ 						<h2>Miljödimensionen</h2>
+						<p>Vindkraftproduktion</p></a></li>
+<li data-filtertext="andel jordbruksmark med miljöstöd Stockholms län Norrbottens län Riket Jämtlands län Västernorrlands län Västra Götalands län Kronobergs län Västerbottens län Dalarnas län Hallands län Örebro län Skåne län Västmanlands län Gävleborgs län Jönköpings län Uppsala län Kalmar län Östergötlands län Blekinge län Värmlands län Södermanlands län Gotlands län miljödimensionen"><a href="page_kap4.html#kap4_4_graf1"><img src="images/kap_icons/kap4_3_graf1.jpg" />
+ 						<h2>Miljödimensionen</h2>
+						<p>Andel jordbruksmark med miljöstöd</p></a></li>
+<li data-filtertext="andel nyregistrerade miljöbilar Stockholms län Norrbottens län Riket Jämtlands län Västernorrlands län Västra Götalands län Kronobergs län Västerbottens län Dalarnas län Hallands län Örebro län Skåne län Västmanlands län Gävleborgs län Jönköpings län Uppsala län Kalmar län Östergötlands län Blekinge län Värmlands län Södermanlands län Gotlands län miljödimensionen"><a href="page_kap4.html#kap4_5_graf1"><img src="images/kap_icons/kap4_4_graf1.jpg" />
+ 						<h2>Miljödimensionen</h2>
+						<p>Andel nyregistrerade miljöbilar</p></a></li>
+<li data-filtertext="användning av fordonsgas biogas fordonsgas biogas miljödimensionen"><a href="page_kap4.html#kap4_5_graf2"><img src="images/kap_icons/kap4_4_graf2.jpg" />
+ 						<h2>Miljödimensionen</h2>
+						<p>Användning av fordonsgas och biogas</p></a></li>
+<li data-filtertext="realiserbar biogaspotential Stockholms län Norrbottens län Riket Jämtlands län Västernorrlands län Västra Götalands län Kronobergs län Västerbottens län Dalarnas län Hallands län Örebro län Skåne län Västmanlands län Gävleborgs län Jönköpings län Uppsala län Kalmar län Östergötlands län Blekinge län Värmlands län Södermanlands län Gotlands län miljödimensionen"><a href="page_kap4.html#kap4_5_graf3"><img src="images/kap_icons/kap4_4_graf3.jpg" />
+ 						<h2>Miljödimensionen</h2>
+						<p>Realiserbar biogaspotential</p></a></li>
+<li data-filtertext="största privata företagen i västra götaland Volvo Personvagnar AB Volvo Lastvagnar AB Volvo Powertrain AB Ericsson AB Samhall AB Posten Meddelande AB Chalmers Tekniska Högskola AB SKF Sverige AB Volvo Information Technology AB GKN Aerospace Sweden AB Astra Zeneca AB Manpower AB Västsvensk Tidningsdistribution KB SCA Hygiene Products AB Lernia Bemanning AB näringsliv"><a href="page_kap5.html#kap5_1_tabell1"><img src="images/kap_icons/kap5_1_tabell1.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>De största privata företagen i Västra Götaland</p></a></li>
+<li data-filtertext="sysselsatta uppdelat på branscher Jordbruk, skogsbruk fiske Tillverkning utvinning Energiförsörjning miljöverksamhet Byggverksamhet Handel Transport magasinering Hotell restaurangverksamhet Information kommunikation Finans försäkringsverksamhet Fastighetsverksamhet Företagstjänster Offentlig förvaltning försvar Utbildning Vård omsorg sociala tjänster Kulturella personliga tjänster Okänt Totalt näringsliv"><a href="page_kap5.html#kap5_1_tabell2"><img src="images/kap_icons/kap5_1_tabell2.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Sysselsatta uppdelat på branscher</p></a></li>
+<li data-filtertext="sysselsatt dagbefolkning tillverkning privata tjänster offentliga tjänster bygg jord skog näringsliv"><a href="page_kap5.html#kap5_1_graf1"><img src="images/kap_icons/kap5_1_graf1.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Sysselsatt dagbefolkning</p></a></li>
+<li data-filtertext="anställda i utlandsägda företag västmanland blekinge stockholm västra götaland skåne Ãrebro värmland Ãstergötland västernorrland kronoberg jönköping dalarna kalmar halland södermanland uppsala gävleborg västerbotten norrbotten jämtland gotland näringsliv"><a href="page_kap5.html#kap5_2_graf1"><img src="images/kap_icons/kap5_2_graf1.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Anställda i utlandsägda företag</p></a></li>
+<li data-filtertext="andel utlandsägda företag eu27 exkl sverige övriga europa övriga världen okänt näringsliv"><a href="page_kap5.html#kap5_2_graf2"><img src="images/kap_icons/kap5_2_graf2.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Andel utlandsägda företag</p></a></li>
+<li data-filtertext="nystartade företag per 1000 invånare Stockholms län Norrbottens län Riket Jämtlands län Västernorrlands län Västra Götalands län Kronobergs län Västerbottens län Dalarnas län Hallands län Örebro län Skåne län Västmanlands län Gävleborgs län Jönköpings län Uppsala län Kalmar län Östergötlands län Blekinge län Värmlands län Södermanlands län Gotlands län näringsliv"><a href="page_kap5.html#kap5_3_graf1"><img src="images/kap_icons/kap5_3_graf1.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Nystartade företag per 1000 invånare</p></a></li>
+<li data-filtertext="andel nystartade företag efter ledningens könsammansättning kvinna eller endast kvinnor man eller endast man gemensam ledning näringsliv"><a href="page_kap5.html#kap5_3_graf2"><img src="images/kap_icons/kap5_3_graf2.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Andel nystartade företag efter ledningens könsammansättning</p></a></li>
+<li data-filtertext="industrins investeringar miljoner kronor västra götaland andel av riket näringsliv"><a href="page_kap5.html#kap5_4_graf1"><img src="images/kap_icons/kap5_4_graf1.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Industrins investeringar</p></a></li>
+<li data-filtertext="antal sysselsatta inom miljötekniksektorn Stockholms län Norrbottens län Riket Jämtlands län Västernorrlands län Västra Götalands län Kronobergs län Västerbottens län Dalarnas län Hallands län Örebro län Skåne län Västmanlands län Gävleborgs län Jönköpings län Uppsala län Kalmar län Östergötlands län Blekinge län Värmlands län Södermanlands län Gotlands län näringsliv"><a href="page_kap5.html#kap5_5_graf1"><img src="images/kap_icons/kap5_5_graf1.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Antal sysselsatta inom miljötekniksektorn</p></a></li>
+<li data-filtertext="andel export inom miljötekniksektorn Stockholms län Norrbottens län Riket Jämtlands län Västernorrlands län Västra Götalands län Kronobergs län Västerbottens län Dalarnas län Hallands län Örebro län Skåne län Västmanlands län Gävleborgs län Jönköpings län Uppsala län Kalmar län Östergötlands län Blekinge län Värmlands län Södermanlands län Gotlands län näringsliv"><a href="page_kap5.html#kap5_5_graf2"><img src="images/kap_icons/kap5_5_graf2.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Andel export inom miljötekniksektorn</p></a></li>
+<li data-filtertext="gästnätter stockholms län skåne län västra götalands län näringsliv"><a href="page_kap5.html#kap5_6_tabell1"><img src="images/kap_icons/kap5_6_tabell1.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Gästnätter</p></a></li>
+<li data-filtertext="antal gästnätter göteborgsregionen fyrbodal skaraborg sjuhärad näringsliv"><a href="page_kap5.html#kap5_6_graf1"><img src="images/kap_icons/kap5_6_graf1.jpg" />
+ 						<h2>Näringsliv</h2>
+						<p>Antal gästnätter</p></a></li>
+<li data-filtertext="befolkningens utbildningsnivå kortare än 3-årig gymnasial 3-årig gymnasial kortare än 3-årig eftergymnasial minst 3-årig eftergymnasial	uppgift om utbildningsnivå saknas kompetens kunskap"><a href="page_kap6.html#kap6_1_graf1"><img src="images/kap_icons/kap6_1_graf1.jpg" />
+ 						<h2>Kompetens och kunskap</h2>
+						<p>Befolkningens utbildningsnivå</p></a></li>
+<li data-filtertext="eftergymnasial utbildning Västra Götaland Göteborgsregionen Fyrbodal Skaraborg Sjuhärad riket män kvinnor kompetens kunskap"><a href="page_kap6.html#kap6_1b_graf1"><img src="images/kap_icons/kap6_2_graf1.jpg" />
+ 						<h2>Kompetens och kunskap</h2>
+						<p>Eftergymnasial utbildning</p></a></li>
+<li data-filtertext="antal studenter på grund- avancerad nivå chalmers tekniska högskola göteborgs universitet högskolan väst högskolan i borås högskolan i skövde totalt i västra götaland kompetens kunskap"><a href="page_kap6.html#kap6_3_tabell1"><img src="images/kap_icons/kap6_3_tabell1.jpg" />
+ 						<h2>Kompetens och kunskap</h2>
+						<p>Antal studenter på grund- och avancerad nivå</p></a></li>
+<li data-filtertext="utländska studenter doktorander Chalmers tekniska högskola Göteborgs universitet Högskolan Väst Högskolan i Borås Högskolan i Skövde Totalt i Västra Götaland kompetens kunskap"><a href="page_kap6.html#kap6_3_graf1"><img src="images/kap_icons/kap6_3_graf1.jpg" />
+ 						<h2>Kompetens och kunskap</h2>
+						<p>Utländska studenter och doktorander</p></a></li>
+<li data-filtertext="antal forskarexamina chalmers tekniska högskola doktorsexamen göteborgs universitet licentiatexamen chalmers tekniska högskola licentiatexamen göteborgs universitet doktorsexamen kompetens kunskap"><a href="page_kap6.html#kap6_4_graf1"><img src="images/kap_icons/kap6_4_graf1.jpg" />
+ 						<h2>Kompetens och kunskap</h2>
+						<p>Antal forskarexamina</p></a></li>
+<li data-filtertext="deltagare i långa folkskolekurser kompetens kunskap"><a href="page_kap6.html#kap6_5_tabell1"><img src="images/kap_icons/kap6_5_tabell1.jpg" />
+ 						<h2>Kompetens och kunskap</h2>
+						<p>Deltagare i långa folkskolekurser</p></a></li>
+<li data-filtertext="deltagare i studiecirklar kompetens kunskap"><a href="page_kap6.html#kap6_6_graf1"><img src="images/kap_icons/kap6_7_graf1.jpg" />
+ 						<h2>Kompetens och kunskap</h2>
+						<p>Deltagare i studiecirklar</p></a></li>
+<li data-filtertext="besökare/deltagare i kulturprogram kompetens kunskap"><a href="page_kap6.html#kap6_6_graf2"><img src="images/kap_icons/kap8_3_graf1.jpg" />
+ 						<h2>Kompetens och kunskap</h2>
+						<p>Besökare/deltagare i kulturprogram</p></a></li>
+<li data-filtertext="avgående sändningar till sverige utlandet stockholms län skåne län västra götalands län norrbottens län infrastruktur kommunikationer"><a href="page_kap7.html#kap7_1_graf1"><img src="images/kap_icons/kap7_1_graf1.jpg" />
+ 						<h2>Infrastruktur och kommunikationer</h2>
+						<p>Avgående sändningar till Sverige och utlandet</p></a></li>
+<li data-filtertext="ankommande sändningar från utlandet stockholms län skåne län väst sydöst infrastruktur kommunikationer"><a href="page_kap7.html#kap7_1_graf2"><img src="images/kap_icons/kap7_1_graf2.jpg" />
+ 						<h2>Infrastruktur och kommunikationer</h2>
+						<p>Ankommande sändningar från utlandet</p></a></li>
+<li data-filtertext="antal passagerare per flygplats göteborg landvetter göteborg city trollhättan vänersborg infrastruktur kommunikationer"><a href="page_kap7.html#kap7_3_graf1"><img src="images/kap_icons/kap7_4_graf1.jpg" />
+ 						<h2>Infrastruktur och kommunikationer</h2>
+						<p>Antal passagerare per flygplats</p></a></li>
+<li data-filtertext="tio största hamnarna i sverige Göteborg Brofjorden Trelleborg Malmö Luleå Helsingborg Oxelösund Karlshamn Stockholm Gävle infrastruktur kommunikationer"><a href="page_kap7.html#kap7_4_graf1"><img src="images/kap_icons/kap7_3_graf1.jpg" />
+ 						<h2>Infrastruktur och kommunikationer</h2>
+						<p>De tio största hamnarna i Sverige</p></a></li>
+<li data-filtertext="resandeutveckling med västtrafik västtrafiks regionala tågtrafik västtrafik totalt infrastruktur kommunikationer"><a href="page_kap7.html#kap7_5_graf1"><img src="images/kap_icons/kap7_5_graf1.jpg" />
+ 						<h2>Infrastruktur och kommunikationer</h2>
+						<p>Resandeutveckling med Västtrafik</p></a></li>
+<li data-filtertext="bredbandsutbyggnad xdsl fiberanslutning 3g befintligt mobilt bredband 4g lte nytt mobilt bredband infrastruktur kommunikationer"><a href="page_kap7.html#kap7_6_tabell1"><img src="images/kap_icons/kap7_6_tabell1.jpg" />
+ 						<h2>Infrastruktur och kommunikationer</h2>
+						<p>Bredbandsutbyggnad</p></a></li>
+<li data-filtertext="regional satsning på kultur västra götalandsregionen region skåne stockholms läns landsting samtliga landsting regioner kultur"><a href="page_kap8.html#kap8_1_graf1"><img src="images/kap_icons/kap8_1_graf1.jpg" />
+ 						<h2>Kultur</h2>
+						<p>Regional satsning på kultur</p></a></li>
+<li data-filtertext="kulturaktiviteter gått på museum gått på teater gått på opera musikal eller balett gått på konsert med klassisk musik gått på rock- eller popkonsert gått på bio deltagit i studiecirkel eller kursverksamhet besökt gudstjänst eller religiöst möte läst någon bok sjungit i kör eller spelat musikinstrument tecknat målat eller skrivit poesi kultur"><a href="page_kap8.html#kap8_2_tabell1"><img src="images/kap_icons/kap8_2_tabell1.jpg" />
+ 						<h2>Kultur</h2>
+						<p>Kulturaktiviteter</p></a></li>
+<li data-filtertext="biobesök i västra götaland kultur"><a href="page_kap8.html#kap8_3_graf1"><img src="images/kap_icons/kap8_2_graf1.jpg" />
+ 						<h2>Kultur</h2>
+						<p>Biobesök i Västra Götaland</p></a></li>
+<li data-filtertext="publik till föreställningar scenkonstinstitution folkteatern göteborgsoperan göteborgs stadsteater göteborgs symfoniker göteborg wind orchestra kultur i väst kultur ungdom regionteater väst vara konserthus kultur"><a href="page_kap8.html#kap8_4_tabell1"><img src="images/kap_icons/kap8_3_tabell1.jpg" />
+ 						<h2>Kultur</h2>
+						<p>Publik till föreställningar</p></a></li>
+<li data-filtertext="besökare till museer museum dalslands konstmuseum göteborgs konstmuseum göteborgs stadsmuseum lokstallet i strömstad läckö slott nordiska akvarellmuseet röhsska museet sjöfartsmuseet akvariet skövde kulturhus konstenheten västarvet kultur"><a href="page_kap8.html#kap8_4_tabell2"><img src="images/kap_icons/kap8_3_tabell2.jpg" />
+ 						<h2>Kultur</h2>
+						<p>Besökare till museer</p></a></li>
+<li data-filtertext="god eller mycket god hälsa, uppdelat på funktionshinder funktionshinder inget funktionshinder totalt män kvinnor hälsa"><a href="page_kap9.html#kap9_2_graf1"><img src="images/kap_icons/kap9_3_graf1.jpg" />
+ 						<h2>Hälsa</h2>
+						<p>God eller mycket god hälsa, uppdelat på funktionshinder</p></a></li>
+<li data-filtertext="nedsatt psykisk hälsa, fördelat på åldersgrupp hälsa"><a href="page_kap9.html#kap9_3_graf1"><img src="images/kap_icons/kap9_3_graf1.jpg" />
+ 						<h2>Hälsa</h2>
+						<p>Nedsatt psykisk hälsa, fördelat på åldersgrupp</p></a></li>
+<li data-filtertext="nedsatt psykisk hälsa, uppdelat på födelseregion sverige övriga norden övriga europa övriga världen totalt hälsa"><a href="page_kap9.html#kap9_3_graf2"><img src="images/kap_icons/kap9_3_graf2.jpg" />
+ 						<h2>Hälsa</h2>
+						<p>Nedsatt psykisk hälsa, uppdelat på födelseregion</p></a></li>
+<li data-filtertext="andel kariesfria 12-åringar hälsa"><a href="page_kap9.html#kap9_4_graf1"><img src="images/kap_icons/kap9_4_graf1.jpg" />
+ 						<h2>Hälsa</h2>
+						<p>Andel kariesfria 12-åringar</p></a></li>
 
       </ul>
           <div data-demo-html="#panel-fixed-page1" data-demo-css="true"></div>
@@ -162,18 +256,18 @@
       <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
       <ul data-role="listview" data-theme="a" class="nav-search">
             <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
-        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
-<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
-<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
-<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+        <li style="background: #ececec; color:red;"><a style="color:#333333;" data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #58723a; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #a4b836; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_tables.html">Tabeller och Diagram</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_maps.html">Kartor</a></li>
 </ul>
       </div><!-- /panel -->
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
@@ -224,5 +318,12 @@
       </div><!-- /content -->
 
     </div><!-- /page -->
+    <script>
+              if ($(window).width() < 550) {
+          $('.custom-button').attr('data-iconpos', 'notext');
+        }
+
+
+    </script>
   </body>
 </html>

@@ -8,26 +8,26 @@
     <link rel="stylesheet" href="themes/faktavgr.min.css" />
     <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/slow_scroll.js"></script> 
     <script type="text/javascript" src="js/brainworks.js"></script> 
     <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
-    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
     <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
         <script>
-      var port_table = '<img class="startmenu" src="images/menu/kap9_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="39,129,253,167" href="#kap9_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="38,179,286,217" href="#kap9_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="40,230,227,268" href="#kap9_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="38,280,188,317" href="#kap9_4"/>' +
+      var port_table = '<img class="startmenup" src="images/menu/kap9_portrait.jpg" usemap="#startmenup" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenup">' +
+              '<area class="myanchor" shape="rect" coords="39,129,253,167" href="#kap9_1"/>' +
+'<area class="myanchor" shape="rect" coords="38,179,286,217" href="#kap9_2"/>' +
+'<area class="myanchor" shape="rect" coords="40,230,227,268" href="#kap9_3"/>' +
+'<area class="myanchor" shape="rect" coords="38,280,188,317" href="#kap9_4"/>' +
 
               '</map>';
 
-      var land_table = '<img class="startmenu" src="images/menu/kap9_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="34,99,195,127" href="#kap9_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="34,137,220,165" href="#kap9_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="34,174,176,203" href="#kap9_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="33,213,146,239" href="#kap9_4"/>' +
+      var land_table = '<img class="startmenul" src="images/menu/kap9_landscape.jpg" usemap="#startmenul" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenul">' +
+              '<area class="myanchor" shape="rect" coords="34,99,195,127" href="#kap9_1"/>' +
+'<area class="myanchor" shape="rect" coords="34,137,220,165" href="#kap9_2"/>' +
+'<area class="myanchor" shape="rect" coords="34,174,176,203" href="#kap9_3"/>' +
+'<area class="myanchor" shape="rect" coords="33,213,146,239" href="#kap9_4"/>' +
 
               '</map>';
       var startorientation;
@@ -40,34 +40,48 @@
       }
 
       $(document).ready(function() {
-        
-        if (startorientation == 'portrait') {
-          $("#myimagemenu").html(port_table);
-        }
-        else {
-          $("#myimagemenu").html(land_table);
-        }
-        $('.startmenu').rwdImageMaps();
-        
         $(window).on("orientationchange", function(event) {
-//          alert('orientationchange');
+          //alert('orientationchange');
           if (event.orientation == 'landscape') {
             $("#myimagemenu").html(land_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenul').rwdImageMaps();
           }
           else {
             $("#myimagemenu").html(port_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenup').rwdImageMaps();
           }
         });
-        
+       
         // You can also manually force this event to fire.
-        //$(window).orientationchange();
+        $(window).orientationchange();
 //        $(window).bind('resize', onWindowResize);
         $.mobile.fixedToolbars.setTouchToggleEnabled(false);
         $.mobile.ajaxEnabled = false;
       });
 
+    $(document).load(function() {
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+          $('.startmenup').rwdImageMaps();
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+          $('.startmenul').rwdImageMaps();
+        }
+   
+      });
+      
+   $(document).bind('pageinit', function() {
+         var urlHash = window.location.href.split("#")[1];
+           if (urlHash) {
+            setTimeout(function()
+            { 
+            window.location.assign('#' + urlHash);
+            }, 2000);
+          }
+        }
+     );
+     
     </script>
 
     <style>
@@ -81,12 +95,22 @@
       }      
       .ui-bar-a {
         background:#85b0d0;
-        color : black;
+        color : #ffffff;
       }
       .braincontent {
         padding-right: 20px;
         padding-left: 20px;
       }
+      p {
+        margin-top:0px;
+        margin-bottom:10px;
+      }
+      h2 {
+        color:black;
+        padding-top:5px;
+        margin-bottom:6px;
+      }
+      
     </style>
   </head>
   <body>
@@ -94,14 +118,14 @@
       <!-- header -->
       <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
         <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
-          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
-          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
-          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+          <a href="#nav-panel" class="custom-button" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" class="custom-button" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" class="custom-button" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
         </div>
-        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Hälsa</h1>
         <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
-          <a href="search.html" data-role="button" data-icon="search">Sök</a>
-          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+          <a href="search.html" class="custom-button" data-role="button" data-icon="search">Sök</a>
+<!--          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a> -->
         </div>
       </div>      <!-- /header -->
       
@@ -109,7 +133,7 @@
           <div id="myimagemenu"></div>
           <div data-demo-html="#panel-fixed-page1"></div>
           <div class="braincontent">
-          <a id="kap9_1" name="kap9_1" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Medellivslängd: Hälsan allt bättre men ojämlikt fördelad</h2> <p>Befolkningens allm&auml;nna h&auml;lsotillst&aring;nd har blivit allt b&auml;ttre under de senaste decennierna. Under den senaste fem&aring;rsperioden har medellivsl&auml;ngden &ouml;kat med n&auml;stan ett &aring;r f&ouml;r b&aring;de m&auml;n och kvinnor. I V&auml;stra G&ouml;taland &auml;r den 83,4 &aring;r f&ouml;r kvinnor och 79,6 &aring;r f&ouml;r m&auml;n. Det ligger n&auml;ra riksgenomsnittet men varierar mellan olika kommuner.</p>
+          <a id="kap9_1" name="kap9_1" style="visibility:hidden;">&nbsp;</a> <h2>Medellivslängd: Hälsan allt bättre men ojämlikt fördelad</h2> <p>Befolkningens allm&auml;nna h&auml;lsotillst&aring;nd har blivit allt b&auml;ttre under de senaste decennierna. Under den senaste fem&aring;rsperioden har medellivsl&auml;ngden &ouml;kat med n&auml;stan ett &aring;r f&ouml;r b&aring;de m&auml;n och kvinnor. I V&auml;stra G&ouml;taland &auml;r den 83,4 &aring;r f&ouml;r kvinnor och 79,6 &aring;r f&ouml;r m&auml;n. Det ligger n&auml;ra riksgenomsnittet men varierar mellan olika kommuner.</p>
 
 <p>Medellivsl&auml;ngden p&aring;verkas starkt av d&ouml;dsfall som intr&auml;ffar innan 75 &aring;rs &aring;lder. &Auml;ven den f&ouml;rtida d&ouml;dligheten varierar kraftigt mellan olika delar i l&auml;net, kommuner och stadsdelar.</p>
 
@@ -122,17 +146,17 @@
 
 <p>&nbsp;</p>
 <a id="kap9_1_karta2" name="kap9_1_karta2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap9_1_karta2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap9_2" name="kap9_2" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Självskattad hälsa: Ojämlik hälsa</h2> <p>De flesta inv&aring;nare uppfattar sin h&auml;lsa som god. Tre av fyra m&auml;n och en n&aring;got mindre andel av kvinnorna uppfattade sin h&auml;lsa som god eller mycket god enligt den nationella folkh&auml;lsoenk&auml;ten &rdquo;H&auml;lsa p&aring; lika villkor?&rdquo; 2011. Variationen &auml;r stor mellan personer med kort respektive l&aring;ng utbildning, personer med utl&auml;ndsk bakgrund respektive svensk bakgrund, mellan funktionshindrade och &ouml;vriga, mellan personer med l&aring;g respektive h&ouml;g inkomst.</p>
+<a id="kap9_2" name="kap9_2" style="visibility:hidden;">&nbsp;</a> <h2>Självskattad hälsa: Ojämlik hälsa</h2> <p>De flesta inv&aring;nare uppfattar sin h&auml;lsa som god. Tre av fyra m&auml;n och en n&aring;got mindre andel av kvinnorna uppfattade sin h&auml;lsa som god eller mycket god enligt den nationella folkh&auml;lsoenk&auml;ten &rdquo;H&auml;lsa p&aring; lika villkor?&rdquo; 2011. Variationen &auml;r stor mellan personer med kort respektive l&aring;ng utbildning, personer med utl&auml;ndsk bakgrund respektive svensk bakgrund, mellan funktionshindrade och &ouml;vriga, mellan personer med l&aring;g respektive h&ouml;g inkomst.</p>
 
 <p>Ett exempel p&aring; detta &auml;r att andelen individer med god eller mycket god h&auml;lsa &auml;r n&auml;stan tv&aring; g&aring;nger s&aring; stor bland individer som inte har funktionshinder, &auml;n bland dem som rapporterar funktionshinder. Forskningen visar att funktionshindrades sj&auml;lvskattade h&auml;lsa har ett samband med sv&aring;righeter att vara delaktig i samh&auml;llslivet, vilket i sin tur ofta &auml;r kopplat till bristande tillg&auml;nglighet.</p>
 <a id="kap9_2_graf1" name="kap9_2_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap9_3_graf1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap9_2_karta1" name="kap9_2_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap9_2_karta1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap9_3" name="kap9_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Psykisk hälsa: Sämre psykisk hälsa bland yngre kvinnor</h2> <p>Psykisk oh&auml;lsa i form av bland annat stress, oro och &aring;ngest varierar starkt mellan kvinnor och m&auml;n och olika &aring;ldersgrupper. K&ouml;nsskillnaderna &auml;r p&aring;tagliga i de yngre &aring;ldersgrupperna, d&auml;r kvinnor i betydligt h&ouml;gre grad &auml;n m&auml;n rapporterar nedsatt psykisk h&auml;lsa. Bland kvinnor minskar andelen med psykisk oh&auml;lsa kraftigt med &aring;ldern, medan motsvarande minskning bland m&auml;n &auml;r mindre uttalad.</p>
+<a id="kap9_3" name="kap9_3" style="visibility:hidden;">&nbsp;</a> <h2>Psykisk hälsa: Sämre psykisk hälsa bland yngre kvinnor</h2> <p>Psykisk oh&auml;lsa i form av bland annat stress, oro och &aring;ngest varierar starkt mellan kvinnor och m&auml;n och olika &aring;ldersgrupper. K&ouml;nsskillnaderna &auml;r p&aring;tagliga i de yngre &aring;ldersgrupperna, d&auml;r kvinnor i betydligt h&ouml;gre grad &auml;n m&auml;n rapporterar nedsatt psykisk h&auml;lsa. Bland kvinnor minskar andelen med psykisk oh&auml;lsa kraftigt med &aring;ldern, medan motsvarande minskning bland m&auml;n &auml;r mindre uttalad.</p>
 
 <p>En persons f&ouml;delseregion har stor betydelse f&ouml;r den psykiska h&auml;lsan. Exempelvis &auml;r andelen kvinnor med nedsatt psykisk h&auml;lsa betydligt st&ouml;rre bland kvinnor med utomnordisk bakgrund, &auml;n bland kvinnor med svensk bakgrund.</p>
 <a id="kap9_3_graf1" name="kap9_3_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap9_3_graf1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap9_3_graf2" name="kap9_3_graf2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap9_3_graf2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap9_4" name="kap9_4" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Tandhälsa: Ojämlikhet i tandhälsan</h2> <p>Tandv&aring;rd &auml;r ett annat omr&aring;de d&auml;r sambandet mellan h&auml;lsa och socioekonomi m&auml;rks extra tydligt. Redan i unga &aring;ldrar &auml;r tandh&auml;lsan oj&auml;mnt f&ouml;rdelad mellan olika kommuner och omr&aring;den. Andelen 12-&aring;ringar med kariesskadade t&auml;nder &auml;r betydligt st&ouml;rre i G&ouml;teborg Nordost, ett ekonomiskt utsatt omr&aring;de med en h&ouml;gre andel utlandsf&ouml;dda, &auml;n andra stadsdelar i G&ouml;teborg.</p>
+<a id="kap9_4" name="kap9_4" style="visibility:hidden;">&nbsp;</a> <h2>Tandhälsa: Ojämlikhet i tandhälsan</h2> <p>Tandv&aring;rd &auml;r ett annat omr&aring;de d&auml;r sambandet mellan h&auml;lsa och socioekonomi m&auml;rks extra tydligt. Redan i unga &aring;ldrar &auml;r tandh&auml;lsan oj&auml;mnt f&ouml;rdelad mellan olika kommuner och omr&aring;den. Andelen 12-&aring;ringar med kariesskadade t&auml;nder &auml;r betydligt st&ouml;rre i G&ouml;teborg Nordost, ett ekonomiskt utsatt omr&aring;de med en h&ouml;gre andel utlandsf&ouml;dda, &auml;n andra stadsdelar i G&ouml;teborg.</p>
 <a id="kap9_4_graf1" name="kap9_4_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap9_4_graf1.jpg" style="max-width:100%;width:100%;"></p>
 
            </div><!-- /braincontent -->
@@ -141,22 +165,18 @@
       <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
       <ul data-role="listview" data-theme="a" class="nav-search">
             <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
-        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
-<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
-<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
-<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="#kap9_1"><img src="images/ikon.png" alt="" class="ui-li-icon">Medellivslängd: Hälsan allt bättre men ojämlikt fö</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="#kap9_2"><img src="images/ikon.png" alt="" class="ui-li-icon">Självskattad hälsa: Ojämlik hälsa</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="#kap9_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Psykisk hälsa: Sämre psykisk hälsa bland yngre kvi</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="#kap9_4"><img src="images/ikon.png" alt="" class="ui-li-icon">Tandhälsa: Ojämlikhet i tandhälsan</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+        <li style="background: #ececec; color:red;"><a style="color:#333333;" data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #58723a; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #a4b836; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_tables.html">Tabeller och Diagram</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_maps.html">Kartor</a></li>
 </ul>
       </div><!-- /panel -->
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
@@ -207,5 +227,12 @@
       </div><!-- /content -->
 
     </div><!-- /page -->
+    <script>
+              if ($(window).width() < 550) {
+          $('.custom-button').attr('data-iconpos', 'notext');
+        }
+
+
+    </script>
   </body>
 </html>

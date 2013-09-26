@@ -8,30 +8,30 @@
     <link rel="stylesheet" href="themes/faktavgr.min.css" />
     <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/slow_scroll.js"></script> 
     <script type="text/javascript" src="js/brainworks.js"></script> 
     <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
-    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
     <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
         <script>
-      var port_table = '<img class="startmenu" src="images/menu/kap7_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="39,181,207,218" href="#kap7_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="36,231,152,268" href="#kap7_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="38,279,198,320" href="#kap7_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="38,332,162,366" href="#kap7_4"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="39,378,242,418" href="#kap7_5"/>' +
-'<area areaname="area_6" full="area_6" shape="rect" coords="38,430,268,470" href="#kap7_6"/>' +
+      var port_table = '<img class="startmenup" src="images/menu/kap7_portrait.jpg" usemap="#startmenup" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenup">' +
+              '<area class="myanchor" shape="rect" coords="39,181,207,218" href="#kap7_1"/>' +
+'<area class="myanchor" shape="rect" coords="36,231,152,268" href="#kap7_2"/>' +
+'<area class="myanchor" shape="rect" coords="38,279,198,320" href="#kap7_3"/>' +
+'<area class="myanchor" shape="rect" coords="38,332,162,366" href="#kap7_4"/>' +
+'<area class="myanchor" shape="rect" coords="39,378,242,418" href="#kap7_5"/>' +
+'<area class="myanchor" shape="rect" coords="38,430,268,470" href="#kap7_6"/>' +
 
               '</map>';
 
-      var land_table = '<img class="startmenu" src="images/menu/kap7_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="32,138,160,165" href="#kap7_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="34,173,118,203" href="#kap7_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="35,210,154,241" href="#kap7_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="34,249,126,277" href="#kap7_4"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="34,286,186,314" href="#kap7_5"/>' +
-'<area areaname="area_6" full="area_6" shape="rect" coords="34,324,205,353" href="#kap7_6"/>' +
+      var land_table = '<img class="startmenul" src="images/menu/kap7_landscape.jpg" usemap="#startmenul" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenul">' +
+              '<area class="myanchor" shape="rect" coords="32,138,160,165" href="#kap7_1"/>' +
+'<area class="myanchor" shape="rect" coords="34,173,118,203" href="#kap7_2"/>' +
+'<area class="myanchor" shape="rect" coords="35,210,154,241" href="#kap7_3"/>' +
+'<area class="myanchor" shape="rect" coords="34,249,126,277" href="#kap7_4"/>' +
+'<area class="myanchor" shape="rect" coords="34,286,186,314" href="#kap7_5"/>' +
+'<area class="myanchor" shape="rect" coords="34,324,205,353" href="#kap7_6"/>' +
 
               '</map>';
       var startorientation;
@@ -44,34 +44,48 @@
       }
 
       $(document).ready(function() {
-        
-        if (startorientation == 'portrait') {
-          $("#myimagemenu").html(port_table);
-        }
-        else {
-          $("#myimagemenu").html(land_table);
-        }
-        $('.startmenu').rwdImageMaps();
-        
         $(window).on("orientationchange", function(event) {
-//          alert('orientationchange');
+          //alert('orientationchange');
           if (event.orientation == 'landscape') {
             $("#myimagemenu").html(land_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenul').rwdImageMaps();
           }
           else {
             $("#myimagemenu").html(port_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenup').rwdImageMaps();
           }
         });
-        
+       
         // You can also manually force this event to fire.
-        //$(window).orientationchange();
+        $(window).orientationchange();
 //        $(window).bind('resize', onWindowResize);
         $.mobile.fixedToolbars.setTouchToggleEnabled(false);
         $.mobile.ajaxEnabled = false;
       });
 
+    $(document).load(function() {
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+          $('.startmenup').rwdImageMaps();
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+          $('.startmenul').rwdImageMaps();
+        }
+   
+      });
+      
+   $(document).bind('pageinit', function() {
+         var urlHash = window.location.href.split("#")[1];
+           if (urlHash) {
+            setTimeout(function()
+            { 
+            window.location.assign('#' + urlHash);
+            }, 2000);
+          }
+        }
+     );
+     
     </script>
 
     <style>
@@ -85,12 +99,22 @@
       }      
       .ui-bar-a {
         background:#a4b836;
-        color : black;
+        color : #ffffff;
       }
       .braincontent {
         padding-right: 20px;
         padding-left: 20px;
       }
+      p {
+        margin-top:0px;
+        margin-bottom:10px;
+      }
+      h2 {
+        color:black;
+        padding-top:5px;
+        margin-bottom:6px;
+      }
+      
     </style>
   </head>
   <body>
@@ -98,14 +122,14 @@
       <!-- header -->
       <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
         <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
-          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
-          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
-          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+          <a href="#nav-panel" class="custom-button" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" class="custom-button" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" class="custom-button" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
         </div>
-        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Infrastruktur och kommunikationer</h1>
         <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
-          <a href="search.html" data-role="button" data-icon="search">Sök</a>
-          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+          <a href="search.html" class="custom-button" data-role="button" data-icon="search">Sök</a>
+<!--          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a> -->
         </div>
       </div>      <!-- /header -->
       
@@ -113,7 +137,7 @@
           <div id="myimagemenu"></div>
           <div data-demo-html="#panel-fixed-page1"></div>
           <div class="braincontent">
-          <a id="kap7_1" name="kap7_1" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Transporter: Landets främsta transportregion</h2> <p>Traditionen av handel och sj&ouml;fart, tillsammans med n&auml;ringslivets tydliga inriktning mot tillverkningsindustri, har satt sin pr&auml;gel p&aring; V&auml;stra G&ouml;taland som rikets fr&auml;msta transportregion. &Auml;ven d&aring; transit&shy;tran&shy;sporterna exkluderas &ndash; vilket inneb&auml;r att den stora m&auml;ngden f&ouml;rbipasserande gods genom bland annat G&ouml;teborgs hamn inte tillskrivs V&auml;stra G&ouml;taland &ndash; &auml;r l&auml;net kraftigt &ouml;verrepresenterat, b&aring;de vad g&auml;ller ankommande s&auml;ndningar fr&aring;n utlandet och avg&aring;ende inrikes- och utrikess&auml;ndningar.</p>
+          <a id="kap7_1" name="kap7_1" style="visibility:hidden;">&nbsp;</a> <h2>Transporter: Landets främsta transportregion</h2> <p>Traditionen av handel och sj&ouml;fart, tillsammans med n&auml;ringslivets tydliga inriktning mot tillverkningsindustri, har satt sin pr&auml;gel p&aring; V&auml;stra G&ouml;taland som rikets fr&auml;msta transportregion. &Auml;ven d&aring; transit&shy;tran&shy;sporterna exkluderas &ndash; vilket inneb&auml;r att den stora m&auml;ngden f&ouml;rbipasserande gods genom bland annat G&ouml;teborgs hamn inte tillskrivs V&auml;stra G&ouml;taland &ndash; &auml;r l&auml;net kraftigt &ouml;verrepresenterat, b&aring;de vad g&auml;ller ankommande s&auml;ndningar fr&aring;n utlandet och avg&aring;ende inrikes- och utrikess&auml;ndningar.</p>
 
 <p>Att det var l&aring;gkonjunktur &aring;r 2009 syns tydligt i statistiken &ouml;ver transportvolymer. I den f&ouml;reg&aring;ende varufl&ouml;desunders&ouml;kningen, som genomf&ouml;rdes 2004/2005, uppgick de avg&aring;ende s&auml;ndningarna fr&aring;n V&auml;stra G&ouml;taland till drygt 55 miljoner ton, vilket ska j&auml;mf&ouml;ras med drygt 33 miljoner ton &aring;r 2009.</p>
 
@@ -122,13 +146,13 @@
 <p><sup>1</sup> <em>De ankommande s&auml;ndningarna till V&auml;stra G&ouml;taland fr&aring;n utlandet m&auml;tt i vikt har inte kunnat publiceras pga. sekretess. Statistiken redovisas d&auml;rf&ouml;r ist&auml;llet per v&auml;gregion d&auml;r V&auml;stra G&ouml;taland, V&auml;rmland och Halland gemensamt bildar region V&auml;st. Stockholms l&auml;n och Sk&aring;ne l&auml;n bildar var sin egen v&auml;gregion. I v&auml;gregion Syd&ouml;st ing&aring;r &Ouml;sterg&ouml;tland, J&ouml;nk&ouml;ping, Kronoberg, Kalmar, Blekinge och Gotland.</em></p>
 <a id="kap7_1_graf1" name="kap7_1_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap7_1_graf1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap7_1_graf2" name="kap7_1_graf2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap7_1_graf2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap7_2" name="kap7_2" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Vägnät: Viktiga vägstråk</h2> <p>Den statligt tillsatta Godstransportdelegationen har identifierat vilka nationella str&aring;k som &auml;r viktigast f&ouml;r svensk industri och handel, genom att de st&aring;r f&ouml;r en &ouml;verv&auml;gande del av landets godstransporter. Bland V&auml;stra G&ouml;talands v&auml;gar ing&aring;r E6, E20, E45 och riksv&auml;g 40. Samtliga av dessa v&auml;gar anknyter G&ouml;teborg och det &auml;r h&auml;r som de h&ouml;gsta totala trafikfl&ouml;dena f&ouml;r b&aring;de gods- och persontransporter i V&auml;stra G&ouml;taland finns.</p>
+<a id="kap7_2" name="kap7_2" style="visibility:hidden;">&nbsp;</a> <h2>Vägnät: Viktiga vägstråk</h2> <p>Den statligt tillsatta Godstransportdelegationen har identifierat vilka nationella str&aring;k som &auml;r viktigast f&ouml;r svensk industri och handel, genom att de st&aring;r f&ouml;r en &ouml;verv&auml;gande del av landets godstransporter. Bland V&auml;stra G&ouml;talands v&auml;gar ing&aring;r E6, E20, E45 och riksv&auml;g 40. Samtliga av dessa v&auml;gar anknyter G&ouml;teborg och det &auml;r h&auml;r som de h&ouml;gsta totala trafikfl&ouml;dena f&ouml;r b&aring;de gods- och persontransporter i V&auml;stra G&ouml;taland finns.</p>
 <a id="kap7_2_karta1" name="kap7_2_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap7_2_karta1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap7_3" name="kap7_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Flygplatser: I luften...</h2> <p>G&ouml;teborg Landvetter Airport, med 4,9 miljoner resen&auml;rer under 2012, &auml;r n&auml;st st&ouml;rst i landet vad g&auml;ller passagerar&shy;trafik. F&ouml;r persontransporter har G&ouml;teborg City Airport uppvisat en av de snabbaste &ouml;kningarna i Sverige, fram till l&aring;gkonjunkturen 2009 och 2010 d&aring; passagerarantalet minskade n&aring;got. Sedan dess har trafiken &aring;ter v&auml;nt upp&aring;t. Trollh&auml;ttan-V&auml;nersborgs flygplats fyller en viktig funk&shy;tion bland annat f&ouml;r snabba restider till och fr&aring;n Stockholm. Mellan &aring;ren 2006 och 2009 tappade flygplatsen hela 43 procent av sina passagerare. Under 2010 avstannade nedg&aring;ngen och under senare &aring;r har trafiken p&aring; Trollh&auml;ttan&ndash;V&auml;nersborgs flygplats &ouml;kat f&ouml;rsiktigt.</p>
+<a id="kap7_3" name="kap7_3" style="visibility:hidden;">&nbsp;</a> <h2>Flygplatser: I luften...</h2> <p>G&ouml;teborg Landvetter Airport, med 4,9 miljoner resen&auml;rer under 2012, &auml;r n&auml;st st&ouml;rst i landet vad g&auml;ller passagerar&shy;trafik. F&ouml;r persontransporter har G&ouml;teborg City Airport uppvisat en av de snabbaste &ouml;kningarna i Sverige, fram till l&aring;gkonjunkturen 2009 och 2010 d&aring; passagerarantalet minskade n&aring;got. Sedan dess har trafiken &aring;ter v&auml;nt upp&aring;t. Trollh&auml;ttan-V&auml;nersborgs flygplats fyller en viktig funk&shy;tion bland annat f&ouml;r snabba restider till och fr&aring;n Stockholm. Mellan &aring;ren 2006 och 2009 tappade flygplatsen hela 43 procent av sina passagerare. Under 2010 avstannade nedg&aring;ngen och under senare &aring;r har trafiken p&aring; Trollh&auml;ttan&ndash;V&auml;nersborgs flygplats &ouml;kat f&ouml;rsiktigt.</p>
 <a id="kap7_3_graf1" name="kap7_3_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap7_4_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap7_4" name="kap7_4" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Hamnar: ...och till havs</h2> <p>Av rikets samlade utrikeshandel g&aring;r ungef&auml;r 90 procent av allt gods, m&auml;tt i ton, &ouml;ver hamnarna. I V&auml;stra G&ouml;taland finns rikets i s&auml;rklass tv&aring; st&ouml;rsta hamnar, G&ouml;teborgs Hamn och Brofjorden Preemraff. Dessutom finns h&auml;r Uddevalla hamn, Wallhamn, V&auml;nerhamn och Lysekils hamn. N&auml;r det g&auml;ller containertrafiken &auml;r G&ouml;teborgs Hamn &auml;n mer dominerande med knappt 922 tusen TEU (20-fotscontainers) &aring;r 2012, vilket motsvarar drygt 60 procent av den svenska containertrafiken. N&auml;st st&ouml;rst vad g&auml;ller containers &auml;r Helsingborgs hamn med drygt 177 tusen TEU samma &aring;r.</p>
+<a id="kap7_4" name="kap7_4" style="visibility:hidden;">&nbsp;</a> <h2>Hamnar: ...och till havs</h2> <p>Av rikets samlade utrikeshandel g&aring;r ungef&auml;r 90 procent av allt gods, m&auml;tt i ton, &ouml;ver hamnarna. I V&auml;stra G&ouml;taland finns rikets i s&auml;rklass tv&aring; st&ouml;rsta hamnar, G&ouml;teborgs Hamn och Brofjorden Preemraff. Dessutom finns h&auml;r Uddevalla hamn, Wallhamn, V&auml;nerhamn och Lysekils hamn. N&auml;r det g&auml;ller containertrafiken &auml;r G&ouml;teborgs Hamn &auml;n mer dominerande med knappt 922 tusen TEU (20-fotscontainers) &aring;r 2012, vilket motsvarar drygt 60 procent av den svenska containertrafiken. N&auml;st st&ouml;rst vad g&auml;ller containers &auml;r Helsingborgs hamn med drygt 177 tusen TEU samma &aring;r.</p>
 <a id="kap7_4_graf1" name="kap7_4_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap7_3_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap7_5" name="kap7_5" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Kollektivtrafik: Allt fler reser kollektivt</h2> <p>&Ouml;kat resande med kollektivtrafik &auml;r en avg&ouml;rande faktor f&ouml;r att skapa en b&auml;ttre n&auml;rmilj&ouml; och minska transporternas klimatp&aring;verkan. Kollektivtrafiken fyller ocks&aring; en nyckelroll n&auml;r det handlar om att skapa god tillg&auml;nglighet f&ouml;r alla samh&auml;llsgrupper.</p>
+<a id="kap7_5" name="kap7_5" style="visibility:hidden;">&nbsp;</a> <h2>Kollektivtrafik: Allt fler reser kollektivt</h2> <p>&Ouml;kat resande med kollektivtrafik &auml;r en avg&ouml;rande faktor f&ouml;r att skapa en b&auml;ttre n&auml;rmilj&ouml; och minska transporternas klimatp&aring;verkan. Kollektivtrafiken fyller ocks&aring; en nyckelroll n&auml;r det handlar om att skapa god tillg&auml;nglighet f&ouml;r alla samh&auml;llsgrupper.</p>
 
 <p>Resandet med kollektivtrafiken har &ouml;kat kraftigt sedan V&auml;sttrafik bildades 1999. Vid slutet av &aring;r 2012 ber&auml;knades det &aring;rliga resandet uppg&aring; till 261 miljoner resor, vilket ska j&auml;mf&ouml;ras med 177 miljoner resor 1999. Detta motsvarar en &ouml;kning med cirka 47 procent. Snabbast &ouml;kar resandet med V&auml;sttrafiks regionala t&aring;gtrafik. &Aring;r 2012 &ouml;ppnades en ny pendelt&aring;glinje mellan Ale och G&ouml;teborg och t&aring;gtrafiken mellan V&auml;nersborg/Trollh&auml;ttan och G&ouml;teborg ut&ouml;kades.</p>
 
@@ -141,7 +165,7 @@
 <p>V&auml;stl&auml;nken &auml;r en f&ouml;ruts&auml;ttning f&ouml;r att forts&auml;tta utveckla t&aring;gtrafiken. Den ing&aring;r i det V&auml;stsvenska paketet och kommer att &ouml;ka kapaciteten i G&ouml;teborg, &ouml;ka tillg&auml;ngligheten till G&ouml;teborg och m&ouml;jligg&ouml;ra genomg&aring;ende t&aring;g som binder samman flera olika linjer. Exempel p&aring; banor med s&auml;rskild stora kapacitetsbrister och som beh&ouml;ver utvecklas vidare &auml;r V&auml;stra Stambanan mellan Alings&aring;s och G&ouml;teborg, V&auml;stkustbanan mellan Kungsbacka och G&ouml;teborg samt den kommande G&ouml;talandsbanan, delen Bor&aring;s och G&ouml;teborg.</p>
 <a id="kap7_5_graf1" name="kap7_5_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap7_5_graf1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap7_5_karta1" name="kap7_5_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap7_5_karta1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap7_6" name="kap7_6" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">IT och bredband: IT-infrastrukturen i Västra Götaland</h2> <p>Genom bredband skapas m&ouml;jligheter att uppr&auml;tth&aring;lla bra kontakter, trots geografiska avst&aring;nd. Bredband i hemmet kan antingen n&aring;s genom tr&aring;dbunden &ndash; fiber eller koppar (xDSL) &ndash; eller tr&aring;dl&ouml;s anslutning, s&aring; kallat mobilt bredband. Oktober 2012 n&aring;ddes hela befolkningen i V&auml;stra G&ouml;taland av n&aring;gon form av bredband. Problemet &auml;r att det p&aring; m&aring;nga platser inte finns tillr&auml;ckligt h&ouml;g kapacitet. I V&auml;stra G&ouml;taland har man, genom strukturerat arbete p&aring; l&auml;ns- och kommunniv&aring;, n&auml;stan kommit ikapp resten av Sverige n&auml;r det g&auml;ller fibertillg&aring;ng som &auml;r avg&ouml;rande f&ouml;r kapacitet i b&aring;de tr&aring;dbundna och tr&aring;dl&ouml;sa accesstekniker till hemmen.</p>
+<a id="kap7_6" name="kap7_6" style="visibility:hidden;">&nbsp;</a> <h2>IT och bredband: IT-infrastrukturen i Västra Götaland</h2> <p>Genom bredband skapas m&ouml;jligheter att uppr&auml;tth&aring;lla bra kontakter, trots geografiska avst&aring;nd. Bredband i hemmet kan antingen n&aring;s genom tr&aring;dbunden &ndash; fiber eller koppar (xDSL) &ndash; eller tr&aring;dl&ouml;s anslutning, s&aring; kallat mobilt bredband. Oktober 2012 n&aring;ddes hela befolkningen i V&auml;stra G&ouml;taland av n&aring;gon form av bredband. Problemet &auml;r att det p&aring; m&aring;nga platser inte finns tillr&auml;ckligt h&ouml;g kapacitet. I V&auml;stra G&ouml;taland har man, genom strukturerat arbete p&aring; l&auml;ns- och kommunniv&aring;, n&auml;stan kommit ikapp resten av Sverige n&auml;r det g&auml;ller fibertillg&aring;ng som &auml;r avg&ouml;rande f&ouml;r kapacitet i b&aring;de tr&aring;dbundna och tr&aring;dl&ouml;sa accesstekniker till hemmen.</p>
 
 <p>Kartorna h&auml;r nedan visar att tillg&aring;ng till bredband varierar, b&aring;de mellan kommuner och speciellt mellan gles- och t&auml;tbebyggda omr&aring;den i V&auml;stra G&ouml;taland. En omfattande fiberf&ouml;reningsverksamhet p&aring;g&aring;r p&aring; m&aring;nga h&aring;ll i l&auml;nets landsbygd, vilket kommer att inneb&auml;ra att skillnaderna inom n&aring;gra &aring;r minskar.</p>
 
@@ -155,24 +179,18 @@
       <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
       <ul data-role="listview" data-theme="a" class="nav-search">
             <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
-        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
-<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
-<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
-<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="#kap7_1"><img src="images/ikon.png" alt="" class="ui-li-icon">Transporter: Landets främsta transportregion</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="#kap7_2"><img src="images/ikon.png" alt="" class="ui-li-icon">Vägnät: Viktiga vägstråk</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="#kap7_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Flygplatser: I luften...</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="#kap7_4"><img src="images/ikon.png" alt="" class="ui-li-icon">Hamnar: ...och till havs</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="#kap7_5"><img src="images/ikon.png" alt="" class="ui-li-icon">Kollektivtrafik: Allt fler reser kollektivt</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="#kap7_6"><img src="images/ikon.png" alt="" class="ui-li-icon">IT och bredband: IT-infrastrukturen i Västra Götal</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+        <li style="background: #ececec; color:red;"><a style="color:#333333;" data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #58723a; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #a4b836; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_tables.html">Tabeller och Diagram</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_maps.html">Kartor</a></li>
 </ul>
       </div><!-- /panel -->
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
@@ -223,5 +241,12 @@
       </div><!-- /content -->
 
     </div><!-- /page -->
+    <script>
+              if ($(window).width() < 550) {
+          $('.custom-button').attr('data-iconpos', 'notext');
+        }
+
+
+    </script>
   </body>
 </html>

@@ -8,42 +8,42 @@
     <link rel="stylesheet" href="themes/faktavgr.min.css" />
     <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/slow_scroll.js"></script> 
     <script type="text/javascript" src="js/brainworks.js"></script> 
     <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
-    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
     <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
         <script>
-      var port_table = '<img class="startmenu" src="images/menu/startmenu_apple_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="8,377,172,540" href="#forord_inledn"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="9,550,171,713" href="#tab_diagram"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="9,723,171,885" href="#kartor"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="183,377,344,540" href="page_kap1.html"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="355,377,518,540" href="page_kap2.html"/>' +
-'<area areaname="area_6" full="area_6" shape="rect" coords="528,377,690,540" href="page_kap3.html"/>' +
-'<area areaname="area_7" full="area_7" shape="rect" coords="182,550,344,713" href="page_kap4.html"/>' +
-'<area areaname="area_8" full="area_8" shape="rect" coords="355,550,517,712" href="page_kap5.html"/>' +
-'<area areaname="area_9" full="area_9" shape="rect" coords="528,550,690,712" href="page_kap6.html"/>' +
-'<area areaname="area_10" full="area_10" shape="rect" coords="182,722,344,885" href="page_kap7.html"/>' +
-'<area areaname="area_11" full="area_11" shape="rect" coords="355,722,517,885" href="page_kap8.html"/>' +
-'<area areaname="area_12" full="area_12" shape="rect" coords="528,723,690,885" href="page_kap9.html"/>' +
+      var port_table = '<img class="startmenup" src="images/menu/startmenu_apple_portrait.jpg" usemap="#startmenup" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenup">' +
+              '<area class="myanchor" shape="rect" coords="8,377,172,540" href="#forord_inledn"/>' +
+'<area class="myanchor" shape="rect" coords="9,550,171,713" href="list_tables.html"/>' +
+'<area class="myanchor" shape="rect" coords="9,723,171,885" href="list_maps.html"/>' +
+'<area class="myanchor" shape="rect" coords="183,377,344,540" href="page_kap1.html"/>' +
+'<area class="myanchor" shape="rect" coords="355,377,518,540" href="page_kap2.html"/>' +
+'<area class="myanchor" shape="rect" coords="528,377,690,540" href="page_kap3.html"/>' +
+'<area class="myanchor" shape="rect" coords="182,550,344,713" href="page_kap4.html"/>' +
+'<area class="myanchor" shape="rect" coords="355,550,517,712" href="page_kap5.html"/>' +
+'<area class="myanchor" shape="rect" coords="528,550,690,712" href="page_kap6.html"/>' +
+'<area class="myanchor" shape="rect" coords="182,722,344,885" href="page_kap7.html"/>' +
+'<area class="myanchor" shape="rect" coords="355,722,517,885" href="page_kap8.html"/>' +
+'<area class="myanchor" shape="rect" coords="528,723,690,885" href="page_kap9.html"/>' +
 
               '</map>';
 
-      var land_table = '<img class="startmenu" src="images/menu/startmenu_apple_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="334,6,450,121" href="#forord_inledn"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="456,6,571,121" href="#tab_diagram"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="578,6,693,122" href="#kartor"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="334,128,449,243" href="page_kap1.html"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="456,128,571,243" href="page_kap2.html"/>' +
-'<area areaname="area_6" full="area_6" shape="rect" coords="578,128,693,243" href="page_kap3.html"/>' +
-'<area areaname="area_7" full="area_7" shape="rect" coords="334,250,449,365" href="page_kap4.html"/>' +
-'<area areaname="area_8" full="area_8" shape="rect" coords="456,250,571,365" href="page_kap5.html"/>' +
-'<area areaname="area_9" full="area_9" shape="rect" coords="578,250,693,365" href="page_kap6.html"/>' +
-'<area areaname="area_10" full="area_10" shape="rect" coords="334,372,449,487" href="page_kap7.html"/>' +
-'<area areaname="area_11" full="area_11" shape="rect" coords="456,372,571,486" href="page_kap8.html"/>' +
-'<area areaname="area_12" full="area_12" shape="rect" coords="578,372,693,487" href="page_kap9.html"/>' +
+      var land_table = '<img class="startmenul" src="images/menu/startmenu_apple_landscape.jpg" usemap="#startmenul" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenul">' +
+              '<area class="myanchor" shape="rect" coords="334,6,450,121" href="#forord_inledn"/>' +
+'<area class="myanchor" shape="rect" coords="456,6,571,121" href="list_tables.html"/>' +
+'<area class="myanchor" shape="rect" coords="578,6,693,122" href="list_maps.html"/>' +
+'<area class="myanchor" shape="rect" coords="334,128,449,243" href="page_kap1.html"/>' +
+'<area class="myanchor" shape="rect" coords="456,128,571,243" href="page_kap2.html"/>' +
+'<area class="myanchor" shape="rect" coords="578,128,693,243" href="page_kap3.html"/>' +
+'<area class="myanchor" shape="rect" coords="334,250,449,365" href="page_kap4.html"/>' +
+'<area class="myanchor" shape="rect" coords="456,250,571,365" href="page_kap5.html"/>' +
+'<area class="myanchor" shape="rect" coords="578,250,693,365" href="page_kap6.html"/>' +
+'<area class="myanchor" shape="rect" coords="334,372,449,487" href="page_kap7.html"/>' +
+'<area class="myanchor" shape="rect" coords="456,372,571,486" href="page_kap8.html"/>' +
+'<area class="myanchor" shape="rect" coords="578,372,693,487" href="page_kap9.html"/>' +
 
               '</map>';
       var startorientation;
@@ -56,34 +56,48 @@
       }
 
       $(document).ready(function() {
-        
-        if (startorientation == 'portrait') {
-          $("#myimagemenu").html(port_table);
-        }
-        else {
-          $("#myimagemenu").html(land_table);
-        }
-        $('.startmenu').rwdImageMaps();
-        
         $(window).on("orientationchange", function(event) {
-//          alert('orientationchange');
+          //alert('orientationchange');
           if (event.orientation == 'landscape') {
             $("#myimagemenu").html(land_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenul').rwdImageMaps();
           }
           else {
             $("#myimagemenu").html(port_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenup').rwdImageMaps();
           }
         });
-        
+       
         // You can also manually force this event to fire.
-        //$(window).orientationchange();
+        $(window).orientationchange();
 //        $(window).bind('resize', onWindowResize);
         $.mobile.fixedToolbars.setTouchToggleEnabled(false);
         $.mobile.ajaxEnabled = false;
       });
 
+    $(document).load(function() {
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+          $('.startmenup').rwdImageMaps();
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+          $('.startmenul').rwdImageMaps();
+        }
+   
+      });
+      
+   $(document).bind('pageinit', function() {
+         var urlHash = window.location.href.split("#")[1];
+           if (urlHash) {
+            setTimeout(function()
+            { 
+            window.location.assign('#' + urlHash);
+            }, 2000);
+          }
+        }
+     );
+     
     </script>
 
     <style>
@@ -97,12 +111,22 @@
       }      
       .ui-bar-a {
         background:#ececec;
-        color : black;
+        color : #333333;
       }
       .braincontent {
         padding-right: 20px;
         padding-left: 20px;
       }
+      p {
+        margin-top:0px;
+        margin-bottom:10px;
+      }
+      h2 {
+        color:black;
+        padding-top:5px;
+        margin-bottom:6px;
+      }
+      
     </style>
   </head>
   <body>
@@ -110,14 +134,14 @@
       <!-- header -->
       <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
         <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
-          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
-          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
-          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+          <a href="#nav-panel" class="custom-button" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" class="custom-button" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" class="custom-button" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
         </div>
-        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Startsida</h1>
         <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
-          <a href="search.html" data-role="button" data-icon="search">Sök</a>
-          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+          <a href="search.html" class="custom-button" data-role="button" data-icon="search">Sök</a>
+<!--          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a> -->
         </div>
       </div>      <!-- /header -->
       
@@ -125,13 +149,13 @@
           <div id="myimagemenu"></div>
           <div data-demo-html="#panel-fixed-page1"></div>
           <div class="braincontent">
-          <a id="forord_inledn" name="forord_inledn" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Förord och inledning</h2> <p>I V&auml;stra G&ouml;talandsregionens uppdrag ing&aring;r ett ansvar f&ouml;r regional utveckling. Vision V&auml;stra G&ouml;taland &auml;r det gemensamma ramverket i arbetet att st&auml;rka V&auml;stra G&ouml;taland som en konkurrenskraftig region, nationellt och internationellt. Grunden i visionen &auml;r &rdquo;Det goda livet&rdquo;.</p>
+          <a id="forord_inledn" name="forord_inledn" style="visibility:hidden;">&nbsp;</a> <h2>Förord och inledning</h2> <p>I V&auml;stra G&ouml;talandsregionens uppdrag ing&aring;r ett ansvar f&ouml;r regional utveckling. Vision V&auml;stra G&ouml;taland &auml;r det gemensamma ramverket i arbetet att st&auml;rka V&auml;stra G&ouml;taland som en konkurrenskraftig region, nationellt och internationellt. Grunden i visionen &auml;r &rdquo;Det goda livet&rdquo;.</p>
 
 <p>Det st&aring;r f&ouml;r god h&auml;lsa, arbete och utbildning, trygghet, delaktighet i sam&shy;h&auml;llslivet, en god milj&ouml; d&auml;r vi v&auml;rnar de f&ouml;rnybara systemen, ett rikt kulturliv, samt att vi m&ouml;ter behoven hos barn och ungdomar och arbetar f&ouml;r en uth&aring;llig tillv&auml;xt.</p>
 
 <p>Det goda livet f&ouml;ruts&auml;tter en h&aring;llbar utveckling som beaktar de tre dimensionerna &ndash; den ekonomiska, den sociala och den milj&ouml;m&auml;ssiga dimensionen. Fem fokusomr&aring;den prioriteras i det arbetet: n&auml;ringsliv, kompetens, infrastruktur, och kommunikationer, kultur och h&auml;lsa. De olika dimensionerna och fokusomr&aring;dena &auml;r sinsemellan beroende och f&ouml;rst&auml;rker varandra. I vissa fall kan den redovisade statistiken h&ouml;ra hemma i mer &auml;n ett omr&aring;de.</p>
 
-<p>Statistiken i Fakta V&auml;stra G&ouml;taland &auml;r ett komplement till de djupare analyser som regelbundet g&ouml;rs f&ouml;r att f&ouml;lja utvecklingen. God kunskap om utvecklingen &auml;r en f&ouml;ruts&auml;ttning f&ouml;r att kunna bedriva ett utvecklingsarbete som p&aring; b&auml;sta s&auml;tt bidrar till visionen om det goda livet.</p>
+<p><img alt="" src="images/kap/forord.jpg" style="float:right; height:311px; margin:10px; width:323px" />Statistiken i Fakta V&auml;stra G&ouml;taland &auml;r ett komplement till de djupare analyser som regelbundet g&ouml;rs f&ouml;r att f&ouml;lja utvecklingen. God kunskap om utvecklingen &auml;r en f&ouml;ruts&auml;ttning f&ouml;r att kunna bedriva ett utvecklingsarbete som p&aring; b&auml;sta s&auml;tt bidrar till visionen om det goda livet.</p>
 
 <p>V&aring;r f&ouml;rhoppning &auml;r att Fakta V&auml;stra G&ouml;taland ska bidra till &ouml;kade kunskaper om, och ett &ouml;kat intresse f&ouml;r V&auml;stra G&ouml;taland.</p>
 
@@ -146,19 +170,18 @@ Regionutvecklingsdirekt&ouml;r</p>
       <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
       <ul data-role="listview" data-theme="a" class="nav-search">
             <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
-        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
-<li style="background: #ececec;"><a data-ajax="false" href="#forord_inledn"><img src="images/ikon.png" alt="" class="ui-li-icon">Förord och inledning</a></li>
-<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
-<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
-<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+        <li style="background: #ececec; color:red;"><a style="color:#333333;" data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #58723a; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #a4b836; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_tables.html">Tabeller och Diagram</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_maps.html">Kartor</a></li>
 </ul>
       </div><!-- /panel -->
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
@@ -209,5 +232,12 @@ Regionutvecklingsdirekt&ouml;r</p>
       </div><!-- /content -->
 
     </div><!-- /page -->
+    <script>
+              if ($(window).width() < 550) {
+          $('.custom-button').attr('data-iconpos', 'notext');
+        }
+
+
+    </script>
   </body>
 </html>

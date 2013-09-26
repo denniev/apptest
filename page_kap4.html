@@ -8,28 +8,28 @@
     <link rel="stylesheet" href="themes/faktavgr.min.css" />
     <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/slow_scroll.js"></script> 
     <script type="text/javascript" src="js/brainworks.js"></script> 
     <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
-    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
     <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
         <script>
-      var port_table = '<img class="startmenu" src="images/menu/kap4_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="39,132,266,166" href="#kap4_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="39,182,281,219" href="#kap4_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="38,230,175,266" href="#kap4_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="40,281,263,317" href="#kap4_4"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="40,329,493,368" href="#kap4_5"/>' +
+      var port_table = '<img class="startmenup" src="images/menu/kap4_portrait.jpg" usemap="#startmenup" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenup">' +
+              '<area class="myanchor" shape="rect" coords="39,132,266,166" href="#kap4_1"/>' +
+'<area class="myanchor" shape="rect" coords="39,182,281,219" href="#kap4_2"/>' +
+'<area class="myanchor" shape="rect" coords="38,230,175,266" href="#kap4_3"/>' +
+'<area class="myanchor" shape="rect" coords="40,281,263,317" href="#kap4_4"/>' +
+'<area class="myanchor" shape="rect" coords="40,329,493,368" href="#kap4_5"/>' +
 
               '</map>';
 
-      var land_table = '<img class="startmenu" src="images/menu/kap4_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="34,97,204,126" href="#kap4_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="35,137,216,165" href="#kap4_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="34,175,137,201" href="#kap4_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="35,212,201,240" href="#kap4_4"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="35,250,375,277" href="#kap4_5"/>' +
+      var land_table = '<img class="startmenul" src="images/menu/kap4_landscape.jpg" usemap="#startmenul" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenul">' +
+              '<area class="myanchor" shape="rect" coords="34,97,204,126" href="#kap4_1"/>' +
+'<area class="myanchor" shape="rect" coords="35,137,216,165" href="#kap4_2"/>' +
+'<area class="myanchor" shape="rect" coords="34,175,137,201" href="#kap4_3"/>' +
+'<area class="myanchor" shape="rect" coords="35,212,201,240" href="#kap4_4"/>' +
+'<area class="myanchor" shape="rect" coords="35,250,375,277" href="#kap4_5"/>' +
 
               '</map>';
       var startorientation;
@@ -42,34 +42,48 @@
       }
 
       $(document).ready(function() {
-        
-        if (startorientation == 'portrait') {
-          $("#myimagemenu").html(port_table);
-        }
-        else {
-          $("#myimagemenu").html(land_table);
-        }
-        $('.startmenu').rwdImageMaps();
-        
         $(window).on("orientationchange", function(event) {
-//          alert('orientationchange');
+          //alert('orientationchange');
           if (event.orientation == 'landscape') {
             $("#myimagemenu").html(land_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenul').rwdImageMaps();
           }
           else {
             $("#myimagemenu").html(port_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenup').rwdImageMaps();
           }
         });
-        
+       
         // You can also manually force this event to fire.
-        //$(window).orientationchange();
+        $(window).orientationchange();
 //        $(window).bind('resize', onWindowResize);
         $.mobile.fixedToolbars.setTouchToggleEnabled(false);
         $.mobile.ajaxEnabled = false;
       });
 
+    $(document).load(function() {
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+          $('.startmenup').rwdImageMaps();
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+          $('.startmenul').rwdImageMaps();
+        }
+   
+      });
+      
+   $(document).bind('pageinit', function() {
+         var urlHash = window.location.href.split("#")[1];
+           if (urlHash) {
+            setTimeout(function()
+            { 
+            window.location.assign('#' + urlHash);
+            }, 2000);
+          }
+        }
+     );
+     
     </script>
 
     <style>
@@ -83,12 +97,22 @@
       }      
       .ui-bar-a {
         background:#58723a;
-        color : black;
+        color : #ffffff;
       }
       .braincontent {
         padding-right: 20px;
         padding-left: 20px;
       }
+      p {
+        margin-top:0px;
+        margin-bottom:10px;
+      }
+      h2 {
+        color:black;
+        padding-top:5px;
+        margin-bottom:6px;
+      }
+      
     </style>
   </head>
   <body>
@@ -96,14 +120,14 @@
       <!-- header -->
       <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
         <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
-          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
-          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
-          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+          <a href="#nav-panel" class="custom-button" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" class="custom-button" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" class="custom-button" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
         </div>
-        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Miljödimensionen</h1>
         <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
-          <a href="search.html" data-role="button" data-icon="search">Sök</a>
-          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+          <a href="search.html" class="custom-button" data-role="button" data-icon="search">Sök</a>
+<!--          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a> -->
         </div>
       </div>      <!-- /header -->
       
@@ -111,19 +135,19 @@
           <div id="myimagemenu"></div>
           <div data-demo-html="#panel-fixed-page1"></div>
           <div class="braincontent">
-          <a id="kap4_1" name="kap4_1" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Koldioxidutsläpp: Utsläppen fortfarande stora</h2> <p>Klimatf&ouml;r&auml;ndringar &auml;r en av de st&ouml;rsta utmaningarna vi st&aring;r inf&ouml;r. I V&auml;stra G&ouml;taland har utsl&auml;ppen av v&auml;xthusgaser minskat med cirka tre procent mellan &aring;ren 1990 och 2010<sup>1</sup>. Utsl&auml;ppen i Sverige har minskat med 16 procent under samma period. V&auml;stra G&ouml;talands totala utsl&auml;pp var 12,4 miljoner ton &aring;r 2010, vilket &auml;r en &ouml;kning j&auml;mf&ouml;rt med 2009. Det &auml;r fr&auml;mst inom energif&ouml;rs&ouml;rjning och inom industrin som &ouml;kningen skett, vilket kan f&ouml;rklaras av att &aring;ret 2010 dels var f&ouml;rh&aring;llandevis kyligt, dels var ett &aring;r av ekonomisk &aring;terh&auml;mtning. Utsl&auml;ppen fr&aring;n transportsektorn &ouml;kade n&aring;got under 2010 j&auml;mf&ouml;rt med f&ouml;reg&aring;ende &aring;r. &Ouml;kningen beror p&aring; &ouml;kad tung lastbilstrafik under &aring;ret. D&auml;remot forts&auml;tter utsl&auml;ppen fr&aring;n personbils&shy;trafiken att minska n&aring;got j&auml;mf&ouml;rt med f&ouml;reg&aring;ende &aring;r.</p>
+          <a id="kap4_1" name="kap4_1" style="visibility:hidden;">&nbsp;</a> <h2>Koldioxidutsläpp: Utsläppen fortfarande stora</h2> <p>Klimatf&ouml;r&auml;ndringar &auml;r en av de st&ouml;rsta utmaningarna vi st&aring;r inf&ouml;r. I V&auml;stra G&ouml;taland har utsl&auml;ppen av v&auml;xthusgaser minskat med cirka tre procent mellan &aring;ren 1990 och 2010<sup>1</sup>. Utsl&auml;ppen i Sverige har minskat med 16 procent under samma period. V&auml;stra G&ouml;talands totala utsl&auml;pp var 12,4 miljoner ton &aring;r 2010, vilket &auml;r en &ouml;kning j&auml;mf&ouml;rt med 2009. Det &auml;r fr&auml;mst inom energif&ouml;rs&ouml;rjning och inom industrin som &ouml;kningen skett, vilket kan f&ouml;rklaras av att &aring;ret 2010 dels var f&ouml;rh&aring;llandevis kyligt, dels var ett &aring;r av ekonomisk &aring;terh&auml;mtning. Utsl&auml;ppen fr&aring;n transportsektorn &ouml;kade n&aring;got under 2010 j&auml;mf&ouml;rt med f&ouml;reg&aring;ende &aring;r. &Ouml;kningen beror p&aring; &ouml;kad tung lastbilstrafik under &aring;ret. D&auml;remot forts&auml;tter utsl&auml;ppen fr&aring;n personbils&shy;trafiken att minska n&aring;got j&auml;mf&ouml;rt med f&ouml;reg&aring;ende &aring;r.</p>
 
 <p><sup>1</sup> <em>Utsl&auml;pp fr&aring;n internationell sj&ouml;- och flygtrafik &auml;r inte medr&auml;knade i l&auml;nets utsl&auml;ppsuppgifter. Nationellt har dessa utsl&auml;pp &ouml;kat kraftigt sedan 1990 och uppgick 2009 till 9,4 miljoner ton.</em></p>
 <a id="kap4_1_graf1" name="kap4_1_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap4_1_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap4_2" name="kap4_2" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Energianvändning</h2> <p>Den slutliga energianv&auml;ndningen<sup>2</sup> per inv&aring;nare i V&auml;stra G&ouml;talands l&auml;n var &aring;r 2009 i samma storleksordning som genomsnittet f&ouml;r landet. Den tidigare &ouml;kningen har avstannat de senaste &aring;ren som redovisas i diagrammet nedan. 2009 f&ouml;rbrukades &aring;rligen drygt 40 000 kWh per inv&aring;nare och hush&aring;llen stod f&ouml;r cirka 15 procent av den totala anv&auml;ndningen.</p>
+<a id="kap4_2" name="kap4_2" style="visibility:hidden;">&nbsp;</a> <h2>Energianvändning</h2> <p>Den slutliga energianv&auml;ndningen<sup>2</sup> per inv&aring;nare i V&auml;stra G&ouml;talands l&auml;n var &aring;r 2009 i samma storleksordning som genomsnittet f&ouml;r landet. Den tidigare &ouml;kningen har avstannat de senaste &aring;ren som redovisas i diagrammet nedan. 2009 f&ouml;rbrukades &aring;rligen drygt 40 000 kWh per inv&aring;nare och hush&aring;llen stod f&ouml;r cirka 15 procent av den totala anv&auml;ndningen.</p>
 
 <p><sup>2</sup> <em>Med slutlig energianv&auml;ndning menas att de s&aring; kallade omvandlings- och distributionsf&ouml;rluster som sker p&aring; v&auml;gen till anv&auml;ndaren inte &auml;r medr&auml;knade i de siffror som presenteras.</em></p>
 <a id="kap4_2_graf1" name="kap4_2_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap4_1_graf2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap4_3" name="kap4_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Vindkraft: Vindkraften står stark i Västra Götaland</h2> <p>Utbyggnaden av f&ouml;rnybar energiproduktion &auml;r priori&shy;terad i V&auml;stra G&ouml;taland. Bland annat &auml;r vindkraften under kraftig utbyggnad. Under de tv&aring; senaste &aring;ren har drygt 100 nya vindkraftverk byggts i V&auml;stra G&ouml;taland och produktionen av vindkraft har n&auml;stan f&ouml;rdubblats fr&aring;n &aring;r 2010 till &aring;r 2012. Av alla l&auml;n har V&auml;stra G&ouml;raland flest vindkraftsverk.</p>
+<a id="kap4_3" name="kap4_3" style="visibility:hidden;">&nbsp;</a> <h2>Vindkraft: Vindkraften står stark i Västra Götaland</h2> <p>Utbyggnaden av f&ouml;rnybar energiproduktion &auml;r priori&shy;terad i V&auml;stra G&ouml;taland. Bland annat &auml;r vindkraften under kraftig utbyggnad. Under de tv&aring; senaste &aring;ren har drygt 100 nya vindkraftverk byggts i V&auml;stra G&ouml;taland och produktionen av vindkraft har n&auml;stan f&ouml;rdubblats fr&aring;n &aring;r 2010 till &aring;r 2012. Av alla l&auml;n har V&auml;stra G&ouml;raland flest vindkraftsverk.</p>
 <a id="kap4_3_graf1" name="kap4_3_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap4_2_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap4_4" name="kap4_4" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Ekologisk odling</h2> <p>V&auml;stra G&ouml;taland &auml;r ett l&auml;n med stor jordbruksareal. Drygt 20 procent av arealen odlas ekologiskt, en andel som har legat relativt konstant de senaste &aring;ren. En &ouml;kande andel av den ekologiska arealen &auml;r eko-certifierad. Viktiga delar i det ekologiska jord&shy;bruket &auml;r en h&ouml;g sj&auml;lvf&ouml;rs&ouml;rjningsgrad och att kemiska bek&auml;mpningsmedel och konstg&ouml;dsel ers&auml;tts med andra &aring;tg&auml;rder. Ett viktigt syfte &auml;r att f&aring; en st&ouml;rre biologisk m&aring;ngfald p&aring; &aring;kermarken och i dess n&auml;rmaste omgivning. Genom en &ouml;kad andel ekologisk odling f&ouml;rb&auml;ttras m&ouml;jligheterna f&ouml;r inv&aring;narna att k&ouml;pa n&auml;rproducerade livsmedel som ocks&aring; &auml;r ekologiska.</p>
+<a id="kap4_4" name="kap4_4" style="visibility:hidden;">&nbsp;</a> <h2>Ekologisk odling</h2> <p>V&auml;stra G&ouml;taland &auml;r ett l&auml;n med stor jordbruksareal. Drygt 20 procent av arealen odlas ekologiskt, en andel som har legat relativt konstant de senaste &aring;ren. En &ouml;kande andel av den ekologiska arealen &auml;r eko-certifierad. Viktiga delar i det ekologiska jord&shy;bruket &auml;r en h&ouml;g sj&auml;lvf&ouml;rs&ouml;rjningsgrad och att kemiska bek&auml;mpningsmedel och konstg&ouml;dsel ers&auml;tts med andra &aring;tg&auml;rder. Ett viktigt syfte &auml;r att f&aring; en st&ouml;rre biologisk m&aring;ngfald p&aring; &aring;kermarken och i dess n&auml;rmaste omgivning. Genom en &ouml;kad andel ekologisk odling f&ouml;rb&auml;ttras m&ouml;jligheterna f&ouml;r inv&aring;narna att k&ouml;pa n&auml;rproducerade livsmedel som ocks&aring; &auml;r ekologiska.</p>
 <a id="kap4_4_graf1" name="kap4_4_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap4_3_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap4_5" name="kap4_5" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Miljöbilar och alternativa drivmedel: Fordonsgasen ökar kraftigt</h2> <p>Utbyggnaden av infrastrukturen f&ouml;r alternativa driv&shy;medel, br&auml;nslesn&aring;lare fordon samt ett mer sparsamt k&ouml;rs&auml;tt, &auml;r andra viktiga steg mot l&auml;gre koldioxid&shy;utsl&auml;pp. B&aring;de antalet och andelen milj&ouml;fordon har &ouml;kat snabbt under senare &aring;r. &Aring;r 2012 var 47 procent av alla nyregistrerade bilar i V&auml;stra G&ouml;taland milj&ouml;&shy;bilar. Andelen milj&ouml;bilar i trafik var betydligt l&auml;gre.</p>
+<a id="kap4_5" name="kap4_5" style="visibility:hidden;">&nbsp;</a> <h2>Miljöbilar och alternativa drivmedel: Fordonsgasen ökar kraftigt</h2> <p>Utbyggnaden av infrastrukturen f&ouml;r alternativa driv&shy;medel, br&auml;nslesn&aring;lare fordon samt ett mer sparsamt k&ouml;rs&auml;tt, &auml;r andra viktiga steg mot l&auml;gre koldioxid&shy;utsl&auml;pp. B&aring;de antalet och andelen milj&ouml;fordon har &ouml;kat snabbt under senare &aring;r. &Aring;r 2012 var 47 procent av alla nyregistrerade bilar i V&auml;stra G&ouml;taland milj&ouml;&shy;bilar. Andelen milj&ouml;bilar i trafik var betydligt l&auml;gre.</p>
 
 <p>Cirka nio procent av alla nyregistrerade bilar i V&auml;stra G&ouml;taland var gasbilar 2012. Det kan j&auml;mf&ouml;ras med snittet f&ouml;r riket som var knappt 2 procent. Fordonsgas &auml;r metan i form av antingen fossil naturgas eller biogas som anv&auml;nds som drivmedel. Biogas &shy; &auml;r f&ouml;rnybart och &auml;r idag det mest milj&ouml;anpassade fordonsbr&auml;nslet med minimal klimatp&aring;verkan. Antalet gasfordon har mer &auml;n tiodubblats det senaste decenniet. Parallellt har &auml;ven utbyggnaden av antalet tankstationer &ouml;kat.&nbsp;&nbsp;</p>
 
@@ -138,23 +162,18 @@
       <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
       <ul data-role="listview" data-theme="a" class="nav-search">
             <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
-        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
-<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
-<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="#kap4_1"><img src="images/ikon.png" alt="" class="ui-li-icon">Koldioxidutsläpp: Utsläppen fortfarande stora</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="#kap4_2"><img src="images/ikon.png" alt="" class="ui-li-icon">Energianvändning</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="#kap4_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Vindkraft: Vindkraften står stark i Västra Götalan</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="#kap4_4"><img src="images/ikon.png" alt="" class="ui-li-icon">Ekologisk odling</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="#kap4_5"><img src="images/ikon.png" alt="" class="ui-li-icon">Miljöbilar och alternativa drivmedel: Fordonsgasen</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
-<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+        <li style="background: #ececec; color:red;"><a style="color:#333333;" data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #58723a; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #a4b836; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_tables.html">Tabeller och Diagram</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_maps.html">Kartor</a></li>
 </ul>
       </div><!-- /panel -->
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
@@ -205,5 +224,12 @@
       </div><!-- /content -->
 
     </div><!-- /page -->
+    <script>
+              if ($(window).width() < 550) {
+          $('.custom-button').attr('data-iconpos', 'notext');
+        }
+
+
+    </script>
   </body>
 </html>

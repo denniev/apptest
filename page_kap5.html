@@ -8,34 +8,34 @@
     <link rel="stylesheet" href="themes/faktavgr.min.css" />
     <link rel="stylesheet" href="js/jquery.mobile.structure-1.3.2.min.css" /> 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script> 
+    <script type="text/javascript" src="js/slow_scroll.js"></script> 
     <script type="text/javascript" src="js/brainworks.js"></script> 
     <script type="text/javascript" src="js/jquery.mobile-1.3.2.min.js"></script> 
-    <script type="text/javascript" src="js/jquery.mobile.custom.min.js"></script> 
     <script type="text/javascript" src="js/imagemap/imagemap.js"></script>
         <script>
-      var port_table = '<img class="startmenu" src="images/menu/kap5_portrait.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="39,131,298,167" href="#kap5_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="39,181,375,216" href="#kap5_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="40,231,220,267" href="#kap5_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="38,283,226,319" href="#kap5_4"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="39,331,204,369" href="#kap5_5"/>' +
-'<area areaname="area_6" full="area_6" shape="rect" coords="36,381,146,417" href="#kap5_6"/>' +
-'<area areaname="area_7" full="area_7" shape="rect" coords="38,432,221,467" href="#kap5_7"/>' +
-'<area areaname="area_8" full="area_8" shape="rect" coords="40,481,243,554" href="#kap5_8"/>' +
+      var port_table = '<img class="startmenup" src="images/menu/kap5_portrait.jpg" usemap="#startmenup" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenup">' +
+              '<area class="myanchor" shape="rect" coords="39,131,298,167" href="#kap5_1"/>' +
+'<area class="myanchor" shape="rect" coords="39,181,375,216" href="#kap5_2"/>' +
+'<area class="myanchor" shape="rect" coords="40,231,220,267" href="#kap5_3"/>' +
+'<area class="myanchor" shape="rect" coords="38,283,226,319" href="#kap5_4"/>' +
+'<area class="myanchor" shape="rect" coords="39,331,204,369" href="#kap5_5"/>' +
+'<area class="myanchor" shape="rect" coords="36,381,146,417" href="#kap5_6"/>' +
+'<area class="myanchor" shape="rect" coords="38,432,221,467" href="#kap5_7"/>' +
+'<area class="myanchor" shape="rect" coords="40,481,243,554" href="#kap5_8"/>' +
 
               '</map>';
 
-      var land_table = '<img class="startmenu" src="images/menu/kap5_landscape.jpg" usemap="#startmenu" style="max-width:100%;width:100%;" />' +
-              '<map name="startmenu">' +
-              '<area areaname="area_1" full="area_1" shape="rect" coords="34,98,229,128" href="#kap5_1"/>' +
-'<area areaname="area_2" full="area_2" shape="rect" coords="34,137,285,162" href="#kap5_2"/>' +
-'<area areaname="area_3" full="area_3" shape="rect" coords="34,173,170,203" href="#kap5_3"/>' +
-'<area areaname="area_4" full="area_4" shape="rect" coords="34,213,174,241" href="#kap5_4"/>' +
-'<area areaname="area_5" full="area_5" shape="rect" coords="35,249,157,278" href="#kap5_5"/>' +
-'<area areaname="area_6" full="area_6" shape="rect" coords="33,288,115,314" href="#kap5_6"/>' +
-'<area areaname="area_7" full="area_7" shape="rect" coords="35,325,171,350" href="#kap5_7"/>' +
-'<area areaname="area_8" full="area_8" shape="rect" coords="34,362,286,391" href="#kap5_8"/>' +
+      var land_table = '<img class="startmenul" src="images/menu/kap5_landscape.jpg" usemap="#startmenul" style="max-width:100%;width:100%;" />' +
+              '<map name="startmenul">' +
+              '<area class="myanchor" shape="rect" coords="34,98,229,128" href="#kap5_1"/>' +
+'<area class="myanchor" shape="rect" coords="34,137,285,162" href="#kap5_2"/>' +
+'<area class="myanchor" shape="rect" coords="34,173,170,203" href="#kap5_3"/>' +
+'<area class="myanchor" shape="rect" coords="34,213,174,241" href="#kap5_4"/>' +
+'<area class="myanchor" shape="rect" coords="35,249,157,278" href="#kap5_5"/>' +
+'<area class="myanchor" shape="rect" coords="33,288,115,314" href="#kap5_6"/>' +
+'<area class="myanchor" shape="rect" coords="35,325,171,350" href="#kap5_7"/>' +
+'<area class="myanchor" shape="rect" coords="34,362,286,391" href="#kap5_8"/>' +
 
               '</map>';
       var startorientation;
@@ -48,34 +48,48 @@
       }
 
       $(document).ready(function() {
-        
-        if (startorientation == 'portrait') {
-          $("#myimagemenu").html(port_table);
-        }
-        else {
-          $("#myimagemenu").html(land_table);
-        }
-        $('.startmenu').rwdImageMaps();
-        
         $(window).on("orientationchange", function(event) {
-//          alert('orientationchange');
+          //alert('orientationchange');
           if (event.orientation == 'landscape') {
             $("#myimagemenu").html(land_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenul').rwdImageMaps();
           }
           else {
             $("#myimagemenu").html(port_table);
-            $('.startmenu').rwdImageMaps();
+            $('.startmenup').rwdImageMaps();
           }
         });
-        
+       
         // You can also manually force this event to fire.
-        //$(window).orientationchange();
+        $(window).orientationchange();
 //        $(window).bind('resize', onWindowResize);
         $.mobile.fixedToolbars.setTouchToggleEnabled(false);
         $.mobile.ajaxEnabled = false;
       });
 
+    $(document).load(function() {
+        if (startorientation == 'portrait') {
+          $("#myimagemenu").html(port_table);
+          $('.startmenup').rwdImageMaps();
+        }
+        else {
+          $("#myimagemenu").html(land_table);
+          $('.startmenul').rwdImageMaps();
+        }
+   
+      });
+      
+   $(document).bind('pageinit', function() {
+         var urlHash = window.location.href.split("#")[1];
+           if (urlHash) {
+            setTimeout(function()
+            { 
+            window.location.assign('#' + urlHash);
+            }, 2000);
+          }
+        }
+     );
+     
     </script>
 
     <style>
@@ -89,12 +103,22 @@
       }      
       .ui-bar-a {
         background:#c1b176;
-        color : black;
+        color : #ffffff;
       }
       .braincontent {
         padding-right: 20px;
         padding-left: 20px;
       }
+      p {
+        margin-top:0px;
+        margin-bottom:10px;
+      }
+      h2 {
+        color:black;
+        padding-top:5px;
+        margin-bottom:6px;
+      }
+      
     </style>
   </head>
   <body>
@@ -102,14 +126,14 @@
       <!-- header -->
       <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
         <div class="ui-btn-left" data-role="controlgroup" data-type="horizontal">
-          <a href="#nav-panel" data-role="button" data-icon="bars">Meny</a>
-          <a href="index.html" data-ajax="false" data-role="button" data-icon="home">Start</a>
-          <a href="#panel-fixed-page1" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
+          <a href="#nav-panel" class="custom-button" data-role="button" data-icon="bars">Meny</a>
+          <a href="index.html" class="custom-button" data-ajax="false" data-role="button" data-icon="home">Start</a>
+          <a href="#panel-fixed-page1" class="custom-button" data-ajax="false" data-role="button" data-icon="arrow-u">Topp</a>
         </div>
-        <h1 class="ui-title" data-tap-toggle="false" role="heading">Fakta Västra Götaland</h1>
+        <h1 class="ui-title" data-tap-toggle="false" role="heading">Näringsliv</h1>
         <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
-          <a href="search.html" data-role="button" data-icon="search">Sök</a>
-          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a>
+          <a href="search.html" class="custom-button" data-role="button" data-icon="search">Sök</a>
+<!--          <a href="#add-form" data-role="button" data-icon="star">Favoriter</a> -->
         </div>
       </div>      <!-- /header -->
       
@@ -117,7 +141,7 @@
           <div id="myimagemenu"></div>
           <div data-demo-html="#panel-fixed-page1"></div>
           <div class="braincontent">
-          <a id="kap5_1" name="kap5_1" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Näringslivsstruktur: Ett mångsidigt näringsliv</h2> <p>Det finns cirka 190 000 arbetsst&auml;llen i V&auml;stra G&ouml;taland, inom b&aring;de traditionella och i nyare branscher. N&auml;rmare 70 procent av alla arbetsst&auml;llen utg&ouml;rs av f&ouml;retag utan anst&auml;llda. De stora och medelstora f&ouml;retagen (50 eller fler anst&auml;llda) svarar f&ouml;r drygt h&auml;lften av alla anst&auml;llda. De allra st&ouml;rsta arbetsplatserna finns inom offentlig verksamhet (v&aring;rd, omsorg, utbildning) och fordons&shy;industri.</p>
+          <a id="kap5_1" name="kap5_1" style="visibility:hidden;">&nbsp;</a> <h2>Näringslivsstruktur: Ett mångsidigt näringsliv</h2> <p>Det finns cirka 190 000 arbetsst&auml;llen i V&auml;stra G&ouml;taland, inom b&aring;de traditionella och i nyare branscher. N&auml;rmare 70 procent av alla arbetsst&auml;llen utg&ouml;rs av f&ouml;retag utan anst&auml;llda. De stora och medelstora f&ouml;retagen (50 eller fler anst&auml;llda) svarar f&ouml;r drygt h&auml;lften av alla anst&auml;llda. De allra st&ouml;rsta arbetsplatserna finns inom offentlig verksamhet (v&aring;rd, omsorg, utbildning) och fordons&shy;industri.</p>
 
 <p>N&auml;ringslivsstrukturen i V&auml;stra G&ouml;taland &ouml;verens&shy;st&auml;mmer ganska v&auml;l med den i riket men det finns n&aring;gra karakt&auml;ristiska drag. &Auml;ven om n&auml;ringsgrenarna inom tj&auml;nstesektorn syssels&auml;tter flest m&auml;nniskor, &auml;r tillverkningsindustrin mycket viktig och n&aring;got st&ouml;rre i V&auml;stra G&ouml;taland &auml;n genomsnittet i riket. S&aring; &auml;r det framf&ouml;rallt i Fyrbodal och Skaraborg.</p>
 
@@ -127,33 +151,33 @@
 <a id="kap5_1_tabell1" name="kap5_1_tabell1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_1_tabell1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap5_1_tabell2" name="kap5_1_tabell2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_1_tabell2.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap5_1_graf1" name="kap5_1_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_1_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap5_2" name="kap5_2" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Internationella kontakter</h2> <p>&Ouml;ppenhet och internationalisering &auml;r karak&shy;teristiska drag inom V&auml;stra G&ouml;talands n&auml;ringsliv. En betydande del av Sveriges utrikeshandel samt stora delar av den norska och finl&auml;ndska trafiken med omv&auml;rlden passerar genom G&ouml;teborgs hamn eller n&aring;gon av de &ouml;vriga v&auml;stkusthamnarna. N&auml;rings&shy;livet &auml;r till stor del inriktad p&aring; export och de v&auml;stsvenska f&ouml;retagen har omfattande internationella kontakter. &Aring;r 2011 arbetade 114 000 personer, eller 24 procent av den totala n&auml;ringslivssyssels&auml;ttningen, i utlands&auml;gda f&ouml;retag. Av de utlands&auml;gda f&ouml;retagen i V&auml;stra G&ouml;taland var &aring;r 2011 61 procent &auml;gda av f&ouml;retag fr&aring;n EU 27 och 13 procent &auml;gdes av f&ouml;retag fr&aring;n &ouml;vriga l&auml;nder. Norge &auml;r det vanligaste &auml;garlandet av utlands&auml;gda f&ouml;retag i V&auml;stra G&ouml;taland.</p>
+<a id="kap5_2" name="kap5_2" style="visibility:hidden;">&nbsp;</a> <h2>Internationella kontakter</h2> <p>&Ouml;ppenhet och internationalisering &auml;r karak&shy;teristiska drag inom V&auml;stra G&ouml;talands n&auml;ringsliv. En betydande del av Sveriges utrikeshandel samt stora delar av den norska och finl&auml;ndska trafiken med omv&auml;rlden passerar genom G&ouml;teborgs hamn eller n&aring;gon av de &ouml;vriga v&auml;stkusthamnarna. N&auml;rings&shy;livet &auml;r till stor del inriktad p&aring; export och de v&auml;stsvenska f&ouml;retagen har omfattande internationella kontakter. &Aring;r 2011 arbetade 114 000 personer, eller 24 procent av den totala n&auml;ringslivssyssels&auml;ttningen, i utlands&auml;gda f&ouml;retag. Av de utlands&auml;gda f&ouml;retagen i V&auml;stra G&ouml;taland var &aring;r 2011 61 procent &auml;gda av f&ouml;retag fr&aring;n EU 27 och 13 procent &auml;gdes av f&ouml;retag fr&aring;n &ouml;vriga l&auml;nder. Norge &auml;r det vanligaste &auml;garlandet av utlands&auml;gda f&ouml;retag i V&auml;stra G&ouml;taland.</p>
 <a id="kap5_2_graf1" name="kap5_2_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_2_graf1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap5_2_graf2" name="kap5_2_graf2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_2_graf2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap5_3" name="kap5_3" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Företagande: Företag och företagare</h2> <p>F&ouml;retagarfrekvensen i V&auml;stra G&ouml;taland &auml;r n&aring;got l&auml;gre &auml;n i riket totalt. Nio procent av den totala syssels&auml;ttningen utg&ouml;rs av egna f&ouml;retagare och f&ouml;retagare i eget AB. Av de n&auml;stan 76 000 f&ouml;retagarna i V&auml;stra G&ouml;taland &auml;r n&auml;ra tv&aring; tredjedelar egna f&ouml;retagare.</p>
+<a id="kap5_3" name="kap5_3" style="visibility:hidden;">&nbsp;</a> <h2>Företagande: Företag och företagare</h2> <p>F&ouml;retagarfrekvensen i V&auml;stra G&ouml;taland &auml;r n&aring;got l&auml;gre &auml;n i riket totalt. Nio procent av den totala syssels&auml;ttningen utg&ouml;rs av egna f&ouml;retagare och f&ouml;retagare i eget AB. Av de n&auml;stan 76 000 f&ouml;retagarna i V&auml;stra G&ouml;taland &auml;r n&auml;ra tv&aring; tredjedelar egna f&ouml;retagare.</p>
 
 <p>Nyf&ouml;retagandet har &ouml;kat stadigt de senaste &aring;ren. Nyf&ouml;retagarfrekvensen i V&auml;stra G&ouml;taland &auml;r emellertid l&auml;gre &auml;n i de tv&aring; andra storstadsl&auml;nen Stockholm och Sk&aring;ne. Under 2012 startades cirka 11 800 nya f&ouml;retag varav drygt 3 000 startades av kvinnor. Ungef&auml;r vart femte f&ouml;retag startas inom industri. Inom tj&auml;nstesektorn startas flest f&ouml;retag inom finansiell verksamhet och f&ouml;retagstj&auml;nster.</p>
 <a id="kap5_3_karta1" name="kap5_3_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_3_karta1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap5_3_graf1" name="kap5_3_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_3_graf1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap5_3_graf2" name="kap5_3_graf2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_3_graf2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap5_4" name="kap5_4" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Investeringar: Industriinvesteringar</h2> <p>Historiskt sett har industrins investeringar i V&auml;stra G&ouml;taland utgjort en stor del, cirka 25 procent av Sveriges totala industriinvesteringar. Under l&aring;g&shy;konjunktur&aring;ren 2007&ndash;2011 f&ouml;ll industriinveste&shy;ringarna i V&auml;stra G&ouml;taland, m&auml;tt i volym, med n&auml;stan 50 procent. Minskningen var betydligt st&ouml;rre &auml;n den i riket och kan f&ouml;rklaras av ett stort antal konjunkturk&auml;nsliga industrier i V&auml;stra G&ouml;taland. &Aring;r 2012 b&ouml;rjade investeringar att &ouml;ka igen, om &auml;n svagt.</p>
+<a id="kap5_4" name="kap5_4" style="visibility:hidden;">&nbsp;</a> <h2>Investeringar: Industriinvesteringar</h2> <p>Historiskt sett har industrins investeringar i V&auml;stra G&ouml;taland utgjort en stor del, cirka 25 procent av Sveriges totala industriinvesteringar. Under l&aring;g&shy;konjunktur&aring;ren 2007&ndash;2011 f&ouml;ll industriinveste&shy;ringarna i V&auml;stra G&ouml;taland, m&auml;tt i volym, med n&auml;stan 50 procent. Minskningen var betydligt st&ouml;rre &auml;n den i riket och kan f&ouml;rklaras av ett stort antal konjunkturk&auml;nsliga industrier i V&auml;stra G&ouml;taland. &Aring;r 2012 b&ouml;rjade investeringar att &ouml;ka igen, om &auml;n svagt.</p>
 <a id="kap5_4_graf1" name="kap5_4_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_4_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap5_5" name="kap5_5" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Miljöteknik: Stor miljötekniksektor</h2> <p>V&auml;stra G&ouml;taland &auml;r en ledande inom milj&ouml;driven aff&auml;rsutveckling. Milj&ouml;teknikomr&aring;det<sup>1</sup> &auml;r en snabbt v&auml;xande bransch och antalet sysselsatta i milj&ouml;teknik&shy;f&ouml;retag i V&auml;stra G&ouml;taland &auml;r st&ouml;rst i hela landet. &Auml;ven &aring;r 2003 hade l&auml;net ett stort antal sysselsatta inom milj&ouml;teknikf&ouml;retag. V&auml;stra G&ouml;talands export&shy;andel inom milj&ouml;tekniksektorn har ocks&aring; varit h&ouml;g b&aring;de &aring;r 2003 och 2010.</p>
+<a id="kap5_5" name="kap5_5" style="visibility:hidden;">&nbsp;</a> <h2>Miljöteknik: Stor miljötekniksektor</h2> <p>V&auml;stra G&ouml;taland &auml;r en ledande inom milj&ouml;driven aff&auml;rsutveckling. Milj&ouml;teknikomr&aring;det<sup>1</sup> &auml;r en snabbt v&auml;xande bransch och antalet sysselsatta i milj&ouml;teknik&shy;f&ouml;retag i V&auml;stra G&ouml;taland &auml;r st&ouml;rst i hela landet. &Auml;ven &aring;r 2003 hade l&auml;net ett stort antal sysselsatta inom milj&ouml;teknikf&ouml;retag. V&auml;stra G&ouml;talands export&shy;andel inom milj&ouml;tekniksektorn har ocks&aring; varit h&ouml;g b&aring;de &aring;r 2003 och 2010.</p>
 
 <p><sup>1</sup> <em>Milj&ouml;teknik &auml;r all teknik som direkt eller indirekt bidrar till en b&auml;ttre milj&ouml;. Milj&ouml;teknik innefattar s&aring;dana varor, system, processer och tj&auml;nster som ger tydliga milj&ouml;f&ouml;rdelar i f&ouml;rh&aring;llande till befintliga eller alternativa l&ouml;sningar, sett ur ett livscykelperspektiv. Det r&ouml;r sig om tekniker som minskar utsl&auml;pp av f&ouml;roreningar, som renar vatten och luft, som anv&auml;nder energi och naturresurser mer effektivt.</em></p>
 <a id="kap5_5_graf1" name="kap5_5_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_5_graf1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap5_5_graf2" name="kap5_5_graf2" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_5_graf2.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap5_6" name="kap5_6" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Turism: En växande turismregion</h2> <p>V&auml;stra G&ouml;taland &auml;r Sveriges n&auml;st st&ouml;rsta turismregion, efter Stockholm. Turismen &auml;r en snabbt v&auml;xande n&auml;ring och en viktig tillv&auml;xtmotor f&ouml;r syssels&auml;ttning. Senast uppm&auml;tta turistoms&auml;ttningen f&ouml;r V&auml;stra G&ouml;taland uppgick till drygt 35 miljarder kronor (&aring;r 2012). Shopping st&aring;r f&ouml;r knappt h&auml;lften av oms&auml;ttningen och kommersiellt boende (hotell, vandrarhem, stugbyar, camping och g&auml;sthamnar) f&ouml;r en femtedel. Turismen i V&auml;stra G&ouml;taland syssels&auml;tter cirka 23 000 personer &aring;rligen, vilket motsvarar en &ouml;kning p&aring; &ouml;ver 10 procent fr&aring;n 2000-talets b&ouml;rjan. &Aring;r 2012 hade l&auml;net 8 miljoner kommersiella g&auml;stn&auml;tter (inklusive camping), vilket inneb&auml;r att g&auml;stn&auml;tterna ligger p&aring; ungef&auml;r samma niv&aring; som 2011. Det &auml;r campingn&auml;tterna som har minskat under 2012, framf&ouml;rallt beroende p&aring; det ostadiga v&auml;dret.</p>
+<a id="kap5_6" name="kap5_6" style="visibility:hidden;">&nbsp;</a> <h2>Turism: En växande turismregion</h2> <p>V&auml;stra G&ouml;taland &auml;r Sveriges n&auml;st st&ouml;rsta turismregion, efter Stockholm. Turismen &auml;r en snabbt v&auml;xande n&auml;ring och en viktig tillv&auml;xtmotor f&ouml;r syssels&auml;ttning. Senast uppm&auml;tta turistoms&auml;ttningen f&ouml;r V&auml;stra G&ouml;taland uppgick till drygt 35 miljarder kronor (&aring;r 2012). Shopping st&aring;r f&ouml;r knappt h&auml;lften av oms&auml;ttningen och kommersiellt boende (hotell, vandrarhem, stugbyar, camping och g&auml;sthamnar) f&ouml;r en femtedel. Turismen i V&auml;stra G&ouml;taland syssels&auml;tter cirka 23 000 personer &aring;rligen, vilket motsvarar en &ouml;kning p&aring; &ouml;ver 10 procent fr&aring;n 2000-talets b&ouml;rjan. &Aring;r 2012 hade l&auml;net 8 miljoner kommersiella g&auml;stn&auml;tter (inklusive camping), vilket inneb&auml;r att g&auml;stn&auml;tterna ligger p&aring; ungef&auml;r samma niv&aring; som 2011. Det &auml;r campingn&auml;tterna som har minskat under 2012, framf&ouml;rallt beroende p&aring; det ostadiga v&auml;dret.</p>
 
 <p>Antalet kommersiella g&auml;stn&auml;tter har haft en stabil tillv&auml;xt under hela 2000-talet. V&auml;stra G&ouml;taland har cirka 16 procent av det totala antalet g&auml;stn&auml;tter. Inom campingen &auml;r andelen h&ouml;gre, cirka 20 procent. G&ouml;te&shy;borgs&shy;regionen har de flesta g&auml;stn&auml;tterna inom hotell, stugbyar och vandrarhem. Tv&aring; av tre g&auml;stn&auml;tter sker d&auml;r. Fyrbodal har de flesta g&auml;stn&auml;tterna inom camping, drygt 60 procent.&nbsp;&nbsp;</p>
 
 <p>Exportandelen, andelen utl&auml;ndska g&auml;stn&auml;tter, har varit relativt stabil &ouml;ver &aring;ren och ligger p&aring; cirka 27 procent i V&auml;stra G&ouml;taland. De i s&auml;rklass flitigaste utl&auml;ndska bes&ouml;karna &auml;r i tur och ordning norrm&auml;nnen, tyskarna, danskarna och britterna.</p>
 <a id="kap5_6_tabell1" name="kap5_6_tabell1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_6_tabell1.jpg" style="max-width:100%;width:100%;"></p>
 <a id="kap5_6_graf1" name="kap5_6_graf1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_6_graf1.jpg" style="max-width:100%;width:100%;"></p>
-<a id="kap5_7" name="kap5_7" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Gränshandel</h2> <p>Norrm&auml;n reser till Sverige f&ouml;r att handla. Den norska momsen p&aring; livsmedel, punktskatter och tull p&aring; impor&shy;terade varor och andra skillnader mellan de svenska och norska ekonomierna g&ouml;r att de norska hush&aring;llen tj&auml;nar pengar p&aring; dessa resor. Gr&auml;nshandeln har inneburit att handelscentra och butiker l&auml;ngs gr&auml;nsen vuxit snabbt. Handelns utredningsinstitut (HUI) har under ett antal &aring;r genomf&ouml;rt webbenk&auml;ter d&auml;r man m&auml;ter alla turismresor.</p>
+<a id="kap5_7" name="kap5_7" style="visibility:hidden;">&nbsp;</a> <h2>Gränshandel</h2> <p>Norrm&auml;n reser till Sverige f&ouml;r att handla. Den norska momsen p&aring; livsmedel, punktskatter och tull p&aring; impor&shy;terade varor och andra skillnader mellan de svenska och norska ekonomierna g&ouml;r att de norska hush&aring;llen tj&auml;nar pengar p&aring; dessa resor. Gr&auml;nshandeln har inneburit att handelscentra och butiker l&auml;ngs gr&auml;nsen vuxit snabbt. Handelns utredningsinstitut (HUI) har under ett antal &aring;r genomf&ouml;rt webbenk&auml;ter d&auml;r man m&auml;ter alla turismresor.</p>
 
 <p>M&auml;tningen omfattar &auml;ven vilken typ av varor som k&ouml;ps. Under 2012 handlade norrm&auml;n i Sverige f&ouml;r 27 miljarder kronor, varav 15 miljarder p&aring; dagligvaror, 8 miljarder p&aring; s&auml;llank&ouml;psvaror och 4 miljarder p&aring; bensinstationer. V&auml;stra G&ouml;taland och V&auml;rmland dominerar med 8 miljarder vardera. I V&auml;stra G&ouml;taland st&aring;r dagligvarorna f&ouml;r 5 miljarder, eller 50 procent av denna konsumtion.</p>
-<a id="kap5_8" name="kap5_8" style="visibility:hidden;">&nbsp;</a> <h2 style="color:black;">Forskning och utveckling: Ledande inom forskning och utveckling</h2> <p>V&auml;stsverige har under flera &aring;r placerat sig h&ouml;gt b&aring;de nationellt och internationellt n&auml;r det g&auml;ller satsningar p&aring; forskning och utveckling (FoU). Enligt den senaste europeiska sammanst&auml;llningen fr&aring;n 2010 har V&auml;stsveriges (V&auml;stra G&ouml;taland och Halland) st&auml;llning sjunkit lite i f&ouml;rh&aring;llande till de tidigare redovisningarna men ligger fortfarande i topp i ett europeiskt perspektiv.</p>
+<a id="kap5_8" name="kap5_8" style="visibility:hidden;">&nbsp;</a> <h2>Forskning och utveckling: Ledande inom forskning och utveckling</h2> <p>V&auml;stsverige har under flera &aring;r placerat sig h&ouml;gt b&aring;de nationellt och internationellt n&auml;r det g&auml;ller satsningar p&aring; forskning och utveckling (FoU). Enligt den senaste europeiska sammanst&auml;llningen fr&aring;n 2010 har V&auml;stsveriges (V&auml;stra G&ouml;taland och Halland) st&auml;llning sjunkit lite i f&ouml;rh&aring;llande till de tidigare redovisningarna men ligger fortfarande i topp i ett europeiskt perspektiv.</p>
 
 <p>N&auml;ringslivets FoU-utgifter i V&auml;stra G&ouml;taland motsvarar 3 procent av BRP, medan genomsnittet f&ouml;r europeiska regioner ligger p&aring; 1,2 procent av BRP.</p>
 <a id="kap5_8_karta1" name="kap5_8_karta1" style="visibility:hidden;">&nbsp;</a> <p><img src="images/kap/kap5_8_karta1.jpg" style="max-width:100%;width:100%;"></p>
@@ -164,26 +188,18 @@
       <div data-role="panel" data-position-fixed="true"  data-display="overlay" data-theme="b" id="nav-panel">
       <ul data-role="listview" data-theme="a" class="nav-search">
             <li data-icon="delete"><a href="#" data-rel="close">Stäng meny</a></li>
-        <li style="background: #ececec;"><a data-ajax="false" href="index.html">Start</a></li>
-<li style="background: #e5ba1f;"><a data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
-<li style="background: #2b5484;"><a data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
-<li style="background: #810031;"><a data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
-<li style="background: #58723a;"><a data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="#kap5_1"><img src="images/ikon.png" alt="" class="ui-li-icon">Näringslivsstruktur: Ett mångsidigt näringsliv</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="#kap5_2"><img src="images/ikon.png" alt="" class="ui-li-icon">Internationella kontakter</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="#kap5_3"><img src="images/ikon.png" alt="" class="ui-li-icon">Företagande: Företag och företagare</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="#kap5_4"><img src="images/ikon.png" alt="" class="ui-li-icon">Investeringar: Industriinvesteringar</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="#kap5_5"><img src="images/ikon.png" alt="" class="ui-li-icon">Miljöteknik: Stor miljötekniksektor</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="#kap5_6"><img src="images/ikon.png" alt="" class="ui-li-icon">Turism: En växande turismregion</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="#kap5_7"><img src="images/ikon.png" alt="" class="ui-li-icon">Gränshandel</a></li>
-<li style="background: #c1b176;"><a data-ajax="false" href="#kap5_8"><img src="images/ikon.png" alt="" class="ui-li-icon">Forskning och utveckling: Ledande inom forskning o</a></li>
-<li style="background: #4a136f;"><a data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
-<li style="background: #a4b836;"><a data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
-<li style="background: #cd6c26;"><a data-ajax="false" href="page_kap8.html">Kultur</a></li>
-<li style="background: #85b0d0;"><a data-ajax="false" href="page_kap9.html">Hälsa</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_tables.html">Tabeller</a></li>
-<li style="background: #;"><a data-ajax="false" href="list_graphs.html">Diagram</a></li>
+        <li style="background: #ececec; color:red;"><a style="color:#333333;" data-ajax="false" href="index.html">Start</a></li>
+<li style="background: #e5ba1f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap1.html">Geografi och befolkning</a></li>
+<li style="background: #2b5484; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap2.html">Den ekomoniska dimensionen</a></li>
+<li style="background: #810031; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap3.html">Den sociala dimensionen</a></li>
+<li style="background: #58723a; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap4.html">Miljödimensionen</a></li>
+<li style="background: #c1b176; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap5.html">Näringsliv</a></li>
+<li style="background: #4a136f; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap6.html">Kompetens och kunskap</a></li>
+<li style="background: #a4b836; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap7.html">Infrastruktur och kommunikationer</a></li>
+<li style="background: #cd6c26; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap8.html">Kultur</a></li>
+<li style="background: #85b0d0; color:red;"><a style="color:#ffffff;" data-ajax="false" href="page_kap9.html">Hälsa</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_tables.html">Tabeller och Diagram</a></li>
+<li style="background: #666666; color:red;"><a style="color:#ffffff;" data-ajax="false" href="list_maps.html">Kartor</a></li>
 </ul>
       </div><!-- /panel -->
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="overlay" data-theme="b" id="add-form">
@@ -234,5 +250,12 @@
       </div><!-- /content -->
 
     </div><!-- /page -->
+    <script>
+              if ($(window).width() < 550) {
+          $('.custom-button').attr('data-iconpos', 'notext');
+        }
+
+
+    </script>
   </body>
 </html>
